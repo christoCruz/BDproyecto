@@ -8,7 +8,13 @@ class sValor extends CI_Controller {
     }//end
 	public function index()
 	{
-		$this->load->view('examples/valor');
+		$data = array('dashboard' => 'active',
+        'segundo' => '',
+        'tercero' => ''); 
+
+		$this->load->view('header',$data);
+		$this->load->view('body');
+		$this->load->view('footer');
 	}
 
 	public function prueba()
