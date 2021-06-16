@@ -67,6 +67,7 @@ class tablas extends CI_Controller {
   ////////////
 
   public function agregar_aulas(){
+    //agregar lo de la imagen********************
     $datos = array(
       "numaula" =>$this->input->post("numaula")
     );
@@ -273,10 +274,10 @@ class tablas extends CI_Controller {
 
   public function agregar_estudiantes(){
     $datos = array(
-      "idpreinscripcion" =>$this->input->post("idpreinscripcion"),
-      "idhorassociales" =>$this->input->post("idhorassociales"),
+      //"idpreinscripcion" =>$this->input->post("idpreinscripcion"),
+      //"idhorassociales" =>$this->input->post("idhorassociales"),
       "idcarrera" =>$this->input->post("idcarrera"),
-      "idincripcion" =>$this->input->post("idincripcion"),
+      //"idincripcion" =>$this->input->post("idincripcion"),
       "idusuario" =>$this->input->post("idusuario"),
       "nomestudiante" =>$this->input->post("nomestudiante"),
       "apelestudiante" =>$this->input->post("apelestudiante"),
