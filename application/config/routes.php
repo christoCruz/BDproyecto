@@ -50,6 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'sValor';
+$route['index.php/tablas/seleccion/(:num)'] = 'index,php/modaltabla/seleccion/$1';
+//$route['index.php/Detalles/(:num)'] = 'index,php/Detalles/$1';
 $route['404_override'] = 'welcome';
+
+$route['translate_uri_dashes'] = FALSE;
 
 
