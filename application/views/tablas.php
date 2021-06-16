@@ -343,14 +343,23 @@
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
-                                  <label>Id usuario</label>
-                                  <input type="text" class="form-control" placeholder="id usuario" id="idusuario" name="idusuario">
+                                  <label>Correo</label>
+                                  <input type="text" class="form-control" placeholder="correo" id="correocoor" name="correocoor">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
-                                  <label>Id docente</label>
-                                  <input type="text" class="form-control" placeholder="id docente" id="iddocente" name="iddocente">
+                                  <label>Nombre coordinador</label>
+                                  <input type="text" class="form-control" placeholder="Nombre del coordinador" id="nomcoor" name="nomcoor">
+                                </div>
+                              </div>
+                              
+                            </div>
+                            <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                  <label>Apellido</label>
+                                  <input type="text" class="form-control" placeholder="apellido" id="apecoor" name="apecoor">
                                 </div>
                               </div>
                             </div>
@@ -549,6 +558,12 @@
                                   <input type="text" class="form-control" placeholder="Fecha" id="ingredocente" name="ingredocente">
                                 </div>
                               </div>
+                              <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                  <label>Correo</label>
+                                  <input type="text" class="form-control" placeholder="correo" id="correodocente" name="correodocente">
+                                </div>
+                              </div>
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -634,12 +649,6 @@
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
-                                  <label>Id usuario</label>
-                                  <input type="text" class="form-control" placeholder="Id usuario" id="idusuario" name="idusuario">
-                                </div>
-                              </div>
-                              <div class="col-md-4 px-1">
-                                <div class="form-group">
                                   <label>Nombre del estudiante</label>
                                   <input type="text" class="form-control" placeholder="Nombre" id="nomestudiante" name="nomestudiante">
                                 </div>
@@ -686,7 +695,6 @@
                       <th>#</th>
                       <th>ID ESTUDIANTE</th>
                       <th>ID CARRERA</th>
-                      <th>ID USUARIO</th>
                       <th>NOMBRE DEL ESTUDIANTE</th>
                       <th>APELLIDO</th>
                       <th>CARNET</th>
@@ -803,7 +811,7 @@
                           
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_grupos/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_coordinador/grupos<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_grupos/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>   -->
                     </tbody>
@@ -818,3 +826,1053 @@
 
         <!-- FIN TABLAS -->
       </div>
+
+      <div class="content">
+
+<!-- **************************************************
+************** TABLA HISTORIAL DE PLANIFICACION *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Historial de planificacion </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_historial">Agregar historial</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_historial" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar historial </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_historial_planificacion")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Id plan</label>
+                          <input type="text" class="form-control" placeholder="Id de plan" id="idplan" name="idplan">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Ciclo</label>
+                          <input type="text" class="form-control" placeholder="Ciclo" id="ciclo" name="ciclo">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Año</label>
+                          <input type="text" class="form-control" placeholder="año" id="anio" name="anio">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID HISTORIAL DEL PLAN</th>
+              <th>ID PLAN</th>
+              <th>CICLO</th>
+              <th>AÑO</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_historial_planificacion/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_historial_planificacion/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA HORARIO DE GRUPOS*************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Horario de grupos </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_horario">Agregar horario</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_horario" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar horario </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_horarios_grupos")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Id grupo</label>
+                          <input type="text" class="form-control" placeholder="Id de grupo" id="idgrupos" name="idgrupos">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Dia</label>
+                          <input type="text" class="form-control" placeholder="dia" id="diahorario" name="diahorario">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Hora</label>
+                          <input type="text" class="form-control" placeholder="Hora" id="horashorario" name="horashorario">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID HORARIO DE GRUPO</th>
+              <th>ID GRUPO</th>
+              <th>DIA</th>
+              <th>HORA</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horarios_grupos/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_horarios_grupos/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA HORAS SOCIALES *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Horas sociales </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_horas_sociales">Agregar horas sociales</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_horas_sociales" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar horas sociales </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_horas_sociales")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Id estudiante</label>
+                          <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Nombre del proyecto</label>
+                          <input type="text" class="form-control" placeholder="nombre del proyecto" id="nomproyecto" name="nomproyecto">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Duracion del proyecto</label>
+                          <input type="text" class="form-control" placeholder="Duracion" id="duracionproyec" name="duracionproyec">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Estado del proyecto</label>
+                          <input type="text" class="form-control" placeholder="Estado del proyeto" id="estadoproyecto" name="estadoproyecto">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Ante-proyecto</label>
+                          <input type="text" class="form-control" placeholder="Ante-proyecto" id="anteproyecto" name="anteproyecto">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Estado de ante proyecto</label>
+                          <input type="text" class="form-control" placeholder="Estado ante-proyecto" id="estadoanteproyecto" name="estadoanteproyecto">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Comentario</label>
+                          <input type="text" class="form-control" placeholder="Comentario" id="comentariopro" name="comentariopro">
+                        </div>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>IDHORASSOCIALES</th>
+              <th>IDESTUDIANTE</th>
+              <th>NOM. PROYECTO</th>
+              <th>DURACION</th>
+              <th>ESTADO</th>
+              <th>ANTE-PRO</th>
+              <th>EST. ANTE-PRO</th>
+              <th>FECHA</th>
+              <th>COMENTARIO</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horas_sociales/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_horas_sociales/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA INSCRIPCION *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Inscripcion </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_inscripcion">Agregar inscripcion</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_horas_sociales" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar Inscripcion </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_inscripcion")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Id estudiante</label>
+                          <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Id grupos</label>
+                          <input type="text" class="form-control" placeholder="Id grupo" id="idgrupos" name="idgrupos">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Fecha de inscripcion</label>
+                          <input type="text" class="form-control" placeholder="Fecha" id="fechainscrip" name="fechainscrip">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID INSCRIPCION</th>
+              <th>ID ESTUDIANTE</th>
+              <th>ID GRUPOS</th>
+              <th>FECHA DE INSCRIPCION</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_inscripcion/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_inscripcion/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA JEFE *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Jefe </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_jefe">Agregar jefe</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_jefe" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar Jefe </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_jefe")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Correo</label>
+                          <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Nombre jefe</label>
+                          <input type="text" class="form-control" placeholder="Id grupo" id="idgrupos" name="idgrupos">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Apellido jefe</label>
+                          <input type="text" class="form-control" placeholder="Apellido" id="apejefe" name="apejefe">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID JEFE</th>
+              <th>CORREO</th>
+              <th>NOMBRE</th>
+              <th>APELLIDO</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_jefe/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_jefe/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA MATERIAS *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Materias </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_materias">Agregar horas sociales</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_materias" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar horas sociales </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_materias")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Codigo materia</label>
+                          <input type="text" class="form-control" placeholder="codigo materia" id="codmateria" name="codmateria">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Nivel de materia</label>
+                          <input type="text" class="form-control" placeholder="Nivel de materia" id="nivelmateria" name="nivelmateria">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Nombre de materia</label>
+                          <input type="text" class="form-control" placeholder="Nombre de materia" id="nommateria" name="nommateria">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Requisito</label>
+                          <input type="text" class="form-control" placeholder="Requisito" id="requisito" name="requisito">
+                        </div>
+                      </div>
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Id carrera</label>
+                          <input type="text" class="form-control" placeholder="id carrera" id="idcarrera" name="idcarrera">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID MATERIA</th>
+              <th>ID CARRERA</th>
+              <th>COD MATERIA</th>
+              <th>NIVEL</th>
+              <th>MATERIA</th>
+              <th>REQUISITO</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_materias/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_materias/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA PLAN DE ESTUDIO *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Plan de estudio </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_plan">Agregar plan</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_plan" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar plan de estudio </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_plan_estudio")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Id carrera</label>
+                          <input type="text" class="form-control" placeholder="id carrera" id="idcarrera" name="idcarrera">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Duracion de plan</label>
+                          <input type="text" class="form-control" placeholder="Duracion" id="duracionplan" name="duracionplan">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Descripcion</label>
+                          <input type="text" class="form-control" placeholder="Descripcion" id="descripcionplan" name="descripcionplan">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID PLAN</th>
+              <th>ID CARRERA</th>
+              <th>DURACION</th>
+              <th>DESCRIPCION</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_plan_estudio/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_plan_estudio/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA PREINSCRIPCION *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Preinscripcion </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_preinscripcion">Agregar preinscripcion</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_preinscripcion" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar horas sociales </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_preinscripcion")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Id estudiante</label>
+                          <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Id materia</label>
+                          <input type="text" class="form-control" placeholder="id materia" id="idmateria" name="idmateria">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID PREINSCRIPCION</th>
+              <th>ID ESTUDIANTE</th>
+              <th>ID MATERIA</th>
+              <th>FECHA</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_preinscripcion/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_preinscripcion/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA REGISTRO DE ESTUDIANTE *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Registro estudiante </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_registro">Agregar registrar nota</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_registro" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar registro de estudiante </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_registro_estudiante")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Id inscripcion</label>
+                          <input type="text" class="form-control" placeholder="id inscripcion" id="idinscripcion" name="idinscripcion">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>estado de materia</label>
+                          <input type="text" class="form-control" placeholder="estado de materia" id="estadomateria" name="estadomateria">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>nota de materia</label>
+                          <input type="text" class="form-control" placeholder="nota" id="notamateria" name="notamateria">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID REGISTRO</th>
+              <th>ID INSCRIPCION</th>
+              <th>FECHA</th>
+              <th>ESTADO</th>
+              <th>NOTA</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__registro_estudiante/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_registro_estudiante/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA REPORTE DE CHOQUE *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Reporte de choque </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_reporte">Agregar reporte</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_reporte" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar reporte </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_reportechoque")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Id docente</label>
+                          <input type="text" class="form-control" placeholder="id docente" id="iddocente" name="iddocente">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Id estudiante</label>
+                          <input type="text" class="form-control" placeholder="Id estudiante" id="idestudiante" name="idestudiante">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Comentario</label>
+                          <input type="text" class="form-control" placeholder="comentario" id="comentariochoque" name="comentariochoque">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID CHOQUE</th>
+              <th>ID ESTUDIANTE</th>
+              <th>IDDOCENTE</th>
+              <th>FECHA</th>
+              <th>COMENTARIO</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__reportechoque/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_reportechoque/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>
+
+
+<div class="content">
+
+<!-- **************************************************
+************** TABLA USUARIO *************************
+*******************************************************-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tabla Usuario </h4>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_registro">Agregar usuario</button>
+        <!-- Modal de Agregar -->
+        <div class="modal fade bd-example-modal-lg" id="agregar_registro" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Agregar usuario </h5>
+                </div>
+                <?php echo form_open("tablas/agregar_usuario")?>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-4 pr-1">
+                        <div class="form-group">
+                          <label>Usuario</label>
+                          <input type="text" class="form-control" placeholder="usuario" id="usuario" name="usuario">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Contraseña</label>
+                          <input type="text" class="form-control" placeholder="contraseña" id="password" name="password">
+                        </div>
+                      </div>
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>tipo de usuario</label>
+                          <input type="text" class="form-control" placeholder="tipo usuario" id="tipousuario" name="tipousuario">
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-md-4 px-1">
+                        <div class="form-group">
+                          <label>Estado de usuario</label>
+                          <input type="text" class="form-control" placeholder="estado de usuario" id="estadousuario" name="estadousuario">
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="update ml-auto mr-auto">
+                      <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                    </div>
+                  </div>
+                <?php echo form_close()?>
+              </div>
+            </div>
+        </div>
+        <!-- Fin de Modal -->
+      </div>
+      <div  class="card-body">
+        <div id="scroll" class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>ID USUARIO</th>
+              <th>USUARIO</th>
+              <th>PASSWORD</th>
+              <th>TIPO DE USUARIO</th>
+              <th>ESTADO DE USUARIO</th>
+              <th class="text-right"> ACCIONES</th>
+            </thead>
+            <tbody>
+              <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                <tr>
+                  <th scope="row"><?php echo $number++; ?></th>
+                  <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
+                  <td><?php echo $tabla->NOMBRE; ?></td>
+                  <td><?php echo $tabla->APELLIDO; ?></td>
+                  
+                  <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__usuario/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                  
+                  <a href="<?php echo base_url(); ?>tablas/eliminar_usuario/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                </tr>
+              <?php }?>   -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FIN TABLAS -->
+</div>

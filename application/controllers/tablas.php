@@ -147,8 +147,9 @@ class tablas extends CI_Controller {
 
   public function agregar_coordinador(){
     $datos = array(
-      "iddocente" =>$this->input->post("iddocente"),
-      "idusuario" =>$this->input->post("idusuario"),
+      "iddocente" =>$this->input->post("correocoor"),
+      "idusuario" =>$this->input->post("nomcoor"),
+      "idusuario" =>$this->input->post("apecoor"),
       "idcarrera" =>$this->input->post("idcarrera")
     );
     $this->tablas->agregar_coordinador($datos);
@@ -231,7 +232,8 @@ class tablas extends CI_Controller {
       "profdocente" =>$this->input->post("profdocente"),
       "estdocente" =>$this->input->post("estdocente"),
       "tipocontrato" =>$this->input->post("tipocontrato"),
-      "ingredocente" =>$this->input->post("ingredocente")
+      "correodocente" =>$this->input->post("correodocente"),
+      "ingredocente" =>$this->input->post("ingredocente") //agregado
     );
     $this->tablas->agregar_docente($datos);
     redirect(base_url()."tablas");
@@ -372,6 +374,7 @@ class tablas extends CI_Controller {
 
   public function agregar_historial_planifica(){
     $datos = array(
+      "idplan" =>$this->input->post("idplan"),
       "ciclo" =>$this->input->post("ciclo"),
       "anio" =>$this->input->post("anio")
     );
@@ -452,6 +455,7 @@ class tablas extends CI_Controller {
 
   public function agregar_horas_sociales(){
     $datos = array(
+      "idestudiante" =>$this->input->post("idestudiante"),
       "nomproyecto" =>$this->input->post("nomproyecto"),
       "duracionproyec" =>$this->input->post("duracionproyec"),
       "estadoproyecto" =>$this->input->post("estadoproyecto"),
@@ -499,7 +503,9 @@ class tablas extends CI_Controller {
 
   public function agregar_inscripcion(){
     $datos = array(
-      "idgrupos" =>$this->input->post("idgrupos")
+      "idestudiante" =>$this->input->post("idestudiante"),
+      "idgrupos" =>$this->input->post("idgrupos"),
+      "fechainscrip" =>$this->input->post("fechainscrip")//queda tentativa
     );
     $this->tablas->agregar_inscripcion($datos);
     redirect(base_url()."tablas");
@@ -530,12 +536,52 @@ class tablas extends CI_Controller {
     redirect(base_url()."index.php/tablas");
   }
 
+   ////////////
+  //crud jefe
+  ////////////
+
+  public function agregar_jefe(){
+    $datos = array(
+      "idestudiante" =>$this->input->post("correojefe"),
+      "idgrupos" =>$this->input->post("nomjefe"),
+      "fechainscrip" =>$this->input->post("apejefe")//queda tentativa
+    );
+    $this->tablas->agregar_jefe($datos);
+    redirect(base_url()."tablas");
+  }
+
+  public function seleccion_jefe($dato){
+    $valor=$this->tablas->seleccion_jefe($dato);
+    $mostrar = array('tablas'=>$this->tablas->mostrar_jefe());
+    $data = array('tablas' => 'active',
+        'usuarios' => ''); 
+
+		$this->load->view('menuadmin',$data);
+		$this->load->view('tablas',$mostrar);
+    $this->load->view('editar_inscripcion',$valor);
+		$this->load->view('footer');
+	}
+
+  public function actualizar_jefe($id){
+    $datos = array(
+      "idgrupos" =>$this->input->post("idgrupos")
+    );
+    $this->tablas->actualizar_inscripcion($datos,$id);
+    redirect(base_url()."index.php/tablas");
+  }
+
+  function eliminar_jefe($id){
+    $this->tablas->eliminar_jefe($id);
+    redirect(base_url()."index.php/tablas");
+  }
+
   ////////////
   //crud materias
   ////////////
 
   public function agregar_materias(){
     $datos = array(
+      "idcarrera" =>$this->input->post("idcarrera"),
       "codmateria" =>$this->input->post("codmateria"),
       "nivelmateria" =>$this->input->post("nivelmateria"),
       "nommateria" =>$this->input->post("nommateria"),
