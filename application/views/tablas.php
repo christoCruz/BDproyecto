@@ -129,7 +129,7 @@
                   <table class="table">
                     <thead class=" text-primary">
                       <th>#</th>
-                      <th>IDP</th>
+                      <th>IDAULA</th>
                       <th>NOMBRE</th>
                       <th>APELLIDO</th>
                       <th class="text-right"> ACCIONES</th>
@@ -203,7 +203,7 @@
                   <table class="table">
                     <thead class=" text-primary">
                       <th>#</th>
-                      <th>IDP</th>
+                      <th>IDAULA</th>
                       <th>Numero de aula</th>
                   
                       <th class="text-right"> ACCIONES</th>
@@ -300,7 +300,7 @@
                           <td><?php echo $carrera->IDCARRERA;?></td>
                           <td><?php echo $carrera->IDDEPTO; ?></td>
                           <td><?php echo $carrera->CODCARRERA; ?></td>
-                          
+                          <td><?php echo $carrera->MATERIAS; ?></td>
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_carrera/<?php echo $carrera->IDCARRERA;?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_carrera/<?php echo $carrera->IDCARRERA; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>

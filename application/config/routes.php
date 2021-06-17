@@ -51,6 +51,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'sValor';
 $route['index.php/tablas/seleccion/(:num)'] = 'index,php/modaltabla/seleccion/$1';
+$route['index.php/tablas/seleccion_aulas/(:num)'] = 'index,php/editar_aulas/seleccion_aulas/$1';
+$route['index.php/tablas/seleccion_carrera/(:num)'] = 'index,php/editar_carrera/seleccion_carrera/$1';
+$route['index.php/tablas/seleccion_coordinador/(:num)'] = 'index,php/editar_coordinador/seleccion_coordinador/$1';
+$route['index.php/tablas/seleccion_departamento/(:num)'] = 'index,php/editar_departamento/seleccion_departamento/$1';
+$route['index.php/tablas/seleccion_docente/(:num)'] = 'index,php/editar_docente/seleccion_docente/$1';
+$route['index.php/tablas/seleccion_estudiantes/(:num)'] = 'index,php/editar_estudiantes/seleccion_estudiantes/$1';
+$route['index.php/tablas/seleccion_grupos/(:num)'] = 'index,php/editar_grupos/seleccion_grupos/$1';
+$route['index.php/tablas/seleccion_horarios_grupos/(:num)'] = 'index,php/editar_horarios_grupos/seleccion_horarios_grupos/$1';
+$route['index.php/tablas/seleccion_horas_sociales/(:num)'] = 'index,php/editar_horas_sociales/seleccion_horas_sociales/$1';
+$route['index.php/tablas/seleccion_inscripcion/(:num)'] = 'index,php/editar_inscripcion/seleccion_inscripcion/$1';
+$route['index.php/tablas/seleccion_jefe/(:num)'] = 'index,php/editar_jefe/seleccion_jefe/$1';
+$route['index.php/tablas/seleccion_materias/(:num)'] = 'index,php/editar_materias/seleccion_materias/$1';
+$route['index.php/tablas/seleccion_preinscripcion/(:num)'] = 'index,php/editar_preinscripcion/seleccion_preinscripcion/$1';
+$route['index.php/tablas/seleccion_registro_estudiante/(:num)'] = 'index,php/editar_registro_estudiante/seleccion_registro_estudiante/$1';
+$route['index.php/tablas/seleccion_reportechoque/(:num)'] = 'index,php/editar_reportechoque/seleccion_reportechoque/$1';
+$route['index.php/tablas/seleccion_usuario/(:num)'] = 'index,php/editar_usuario/seleccion_usuario/$1';
+
 //$route['index.php/Detalles/(:num)'] = 'index,php/Detalles/$1';
 $route['404_override'] = 'welcome';
 

@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
    
-   class tablas extends CI_Model{
+   class tablas_estras extends CI_Model{
 
         function __construct()
         {
@@ -53,7 +53,7 @@
             $parametro=array(
                 array('name'=>':vnumaula','value'=>$data['numaula'],'length'=>-1,'type'=>SQLT_CHR)
             );
-            $this->db->stored_procedure('package','agregar_aulas',$parametro);
+            $this->db->stored_procedure('package1','agregar_aulas',$parametro);
         }
         
         function mostrar_aulas(){
@@ -77,12 +77,12 @@
                 array('name'=>':vidaula','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vnumaula','value'=>$data['numaula'],'length'=>-1,'type'=>SQLT_CHR)
             );
-            $this->db->stored_procedure('package','actualizar_aulas',$parametro);
+            $this->db->stored_procedure('package1','actualizar_aulas',$parametro);
         }
     
         function eliminar_aulas($id){
             $parametro=array(array('name'=>':vidaula','value'=>$id,'length'=>-1,'type'=>SQLT_CHR));
-            $this->db->stored_procedure('package','eliminar_aulas',$parametro);
+            $this->db->stored_procedure('package1','eliminar_aulas',$parametro);
         }
 
         ////////////

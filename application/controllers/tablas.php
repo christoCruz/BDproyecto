@@ -4,38 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class tablas extends CI_Controller {
 	function __construct(){
         parent::__construct();
-		$this->load->helper("form"); 
+		    $this->load->helper("form"); 
         $this->load->model("tablas_model");
-        //$this->load->model("tablas");
+        $this->load->model("tablas_estras");
+        
 		
     }//end
     
+   
 	public function index()
 	{
-    //carga los datos a las tablas
-    $mostrar = array('tablas'=>$this->tablas_model->mostrar(),
-    'aulas'=>$this->tablas_model->mostrar_aulas(),
-    'carrera'=>$this->tablas_model->mostrar_carrera(),
-    'coordinador'=>$this->tablas_model->mostrar_coordinador(),
-    'departamento'=>$this->tablas_model->mostrar_departamento(),
-    'docentes'=>$this->tablas_model->mostrar_docente(),
-    'estudiantes'=>$this->tablas_model->mostrar_estudiantes(),
-    'grupo'=>$this->tablas_model->mostrar_grupos(),
-    'horarios'=>$this->tablas_model->mostrar_horarios_grupos(),
-    'sociales'=>$this->tablas_model->mostrar_horas_sociales(),
-    'inscripcion'=>$this->tablas_model->mostrar_inscripcion(),
-    'jefe'=>$this->tablas_model->mostrar_jefe(),
-    'materia'=>$this->tablas_model->mostrar_materias(),
-    'preinscripcion'=>$this->tablas_model->mostrar_preinscripcion(),
-    'registroestudiante'=>$this->tablas_model->mostrar_registro_estudiante(),
-    'reportechoque'=>$this->tablas_model->mostrar_reportechoque(),
-    'tablas'=>$this->tablas_model->mostrar_usuario());
-
+    
 		$data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this-> retornoprueba());
 		$this->load->view('footer');
 	}
 
@@ -89,18 +73,18 @@ class tablas extends CI_Controller {
     $datos = array(
       "numaula" =>$this->input->post("numaula")
     );
-    $this->tablas->agregar_aulas($datos);
+    $this->tablas_estras->agregar_aulas($datos);
     redirect(base_url()."tablas/#aula");
   }
 
   public function seleccion_aulas($dato){
-    $valor=$this->tablas->seleccion_aulas($dato);
-    $mostrar = array('aulas'=>$this->tablas->mostrar_aulas());
+    $valor=$this->tablas_estras->seleccion_aulas($dato);
+  
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas', $this->retornoprueba());
     $this->load->view('editar_aulas',$valor);
 		$this->load->view('footer');
 	}
@@ -109,12 +93,12 @@ class tablas extends CI_Controller {
     $datos = array(
       "numaula" =>$this->input->post("numaula")
     );
-    $this->tablas->actualizar_aulas($datos,$id);
+    $this->tablas_estras->actualizar_aulas($datos,$id);
     redirect(base_url()."tablas/#aula");
   }
 
   function eliminar_aulas($id){
-    $this->tablas->eliminar_aulas($id);
+    $this->tablas_estras->eliminar_aulas($id);
     redirect(base_url()."tablas/#aula");
   }
 
@@ -134,12 +118,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_carrera($dato){
     $valor=$this->tablas->seleccion_carrera($dato);
-    $mostrar = array('carrera'=>$this->tablas->mostrar_carrera());
+  
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_carrera',$valor);
 		$this->load->view('footer');
 	}
@@ -176,12 +160,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_coordinador($dato){
     $valor=$this->tablas->seleccion_coordinador($dato);
-    $mostrar = array('coordinador'=>$this->tablas->mostrar_coordinador());
+  
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_coordinador',$valor);
 		$this->load->view('footer');
 	}
@@ -216,12 +200,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_departamento($dato){
     $valor=$this->tablas->seleccion_departamento($dato);
-    $mostrar = array('departamento'=>$this->tablas->mostrar_departamento());
+    
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_departamento',$valor);
 		$this->load->view('footer');
 	}
@@ -261,12 +245,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_docente($dato){
     $valor=$this->tablas->seleccion_docente($dato);
-    $mostrar = array('docentes'=>$this->tablas->mostrar_docente());
+   
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_docente',$valor);
 		$this->load->view('footer');
 	}
@@ -310,12 +294,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_estudiantes($dato){
     $valor=$this->tablas->seleccion_estudiantes($dato);
-    $mostrar = array('estudiantes'=>$this->tablas->mostrar_estudiantes());
+   
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_estudiantes',$valor);
 		$this->load->view('footer');
 	}
@@ -359,12 +343,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_grupos($dato){
     $valor=$this->tablas->seleccion_grupos($dato);
-    $mostrar = array('grupo'=>$this->tablas->mostrar_grupos());
+  
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_grupos',$valor);
 		$this->load->view('footer');
 	}
@@ -402,12 +386,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_horarios_grupos($dato){
     $valor=$this->tablas->seleccion_horarios_grupos($dato);
-    $mostrar = array('horarios'=>$this->tablas->mostrar_horarios_grupos());
+    
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_horarios_grupos',$valor);
 		$this->load->view('footer');
 	}
@@ -448,12 +432,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_horas_sociales($dato){
     $valor=$this->tablas->seleccion_horas_sociales($dato);
-    $mostrar = array('sociales'=>$this->tablas->mostrar_horas_sociales());
+   
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_horas_sociales',$valor);
 		$this->load->view('footer');
 	}
@@ -492,12 +476,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_inscripcion($dato){
     $valor=$this->tablas->seleccion_inscripcion($dato);
-    $mostrar = array('inscripcion'=>$this->tablas->mostrar_inscripcion());
+   
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_inscripcion',$valor);
 		$this->load->view('footer');
 	}
@@ -531,13 +515,13 @@ class tablas extends CI_Controller {
 
   public function seleccion_jefe($dato){
     $valor=$this->tablas->seleccion_jefe($dato);
-    $mostrar = array('jefe'=>$this->tablas->mostrar_jefe());
+
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
-    $this->load->view('editar_inscripcion',$valor);
+		$this->load->view('tablas',$this->retornoprueba());
+    $this->load->view('editar_jefe',$valor);
 		$this->load->view('footer');
 	}
 
@@ -572,12 +556,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_materias($dato){
     $valor=$this->tablas->seleccion_materias($dato);
-    $mostrar = array('materia'=>$this->tablas->mostrar_materias());
+ 
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_materias',$valor);
 		$this->load->view('footer');
 	}
@@ -613,12 +597,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_preinscripcion($dato){
     $valor=$this->tablas->seleccion_preinscripcion($dato);
-    $mostrar = array('preinscripcion'=>$this->tablas->mostrar_preinscripcion());
+    
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_preinscripcion',$valor);
 		$this->load->view('footer');
 	}
@@ -653,12 +637,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_registro_estudiante($dato){
     $valor=$this->tablas->seleccion_registro_estudiante($dato);
-    $mostrar = array('registroestudiante'=>$this->tablas->mostrar_registro_estudiante());
+   
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_registro_estudiante',$valor);
 		$this->load->view('footer');
 	}
@@ -694,12 +678,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_reportechoque($dato){
     $valor=$this->tablas->seleccion_reportechoque($dato);
-    $mostrar = array('reportechoque'=>$this->tablas->mostrar_reportechoque());
+   
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_reportechoque',$valor);
 		$this->load->view('footer');
 	}
@@ -737,12 +721,12 @@ class tablas extends CI_Controller {
 
   public function seleccion_usuario($dato){
     $valor=$this->tablas->seleccion_usuario($dato);
-    $mostrar = array('tablas'=>$this->tablas->mostrar_usuario());
+  
     $data = array('tablas' => 'active',
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mostrar);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_usuario',$valor);
 		$this->load->view('footer');
 	}
@@ -764,4 +748,24 @@ class tablas extends CI_Controller {
   }
 
 
+  public function retornoprueba(){
+    $mostrar = array('tablas'=>$this->tablas_model->mostrar(),
+    'aulas'=>$this->tablas_model->mostrar_aulas(),
+    'carrera'=>$this->tablas_model->mostrar_carrera(),
+    'coordinador'=>$this->tablas_model->mostrar_coordinador(),
+    'departamento'=>$this->tablas_model->mostrar_departamento(),
+    'docentes'=>$this->tablas_model->mostrar_docente(),
+    'estudiantes'=>$this->tablas_model->mostrar_estudiantes(),
+    'grupo'=>$this->tablas_model->mostrar_grupos(),
+    'horarios'=>$this->tablas_model->mostrar_horarios_grupos(),
+    'sociales'=>$this->tablas_model->mostrar_horas_sociales(),
+    'inscripcion'=>$this->tablas_model->mostrar_inscripcion(),
+    'jefe'=>$this->tablas_model->mostrar_jefe(),
+    'materia'=>$this->tablas_model->mostrar_materias(),
+    'preinscripcion'=>$this->tablas_model->mostrar_preinscripcion(),
+    'registroestudiante'=>$this->tablas_model->mostrar_registro_estudiante(),
+    'reportechoque'=>$this->tablas_model->mostrar_reportechoque(),
+    'tablas'=>$this->tablas_model->mostrar_usuario());
+    return $mostrar;
+    }
 }
