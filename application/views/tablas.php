@@ -301,9 +301,9 @@
                           <td><?php echo $carrera->IDDEPTO; ?></td>
                           <td><?php echo $carrera->CODCARRERA; ?></td>
                           
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_carrera/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_carrera/<?php echo $carrera->IDCARRERA;?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_carrera/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_carrera/<?php echo $carrera->IDCARRERA; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -399,9 +399,9 @@
                           <td><?php echo $coordinador->NOMCOOR; ?></td>
                           <td><?php echo $coordinador->APECOOR; ?></td>
                           
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_coordinador/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_coordinador/<?php echo $coordinador->IDCOORDINADOR; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_coordinador/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_coordinador/<?php echo $coordinador->IDCOORDINADOR; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -480,9 +480,9 @@
                           <td><?php echo $departamento->IDJEFE; ?></td>
                           <td><?php echo $departamento->NOMBREDEPTO; ?></td>
                           
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_departamento/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_departamento/<?php echo $departamento->IDDEPTO; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_departamento/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_departamento/<?php echo $departamento->IDDEPTO; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?> 
                     </tbody>
@@ -613,9 +613,9 @@
                           <td><?php echo $docentes->TIPOCONTRATO; ?></td>
                           <td><?php echo $docentes->INGREDOCENTE; ?></td>
                           <td><?php echo $docentes->CORREODOCENTE; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_docente/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_docente/<?php echo $docentes->IDDOCENTE; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_docente/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_docente/<?php echo $docentes->IDDOCENTE; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?> 
                     </tbody>
@@ -740,9 +740,9 @@
                           <td><?php echo $estudiantes->CARNETESTU; ?></td>
                           <td><?php echo $estudiantes->CORREOESTU; ?></td>
                           <td><?php echo $estudiantes->TELESTUDIANTE; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_estudiantes/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_estudiantes/<?php echo $estudiantes->IDESTUDIANTE; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_estudiantes/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_estudiantes/<?php echo $estudiantes->IDESTUDIANTE; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -864,9 +864,9 @@
                           <td><?php echo $grupo->CICLOGRUPO; ?></td>
                           <td><?php echo $grupo->ANIOGRUPO; ?></td>
                           <td><?php echo $grupo->ESTGRUPO; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_grupos/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_grupos/<?php echo $grupo->IDGRUPO; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_grupos/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_grupos/<?php echo $grupo->IDGRUPO; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -955,9 +955,9 @@
                           <td><?php echo $horarios->IDAULA; ?></td>
                           <td><?php echo $horarios->DIAHORARIO; ?></td>
                           <td><?php echo $horarios->HORASHORARIO; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horarios_grupos/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horarios_grupos/<?php echo $horarios->IDHORARIO_GRU; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_horarios_grupos/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_horarios_grupos/<?php echo $horarios->IDHORARIO_GRU; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>   -->
                     </tbody>
@@ -1088,9 +1088,9 @@
                           <td><?php echo $sociales->ESTADOANTEPROYECTO; ?></td>
                           <td><?php echo $sociales->FECHASOCIALES; ?></td>
                           <td><?php echo $sociales->COMENTARIOPRO; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horas_sociales/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horas_sociales/<?php $sociales->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_horas_sociales/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_horas_sociales/<?php echo $sociales->IDHORASSOCIALES; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>  
                     </tbody>
@@ -1175,9 +1175,9 @@
                           <td><?php echo $inscripcion->IDESTUDIANTE; ?></td>
                           <td><?php echo $inscripcion->IDGRUPOS; ?></td>
                           <td><?php echo $inscripcion->FECHAINSCRIP; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_inscripcion/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_inscripcion/<?php echo $inscripcion->IDINCRIPCION;?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_inscripcion/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_inscripcion/<?php echo $inscripcion->IDINCRIPCION; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?> 
                     </tbody>
@@ -1263,9 +1263,9 @@
                           <td><?php echo $jefe->NOMJEFE; ?></td>
                           <td><?php echo $jefe->APEJEFE; ?></td>
                           
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_jefe/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_jefe/<?php echo $jefe->IDJEFE;?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_jefe/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_jefe/<?php echo $jefe->IDJEFE; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -1368,9 +1368,9 @@
                           <td><?php echo $materia->NIVELMATERIA; ?></td>
                           <td><?php echo $materia->NOMMATERIA; ?></td>
                           <td><?php echo $materia->REQUISITO; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_materias/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_materias/<?php echo $materia->IDMATERIA; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_materias/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_materias/<?php echo $materia->IDMATERIA; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>   -->
                     </tbody>
@@ -1447,9 +1447,9 @@
                           <td><?php echo $preinscripcion->IDESTUDIANTE; ?></td>
                           <td><?php echo $preinscripcion->IDMATERIA; ?></td>
                           <td><?php echo $preinscripcion->FECHAPREINCRIPCIPN; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_preinscripcion/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_preinscripcion/<?php echo $preinscripcion->IDPREINSCRIPCION; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_preinscripcion/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_preinscripcion/<?php echo $preinscripcion->IDPREINSCRIPCION; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -1537,9 +1537,9 @@
                           <td><?php echo $registroestudiante->ESTADOMATERIA; ?></td>
                           <td><?php echo $registroestudiante->NOTAMATERIA; ?></td>
                           
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__registro_estudiante/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__registro_estudiante/<?php echo $registroestudiante->IDREGISTROESTU; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_registro_estudiante/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_registro_estudiante/<?php echo $registroestudiante->IDREGISTROESTU; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>   -->
                     </tbody>
@@ -1626,9 +1626,9 @@
                           <td><?php echo $reportechoque->IDDOCENTE; ?></td>
                           <td><?php echo $reportechoque->FECHACHOQUE; ?></td>
                           <td><?php echo $reportechoque->COMENTARIOCHOQUE; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__reportechoque/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__reportechoque/<?php echo $reportechoque->IDCHOQUE; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_reportechoque/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_reportechoque/<?php echo $reportechoque->IDCHOQUE; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?> 
                     </tbody>
