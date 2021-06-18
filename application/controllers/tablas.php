@@ -17,7 +17,7 @@ class tablas extends CI_Controller {
     
 		$data = array('tablas' => 'active',
         'usuarios' => ''); 
-        $mostrar = array('tablas'=>$this->tablas_model->mostrar());
+        //$mostrar = array('tablas'=>$this->tablas_model->mostrar());
 		$this->load->view('menuadmin',$data);
 		$this->load->view('tablas',$this-> retornoprueba());
 		$this->load->view('footer');
@@ -42,7 +42,7 @@ class tablas extends CI_Controller {
         'usuarios' => ''); 
 
 		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$mos);
+		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('modaltabla',$valor);
 		$this->load->view('footer');
     //$this->session->set_flashdata("success","se guardo los datos correctamente");
