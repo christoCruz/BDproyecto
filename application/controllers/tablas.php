@@ -809,7 +809,7 @@ class tablas extends CI_Controller {
     'preinscripcion'=>$this->tablas_model->mostrar_preinscripcion(),
     'registroestudiante'=>$this->tablas_model->mostrar_registro_estudiante(),
     'reportechoque'=>$this->tablas_model->mostrar_reportechoque(),
-    'usuario'=>$this->tablas_estas->seleccion_usuario());
+    'usuario'=>$this->tablas_estas->mostrar_usuario());
     return $mostrar;
     }
 }
