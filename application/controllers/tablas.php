@@ -747,48 +747,7 @@ class tablas extends CI_Controller {
   }
 
 
-  ////////////
-  //crud usuario
-  ////////////
-
-  public function agregar_usuario(){
-    $datos = array(
-      "usuario" =>$this->input->post("usuario"),
-      "password" =>$this->input->post("password"),
-      "tipousuairo" =>$this->input->post("tipousuairo"),
-      "estadousuario" =>$this->input->post("estadousuario")
-    );
-    $this->tablas_estras->agregar_usuario($datos);
-    redirect(base_url()."tablas");
-  }
-
-  public function seleccion_usuario($dato){
-    $valor=$this->tablas_estras->seleccion_usuario($dato);
   
-    $data = array('tablas' => 'active',
-        'usuarios' => ''); 
-
-		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$this->retornoprueba());
-    $this->load->view('editar_usuario',$valor);
-		$this->load->view('footer');
-	}
-
-  public function actualizar_usuario($id){
-    $datos = array(
-      "usuario" =>$this->input->post("usuario"),
-      "password" =>$this->input->post("password"),
-      "tipousuairo" =>$this->input->post("tipousuairo"),
-      "estadousuario" =>$this->input->post("estadousuario")
-    );
-    $this->tablas_estras->actualizar_usuario($datos,$id);
-    redirect(base_url()."index.php/tablas");
-  }
-
-  function eliminar_usuario($id){
-    $this->tablas_estras->eliminar_usuario($id);
-    redirect(base_url()."index.php/tablas");
-  }
 
 
   public function retornoprueba(){
@@ -808,8 +767,7 @@ class tablas extends CI_Controller {
     'materia'=>$this->tablas_model->mostrar_materias(),
     'preinscripcion'=>$this->tablas_model->mostrar_preinscripcion(),
     'registroestudiante'=>$this->tablas_model->mostrar_registro_estudiante(),
-    'reportechoque'=>$this->tablas_model->mostrar_reportechoque(),
-    'usuario'=>$this->tablas_estas->mostrar_usuario());
+    'reportechoque'=>$this->tablas_model->mostrar_reportechoque());
     return $mostrar;
     }
 }

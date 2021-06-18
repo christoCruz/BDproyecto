@@ -10,7 +10,7 @@
                         <div class="modal-header">
                           <h5 class="modal-title">Editar usuario </h5>
                         </div>
-                        <form action="<?php echo base_url(); ?>tablas/actualizar_usuario/<?php echo $IDUSUARIO; ?>" method="post" role="form" >
+                        <form action="<?php echo base_url(); ?>usuarios/actualizar_usuario/<?php echo $IDUSUARIO; ?>" method="post" role="form" >
                           <div class="modal-body">
                             <div class="row">
                               <div class="col-md-4 pr-1">
