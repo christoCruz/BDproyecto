@@ -1221,7 +1221,7 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Nombre jefe</label>
-                                  <input type="text" class="form-control" placeholder="Id grupo" id="idgrupos" name="idgrupos">
+                                  <input type="text" class="form-control" placeholder="Nombre jefe" id="nomjefe" name="nomjefe">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -1295,7 +1295,7 @@
                   <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title">Agregar horas sociales </h5>
+                          <h5 class="modal-title">Agregar materia </h5>
                         </div>
                         <?php echo form_open("tablas/agregar_materias")?>
                           <div class="modal-body">
@@ -1398,7 +1398,7 @@
                   <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title">Agregar horas sociales </h5>
+                          <h5 class="modal-title">Agregar Preinscripcion </h5>
                         </div>
                         <?php echo form_open("tablas/agregar_preinscripcion")?>
                           <div class="modal-body">

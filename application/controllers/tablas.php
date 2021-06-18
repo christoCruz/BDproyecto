@@ -502,7 +502,7 @@ class tablas extends CI_Controller {
    ////////////
   //crud jefe
   ////////////
-
+//crear las funciones respectivas en los modales tabla_estas
   public function agregar_jefe(){
     $datos = array(
       "correojefe" =>$this->input->post("correojefe"),
@@ -529,7 +529,7 @@ class tablas extends CI_Controller {
     $datos = array(
       "idgrupos" =>$this->input->post("idgrupos")
     );
-    $this->tablas->actualizar_inscripcion($datos,$id);
+    $this->tablas->actualizar_jefe($datos,$id);
     redirect(base_url()."tablas/#jefe");
   }
 
