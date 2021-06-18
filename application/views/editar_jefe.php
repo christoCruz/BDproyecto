@@ -16,7 +16,7 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Correo</label>
-                                  <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante" value="<?php echo $IDESTUDIANTE; ?>">
+                                  <input type="text" class="form-control" placeholder="Correo" id="correojefe" name="correojefe" value="<?php echo $CORREOJEFE; ?>">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">

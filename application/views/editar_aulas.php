@@ -17,7 +17,7 @@
                   <div class="col-md-4 pr-1">
                     <div class="form-group">
                       <label>NUMERO DE AULA</label>
-                      <input type="text" class="form-control" placeholder="Num. aula" id="numaula" name="numaula">
+                      <input type="text" class="form-control" placeholder="Num. aula" id="numaula" name="numaula" value="<?php echo $NUMAULA; ?>">
                     </div>
                   </div>
                   </div>

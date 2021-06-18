@@ -1371,7 +1371,7 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Correo</label>
-                                  <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante">
+                                  <input type="text" class="form-control" placeholder="Correo" id="correojefe" name="correojefe">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
