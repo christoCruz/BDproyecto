@@ -77,9 +77,9 @@
 
 
       <script language="javascript">
-        function doSearch()
+        function doSearch(nombre)
         {
-            const tableReg = document.getElementById('datos');
+            const tableReg = document.getElementById(nombre);
             const searchText = document.getElementById('searchTerm').value.toLowerCase();
             let total = 0;
  
@@ -186,7 +186,7 @@
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
                 <form>
-                    <input class="form-control" id="searchTerm" type="text" onkeyup="doSearch()"  placeholder="Buscar"/>
+                    <input class="form-control" id="searchTerm" type="text" onkeyup="doSearch('datos')"  placeholder="Buscar"/>
                     <br>
                 </form>
                   <table class="table" id="datos">
