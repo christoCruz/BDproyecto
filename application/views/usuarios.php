@@ -92,7 +92,7 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>tipo de usuario</label>
-                                  <input type="text" class="form-control" placeholder="tipo usuario" id="tipousuario" name="tipousuario">
+                                  <input type="text" class="form-control" placeholder="tipo usuario" id="tipousuairo" name="tipousuairo">
                                 </div>
                               </div>
                             </div>

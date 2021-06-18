@@ -28,7 +28,7 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>tipo de usuario</label>
-                                  <input type="text" class="form-control" placeholder="tipo usuario" id="tipousuario" name="tipousuario" value="<?php echo $TIPOUSUARIO; ?>">
+                                  <input type="text" class="form-control" placeholder="tipo usuario" id="tipousuairo" name="tipousuairo" value="<?php echo $TIPOUSUARIO; ?>">
                                 </div>
                               </div>
                             <div class="row">
