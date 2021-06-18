@@ -157,6 +157,82 @@
 
 
 
+        <!-- **************************************************
+        ************** TABLA ACCION *************************
+        *******************************************************-->
+
+        <section id="accion" class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Tabla Acciones</h4>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_accion">Agregar Accion</button>
+                <!-- Modal de Agregar -->
+                <div class="modal fade bd-example-modal-lg" id="agregar_accion" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Agregar Accion </h5>
+                        </div>
+                        <?php echo form_open("tablas/agregar_accion")?>
+                          <div class="modal-body">
+                            <div class="row">
+                              <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                  <label>Fecha de inicio</label>
+                                  <input type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control datepicker" placeholder="Num. aula" id="fechainicio" name="fechainicio">
+                                </div>
+                              </div>
+                              <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                  <label>Fecha de fin</label>
+                                  <input type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control datepicker" placeholder="Num. aula" id="fechafinal" name="fechafinal">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <div class="update ml-auto mr-auto">
+                              <input class="btn btn-primary btn-round" type="submit" name="btnAdd" id="btnAdd" value="Agregar"></input>
+                            </div>
+                          </div>
+                        <?php echo form_close()?>
+                      </div>
+                    </div>
+                </div>
+                <!-- Fin de Modal -->
+              </div>
+              <div  class="card-body">
+                <div id="scroll" class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>#</th>
+                      <th>IDACCION</th>
+                      <th>Fecha de inicio</th>
+                      <th>Fecha de fin</th>
+                      <th class="text-right"> ACCIONES</th>
+                    </thead>
+                    <tbody>
+                      <?php $number =1; foreach ($accion as $key => $acc) {?>
+                        <tr>
+                         <th scope="row"><?php echo $number++; ?></th>
+                          <td><?php echo $acc->IDACCION;?></td>
+                          <td><?php echo $acc->FECHAINICIO; ?></td>
+                          <td><?php echo $acc->FECHAFINAL; ?></td>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_accion/<?php echo $acc->IDACCION; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_accion/<?php echo $acc->IDACCION; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                      <?php }?>  
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
       
 
         <!-- **************************************************
@@ -232,7 +308,7 @@
       
 
         <!-- **************************************************
-        ************** TABLA AULAS DE CARRERA *************************
+        ************** TABLA CARRERA  *************************
         *******************************************************-->
 
         <section id="carrera" class="row">
@@ -263,10 +339,18 @@
                                   <input type="text" class="form-control" placeholder="Codigo de carrera" id="codcarrera" name="codcarrera">
                                 </div>
                               </div>
-                              <div class="col-md-4 px-1">
+                              <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Materias</label>
                                   <input type="text" class="form-control" placeholder="Num materias" id="materias" name="materias">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 ">
+                                <div class="form-group">
+                                  <label>Nombre de carrera</label>
+                                  <input type="text" class="form-control" placeholder="Nombre de carrera" id="nomcarrera" name="nomcarrera">
                                 </div>
                               </div>
                             </div>
@@ -291,6 +375,7 @@
                       <th>ID DEPTO</th>
                       <th>COD DE CARRERA</th>
                       <th>MATERERIAS</th>
+                      <th>NOMBRE</th>
                       <th class="text-right"> ACCIONES</th>
                     </thead>
                     <tbody>
@@ -301,6 +386,7 @@
                           <td><?php echo $carrera->IDDEPTO; ?></td>
                           <td><?php echo $carrera->CODCARRERA; ?></td>
                           <td><?php echo $carrera->MATERIAS; ?></td>
+                          <td><?php echo $carrera->NOMCARRERA; ?></td>
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_carrera/<?php echo $carrera->IDCARRERA;?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_carrera/<?php echo $carrera->IDCARRERA; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
@@ -350,7 +436,7 @@
                                   <input type="text" class="form-control" placeholder="correo" id="correocoor" name="correocoor">
                                 </div>
                               </div>
-                              <div class="col-md-4 px-1">
+                              <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Nombre coordinador</label>
                                   <input type="text" class="form-control" placeholder="Nombre del coordinador" id="nomcoor" name="nomcoor">
@@ -359,7 +445,7 @@
                               
                             </div>
                             <div class="row">
-                            <div class="col-md-4 px-1">
+                            <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Apellido</label>
                                   <input type="text" class="form-control" placeholder="apellido" id="apecoor" name="apecoor">
@@ -385,8 +471,9 @@
                       <th>#</th>
                       <th>ID COORDINADOR</th>
                       <th>ID CARRERA</th>
-                      <th>ID USUARIO</th>
-                      <th>ID DOCENTE</th>
+                      <th>NOMBRE</th>
+                      <th>APELLIDO</th>
+                      <th>CORREO</th>
                       <th class="text-right"> ACCIONES</th>
                     </thead>
                     <tbody>
@@ -395,9 +482,9 @@
                           <th scope="row"><?php echo $number++; ?></th>
                           <td><?php echo $coordinador->IDCOORDINADOR;?></td>
                           <td><?php echo $coordinador->IDCARRERA; ?></td>
-                          <td><?php echo $coordinador->CORREOCOOR; ?></td>
                           <td><?php echo $coordinador->NOMCOOR; ?></td>
                           <td><?php echo $coordinador->APECOOR; ?></td>
+                          <td><?php echo $coordinador->CORREOCOOR; ?></td>
                           
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_coordinador/<?php echo $coordinador->IDCOORDINADOR; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
@@ -436,13 +523,13 @@
                         <?php echo form_open("tablas/agregar_departamento")?>
                           <div class="modal-body">
                             <div class="row">
-                              <div class="col-md-4 pr-1">
+                              <div class="col-md-8 pr-1">
                                 <div class="form-group">
                                   <label>Nombre de departamento</label>
                                   <input type="text" class="form-control" placeholder="Nombre de departamento" id="nombredepto" name="nombredepto">
                                 </div>
                               </div>
-                              <div class="col-md-4 pr-1">
+                              <div class="col-md-4">
                                 <div class="form-group">
                                   <label>Id jefe</label>
                                   <input type="text" class="form-control" placeholder="Id jefe" id="idjefe" name="idjefe">
@@ -523,15 +610,13 @@
                                   <input type="text" class="form-control" placeholder="Nombre del docente" id="nomdocente" name="nomdocente">
                                 </div>
                               </div>
-                              <div class="col-md-4 px-1">
+                              <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Apellido del docente</label>
                                   <input type="text" class="form-control" placeholder="Apellido del docente" id="apedocente" name="apedocente">
                                 </div>
                               </div>
                             </div>
-                          </div>
-                            <div class="modal-body">
                             <div class="row">
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
@@ -545,12 +630,14 @@
                                   <input type="text" class="form-control" placeholder="Estado" id="estdocente" name="estdocente">
                                 </div>
                               </div>
-                              <div class="col-md-4 px-1">
+                              <div class="col-md-4">
                                 <div class="form-group">
                                   <label>Tipo de contrato</label>
                                   <input type="text" class="form-control" placeholder="tipo de contrato" id="tipocontrato" name="tipocontrato">
                                 </div>
                               </div>
+                            </div>
+                            <div class="row">
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Fecha de infreso del docente</label>
@@ -563,9 +650,7 @@
                                   <input type="text" class="form-control" placeholder="correo" id="correodocente" name="correodocente">
                                 </div>
                               </div>
-                            </div>
-                            <div class="row">
-                            <div class="col-md-4 pr-1">
+                              <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Id departamento</label>
                                   <input type="text" class="form-control" placeholder="Id departamento" id="iddepto" name="iddepto">
@@ -759,7 +844,7 @@
 
         <!-- **************************************************
         ************** TABLA AULAS DE GRUPOS *************************
-        *******************************************************-->
+        ******************************************************* -->
 
         <section class="row" id="grupo">
           <div class="col-md-12">
@@ -791,11 +876,14 @@
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
-                                  <label>canttidad de cupos</label>
+                                  <label>Canttidad de cupos</label>
                                   <input type="text" class="form-control" placeholder="cantidad de cupos" id="cantcupos" name="cantcupos">
                                 </div>
                               </div>
-                              <div class="row">
+                              
+                              
+                            </div>
+                            <div class="row">
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Num de grupo</label>
@@ -814,6 +902,8 @@
                                   <input type="text" class="form-control" placeholder="año" id="aniogrupo" name="aniogrupo">
                                 </div>
                               </div>
+                            </div>
+                            <div class="row">
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Estado</label>
@@ -822,7 +912,7 @@
                               </div>
                             </div>
                               
-                            </div>
+                            
                           </div>
                           <div class="modal-footer">
                             <div class="update ml-auto mr-auto">

@@ -26,7 +26,7 @@
                                   <input type="text" class="form-control" placeholder="correo" id="correocoor" name="correocoor" value="<?php echo $CORREOCOOR; ?>">
                                 </div>
                               </div>
-                              <div class="col-md-4 px-1">
+                              <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Nombre coordinador</label>
                                   <input type="text" class="form-control" placeholder="Nombre del coordinador" id="nomcoor" name="nomcoor" value="<?php echo $NOMCOOR; ?>">
@@ -35,7 +35,7 @@
                               
                             </div>
                             <div class="row">
-                            <div class="col-md-4 px-1">
+                              <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Apellido</label>
                                   <input type="text" class="form-control" placeholder="apellido" id="apecoor" name="apecoor" value="<?php echo $APECOOR; ?>">

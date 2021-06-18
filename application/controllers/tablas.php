@@ -17,7 +17,7 @@ class tablas extends CI_Controller {
     
 		$data = array('tablas' => 'active',
         'usuarios' => ''); 
-
+        $mostrar = array('tablas'=>$this->tablas_model->mostrar());
 		$this->load->view('menuadmin',$data);
 		$this->load->view('tablas',$this-> retornoprueba());
 		$this->load->view('footer');
@@ -62,6 +62,45 @@ class tablas extends CI_Controller {
   function eliminar($id){
     $this->tablas_model->eliminar($id);
     redirect(base_url()."index.php/tablas");
+  }
+
+  ////////////
+  //crud accion
+  ////////////
+
+  public function agregar_accion(){
+    $datos = array(
+      "fechainicio" =>$this->input->post("fechainicio"),
+      "fechafinal" =>$this->input->post("fechafinal")
+    );
+    $this->tablas_estras->agregar_accion($datos);
+    redirect(base_url()."tablas/#accion");
+  }
+
+  public function seleccion_accion($dato){
+    $valor=$this->tablas_estras->seleccion_accion($dato);
+  
+    $data = array('tablas' => 'active',
+        'usuarios' => ''); 
+
+		$this->load->view('menuadmin',$data);
+		$this->load->view('tablas', $this->retornoprueba());
+    $this->load->view('editar_accion',$valor);
+		$this->load->view('footer');
+	}
+
+  public function actualizar_accion($id){
+    $datos = array(
+      "fechainicio" =>$this->input->post("fechainicio"),
+      "fechafinal" =>$this->input->post("fechafinal")
+    );
+    $this->tablas_estras->actualizar_accion($datos,$id);
+    redirect(base_url()."tablas/#accion");
+  }
+
+  function eliminar_accion($id){
+    $this->tablas_estras->eliminar_accion($id);
+    redirect(base_url()."tablas/#accion");
   }
 
   ////////////
@@ -110,7 +149,8 @@ class tablas extends CI_Controller {
     $datos = array(
       "iddepto" =>$this->input->post("iddepto"),
       "codcarrera" =>$this->input->post("codcarrera"),
-      "materias" =>$this->input->post("materias")
+      "materias" =>$this->input->post("materias"),
+      "nomcarrera" =>$this->input->post("nomcarrera")
     );
     $this->tablas->agregar_carrera($datos);
     redirect(base_url()."tablas/#carrera");
@@ -132,7 +172,8 @@ class tablas extends CI_Controller {
     $datos = array(
       "iddepto" =>$this->input->post("iddepto"),
       "codcarrera" =>$this->input->post("codcarrera"),
-      "materias" =>$this->input->post("materias")
+      "materias" =>$this->input->post("materias"),
+      "nomcarrera" =>$this->input->post("nomcarrera")
     );
     $this->tablas->actualizar_carrera($datos,$id);
     redirect(base_url()."tablas/#carrera");
@@ -149,9 +190,9 @@ class tablas extends CI_Controller {
 
   public function agregar_coordinador(){
     $datos = array(
-      "iddocente" =>$this->input->post("correocoor"),
-      "idusuario" =>$this->input->post("nomcoor"),
-      "idusuario" =>$this->input->post("apecoor"),
+      "correocoor" =>$this->input->post("correocoor"),
+      "nomcoor" =>$this->input->post("nomcoor"),
+      "apecoor" =>$this->input->post("apecoor"),
       "idcarrera" =>$this->input->post("idcarrera")
     );
     $this->tablas->agregar_coordinador($datos);
@@ -172,8 +213,9 @@ class tablas extends CI_Controller {
 
   public function actualizar_coordinador($id){
     $datos = array(
-      "iddocente" =>$this->input->post("iddocente"),
-      "idusuario" =>$this->input->post("idusuario"),
+      "correocoor" =>$this->input->post("correocoor"),
+      "nomcoor" =>$this->input->post("nomcoor"),
+      "apecoor" =>$this->input->post("apecoor"),
       "idcarrera" =>$this->input->post("idcarrera")
     );
     $this->tablas->actualizar_coordinador($datos,$id);
@@ -212,7 +254,8 @@ class tablas extends CI_Controller {
 
   public function actualizar_departamento($id){
     $datos = array(
-      "nombredepto" =>$this->input->post("nombredepto")
+      "nombredepto" =>$this->input->post("nombredepto"),
+      "idjefe" =>$this->input->post("idjefe"),
     );
     $this->tablas->actualizar_departamento($datos,$id);
     redirect(base_url()."tablas/#departamento");
@@ -750,6 +793,7 @@ class tablas extends CI_Controller {
 
   public function retornoprueba(){
     $mostrar = array('tablas'=>$this->tablas_model->mostrar(),
+    'accion'=>$this->tablas_model->mostrar_accion(),
     'aulas'=>$this->tablas_model->mostrar_aulas(),
     'carrera'=>$this->tablas_model->mostrar_carrera(),
     'coordinador'=>$this->tablas_model->mostrar_coordinador(),
@@ -764,8 +808,7 @@ class tablas extends CI_Controller {
     'materia'=>$this->tablas_model->mostrar_materias(),
     'preinscripcion'=>$this->tablas_model->mostrar_preinscripcion(),
     'registroestudiante'=>$this->tablas_model->mostrar_registro_estudiante(),
-    'reportechoque'=>$this->tablas_model->mostrar_reportechoque(),
-    'tablas'=>$this->tablas_model->mostrar_usuario());
+    'reportechoque'=>$this->tablas_model->mostrar_reportechoque());
     return $mostrar;
     }
 }

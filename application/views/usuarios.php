@@ -95,13 +95,13 @@
                                   <input type="text" class="form-control" placeholder="tipo usuario" id="tipousuario" name="tipousuario">
                                 </div>
                               </div>
+                            </div>
                             <div class="row">
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Estado de usuario</label>
                                   <input type="text" class="form-control" placeholder="estado de usuario" id="estadousuario" name="estadousuario">
                                 </div>
-                              </div>
                               </div>
                             </div>
                           </div>

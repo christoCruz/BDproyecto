@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'sValor';
 $route['index.php/tablas/seleccion/(:num)'] = 'index,php/modaltabla/seleccion/$1';
+$route['index.php/tablas/seleccion_accion/(:num)'] = 'index,php/editar_accion/seleccion_accion/$1';
 $route['index.php/tablas/seleccion_aulas/(:num)'] = 'index,php/editar_aulas/seleccion_aulas/$1';
 $route['index.php/tablas/seleccion_carrera/(:num)'] = 'index,php/editar_carrera/seleccion_carrera/$1';
 $route['index.php/tablas/seleccion_coordinador/(:num)'] = 'index,php/editar_coordinador/seleccion_coordinador/$1';
