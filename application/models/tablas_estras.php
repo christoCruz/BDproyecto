@@ -565,7 +565,8 @@
             $parametro=array(
                 array('name'=>':vnomjefe','value'=>$data['nomjefe'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapejefe','value'=>$data['apejefe'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vcorreojefe','value'=>$data['correojefe'],'length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vcorreojefe','value'=>$data['correojefe'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vpassword','value'=>'hola','length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_jefe',$parametro);
         }
