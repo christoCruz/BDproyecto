@@ -129,18 +129,18 @@
                       <th class="text-right"> ACCIONES</th>
                     </thead>
                     <tbody>
-                      <!--<?php $number =1; foreach ($tablas as $key => $tabla) {?>
+                      <?php $number =1; foreach ($usuario as $key => $usuario) {?>
                         <tr>
                           <th scope="row"><?php echo $number++; ?></th>
-                          <td><?php echo $tabla->IDP; $idd=$tabla->IDP;?></td>
-                          <td><?php echo $tabla->NOMBRE; ?></td>
-                          <td><?php echo $tabla->APELLIDO; ?></td>
+                          <td><?php echo $usuario->IDUSUARIO;?></td>
+                          <td><?php echo $usuario->PASSWORD; ?></td>
+                          <td><?php echo $usuario->TIPOUSUAIRO; ?></td>
+                          <td><?php echo $usuario->ESTADOUSAURIO; ?></td>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__usuario/<?php echo $usuario->IDSUARIO; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__usuario/<?php echo $tabla->IDP; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
-                          
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_usuario/<?php echo $tabla->IDP; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_usuario/<?php echo $usuario->IDSUARIO; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
-                      <?php }?>   -->
+                      <?php }?> 
                     </tbody>
                   </table>
                 </div>

@@ -808,7 +808,8 @@ class tablas extends CI_Controller {
     'materia'=>$this->tablas_model->mostrar_materias(),
     'preinscripcion'=>$this->tablas_model->mostrar_preinscripcion(),
     'registroestudiante'=>$this->tablas_model->mostrar_registro_estudiante(),
-    'reportechoque'=>$this->tablas_model->mostrar_reportechoque());
+    'reportechoque'=>$this->tablas_model->mostrar_reportechoque(),
+    'usuario'=>$this->tablas_estas->seleccion_usuario());
     return $mostrar;
     }
 }
