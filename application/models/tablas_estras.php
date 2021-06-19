@@ -178,12 +178,14 @@
         ////////////
 
         function agregar_coordinador($data){ 
+            $id = sha1('ues'.date("Y"));
+    
             $parametro=array(
                 array('name'=>':vidcarrera','value'=>$data['idcarrera'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcorreocoor','value'=>$data['correocoor'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vnomcoor','value'=>$data['nomcoor'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapecoor','value'=>$data['apecoor'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vpassword','value'=>'hola','length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vpassword','value'=>$id,'length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_coordinador',$parametro);
         }
@@ -267,6 +269,8 @@
         ////////////
 
         function agregar_docente($data){ 
+            $id = sha1('ues'.date("Y"));
+         
             $parametro=array(
                 array('name'=>':viddepto','value'=>$data['iddepto'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vnomdocente','value'=>$data['nomdocente'],'length'=>-1,'type'=>SQLT_CHR),
@@ -275,7 +279,7 @@
                 array('name'=>':vestdocente','value'=>$data['estdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtipocontrato','value'=>$data['tipocontrato'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcorreodocente','value'=>$data['correodocente'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vpassword','value'=>'hola','length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vpassword','value'=>$id,'length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_docente',$parametro);
         }
@@ -320,6 +324,8 @@
         ////////////
 
         function agregar_estudiantes($data){ 
+            $id = sha1('ues'.date("Y"));
+            
             $parametro=array(
                 array('name'=>':vidcarrera','value'=>$data['idcarrera'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vnomestudiante','value'=>$data['nomestudiante'],'length'=>-1,'type'=>SQLT_CHR),
@@ -327,7 +333,7 @@
                 array('name'=>':vcarnetestu','value'=>$data['carnetestu'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcorreoestu','value'=>$data['correoestu'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtelestudiante','value'=>$data['telestudiante'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vpassword','value'=>'hola','length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vpassword','value'=>$id,'length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_estudiantes',$parametro);
         }
@@ -565,11 +571,13 @@
         ////////////
 
         function agregar_jefe($data){ 
+            $id = sha1('ues'.date("Y"));
+           
             $parametro=array(
                 array('name'=>':vnomjefe','value'=>$data['nomjefe'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapejefe','value'=>$data['apejefe'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcorreojefe','value'=>$data['correojefe'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vpassword','value'=>'hola','length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vpassword','value'=>$id,'length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_jefe',$parametro);
         }
