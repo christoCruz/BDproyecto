@@ -22,7 +22,7 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id grupos</label>
-                                  <input type="text" class="form-control" placeholder="Id grupo" id="idgrupos" name="idgrupos" value="<?php echo $IDGRUPO; ?>">
+                                  <input type="text" class="form-control" placeholder="Id grupo" id="idgrupos" name="idgrupos" value="<?php echo $IDGRUPOS; ?>">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">

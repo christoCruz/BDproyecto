@@ -11,7 +11,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Editar Aulas </h5>
             </div>
-            <form action="<?php echo base_url(); ?>tablas/actualizar_carrera/<?php echo $IDAULA; ?>" method="post" role="form" >
+            <form action="<?php echo base_url(); ?>tablas/actualizar_carrera/<?php echo $IDCARRERA; ?>" method="post" role="form" >
                 <div class="modal-body">
                   <div class="row">
                     <div class="col-md-4 pr-1">

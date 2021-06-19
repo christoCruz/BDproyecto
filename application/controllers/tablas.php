@@ -272,17 +272,16 @@ class tablas extends CI_Controller {
 
   public function agregar_docente(){
     $datos = array(
-      "idusuario" =>$this->input->post("idusuario"),
       "iddepto" =>$this->input->post("iddepto"),
       "nomdocente" =>$this->input->post("nomdocente"),
       "apedocente" =>$this->input->post("apedocente"),
       "profdocente" =>$this->input->post("profdocente"),
       "estdocente" =>$this->input->post("estdocente"),
       "tipocontrato" =>$this->input->post("tipocontrato"),
-      "correodocente" =>$this->input->post("correodocente"),
+      "correodocente" =>$this->input->post("correodocente")
     
     );
-    $this->tablas->agregar_docente($datos);
+    $this->tablas_estras->agregar_docente($datos);
     redirect(base_url()."tablas/#docente");
   }
 
@@ -300,12 +299,13 @@ class tablas extends CI_Controller {
 
   public function actualizar_docente($id){
     $datos = array(
-      "idusuario" =>$this->input->post("idusuario"),
+      "iddepto" =>$this->input->post("iddepto"),
       "nomdocente" =>$this->input->post("nomdocente"),
       "apedocente" =>$this->input->post("apedocente"),
       "profdocente" =>$this->input->post("profdocente"),
       "estdocente" =>$this->input->post("estdocente"),
-      "tipocontrato" =>$this->input->post("tipocontrato")
+      "tipocontrato" =>$this->input->post("tipocontrato"),
+      "correodocente" =>$this->input->post("correodocente")
       
     );
     $this->tablas_estras->actualizar_docente($datos,$id);
@@ -323,7 +323,6 @@ class tablas extends CI_Controller {
 
   public function agregar_estudiantes(){
     $datos = array(
-     
       "idcarrera" =>$this->input->post("idcarrera"),
       "nomestudiante" =>$this->input->post("nomestudiante"),
       "apelestudiante" =>$this->input->post("apelestudiante"),
@@ -401,7 +400,10 @@ class tablas extends CI_Controller {
       "idmateria" =>$this->input->post("idmateria"),
       "idcoordinador" =>$this->input->post("idcoordinador"),
       "cantcupos" =>$this->input->post("cantcupos"),
-      "numgrupo" =>$this->input->post("numgrupo")
+      "numgrupo" =>$this->input->post("numgrupo"),
+      "ciclogrupo" =>$this->input->post("ciclogrupo"),
+      "aniogrupo" =>$this->input->post("aniogrupo"),
+      "estgrupo" =>$this->input->post("estgrupo")
     );
     $this->tablas_estras->actualizar_grupos($datos,$id);
     redirect(base_url()."tablas/#grupo");
@@ -442,6 +444,7 @@ class tablas extends CI_Controller {
   public function actualizar_horarios_grupos($id){
     $datos = array(
       "idgrupos" =>$this->input->post("idgrupos"),
+      "idaula" =>$this->input->post("idaula"),
       "diahorario" =>$this->input->post("diahorario"),
       "horashorario" =>$this->input->post("horashorario")
     );
@@ -487,6 +490,8 @@ class tablas extends CI_Controller {
 
   public function actualizar_horas_sociales($id){
     $datos = array(
+      "idestudiante" =>$this->input->post("idestudiante"),
+      "iddocente" =>$this->input->post("iddocente"),
       "nomproyecto" =>$this->input->post("nomproyecto"),
       "duracionproyec" =>$this->input->post("duracionproyec"),
       "estadoproyecto" =>$this->input->post("estadoproyecto"),
@@ -531,6 +536,7 @@ class tablas extends CI_Controller {
 
   public function actualizar_inscripcion($id){
     $datos = array(
+      "idestudiante" =>$this->input->post("idestudiante"),
       "idgrupos" =>$this->input->post("idgrupos")
     );
     $this->tablas_estras->actualizar_inscripcion($datos,$id);
@@ -611,13 +617,14 @@ class tablas extends CI_Controller {
 
   public function actualizar_materias($id){
     $datos = array(
+      "idcarrera" =>$this->input->post("idcarrera"),
       "codmateria" =>$this->input->post("codmateria"),
       "nivelmateria" =>$this->input->post("nivelmateria"),
       "nommateria" =>$this->input->post("nommateria"),
       "requisito" =>$this->input->post("requisito")
     );
     $this->tablas_estras->actualizar_materias($datos,$id);
-    redirect(base_url()."tablas/#materia");
+    redirect(base_url()."tablas/#materias");
   }
 
   function eliminar_materias($id){

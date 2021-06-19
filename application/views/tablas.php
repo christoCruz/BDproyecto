@@ -793,7 +793,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">Tabla Estudiante </h4>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_estudiante">Agregar estudiante</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_estudiantes">Agregar estudiante</button>
                 <?php echo form_open_multipart('Excel_import/import_data');?>
                 <span class="btn  btn-warning btn-file">
                 Seleccion Excel<input  type="file" name="file"  />
@@ -804,13 +804,13 @@
 
                 </form>
                 <!-- Modal de Agregar -->
-                <div class="modal fade bd-example-modal-lg" id="agregar_estudiante" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg" id="agregar_estudiantes" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title">Agregar estudiante </h5>
                         </div>
-                        <?php echo form_open("tablas/agregar_estudiante")?>
+                        <?php echo form_open("tablas/agregar_estudiantes")?>
                           <div class="modal-body">
                             <div class="row">
                               <div class="col-md-4 pr-1">
@@ -832,8 +832,6 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
-                            <div class="modal-body">
                             <div class="row">
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
@@ -1011,7 +1009,7 @@
                       <?php $number =1; foreach ($grupo as $key => $grupo) {?>
                         <tr>
                           <th scope="row"><?php echo $number++; ?></th>
-                          <td><?php echo $grupo->IDGRUPO;?></td>
+                          <td><?php echo $grupo->IDGRUPOS;?></td>
                           <td><?php echo $grupo->IDCOORDINADOR; ?></td>
                           <td><?php echo $grupo->IDMATERIA; ?></td>
                           <td><?php echo $grupo->CANTCUPOS; ?></td>
@@ -1020,9 +1018,9 @@
                           <td><?php echo $grupo->CICLOGRUPO; ?></td>
                           <td><?php echo $grupo->ANIOGRUPO; ?></td>
                           <td><?php echo $grupo->ESTGRUPO; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_grupos/<?php echo $grupo->IDGRUPO; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_grupos/<?php echo $grupo->IDGRUPOS; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_grupos/<?php echo $grupo->IDGRUPO; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <a href="<?php echo base_url(); ?>tablas/eliminar_grupos/<?php echo $grupo->IDGRUPOS; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -1115,7 +1113,7 @@
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_horarios_grupos/<?php echo $horarios->IDHORARIO_GRU; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
-                      <?php }?>   -->
+                      <?php }?>   
                     </tbody>
                   </table>
                 </div>
@@ -1244,7 +1242,7 @@
                           <td><?php echo $sociales->ESTADOANTEPROYECTO; ?></td>
                           <td><?php echo $sociales->FECHASOCIALES; ?></td>
                           <td><?php echo $sociales->COMENTARIOPRO; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horas_sociales/<?php $sociales->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horas_sociales/<?php echo $sociales->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_horas_sociales/<?php echo $sociales->IDHORASSOCIALES; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
@@ -1272,7 +1270,7 @@
                 <h4 class="card-title">Tabla Inscripcion </h4>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_inscripcion">Agregar inscripcion</button>
                 <!-- Modal de Agregar -->
-                <div class="modal fade bd-example-modal-lg" id="agregar_horas_sociales" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg" id="agregar_inscripcion" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -1445,7 +1443,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">Tabla Materias </h4>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_materias">Agregar horas sociales</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_materias">Agregar Materia</button>
                 <!-- Modal de Agregar -->
                 <div class="modal fade bd-example-modal-lg" id="agregar_materias" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
@@ -1528,7 +1526,7 @@
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_materias/<?php echo $materia->IDMATERIA; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
-                      <?php }?>   -->
+                      <?php }?>   
                     </tbody>
                   </table>
                 </div>
@@ -1602,7 +1600,7 @@
                           <td><?php echo $preinscripcion->IDPREINSCRIPCION;?></td>
                           <td><?php echo $preinscripcion->IDESTUDIANTE; ?></td>
                           <td><?php echo $preinscripcion->IDMATERIA; ?></td>
-                          <td><?php echo $preinscripcion->FECHAPREINCRIPCIPN; ?></td>
+                          <td><?php echo $preinscripcion->FECHAPREINCRIPCION; ?></td>
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_preinscripcion/<?php echo $preinscripcion->IDPREINSCRIPCION; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_preinscripcion/<?php echo $preinscripcion->IDPREINSCRIPCION; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
@@ -1689,15 +1687,15 @@
                           <th scope="row"><?php echo $number++; ?></th>
                           <td><?php echo $registroestudiante->IDREGISTROESTU;?></td>
                           <td><?php echo $registroestudiante->IDINCRIPCION; ?></td>
-                          <td><?php echo $registroestudiante->FECHARIESTU; ?></td>
+                          <td><?php echo $registroestudiante->FECHAREGIESTU; ?></td>
                           <td><?php echo $registroestudiante->ESTADOMATERIA; ?></td>
                           <td><?php echo $registroestudiante->NOTAMATERIA; ?></td>
                           
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__registro_estudiante/<?php echo $registroestudiante->IDREGISTROESTU; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_registro_estudiante/<?php echo $registroestudiante->IDREGISTROESTU; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_registro_estudiante/<?php echo $registroestudiante->IDREGISTROESTU; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>
-                      <?php }?>   -->
+                      <?php }?>   
                     </tbody>
                   </table>
                 </div>
@@ -1782,7 +1780,7 @@
                           <td><?php echo $reportechoque->IDDOCENTE; ?></td>
                           <td><?php echo $reportechoque->FECHACHOQUE; ?></td>
                           <td><?php echo $reportechoque->COMENTARIOCHOQUE; ?></td>
-                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion__reportechoque/<?php echo $reportechoque->IDCHOQUE; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                          <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_reportechoque/<?php echo $reportechoque->IDCHOQUE; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_reportechoque/<?php echo $reportechoque->IDCHOQUE; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
                         </tr>

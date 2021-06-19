@@ -43,7 +43,7 @@
               <div class="col-md-4 px-1">
                 <div class="form-group">
                   <label>Ciclo del grupo</label>
-                  <input type="text" class="form-control" placeholder="Ciclo grupo" id="ciclogrupo" name="ciclogrupo" value="<?php echo $CICLO; ?>">
+                  <input type="text" class="form-control" placeholder="Ciclo grupo" id="ciclogrupo" name="ciclogrupo" value="<?php echo $CICLOGRUPO; ?>">
                 </div>
               </div>
               <div class="col-md-4 px-1">
@@ -52,7 +52,7 @@
                   <input type="text" class="form-control" placeholder="año" id="aniogrupo" name="aniogrupo" value="<?php echo $ANIOGRUPO; ?>">
                 </div>
               </div>
-            </id>
+            </div>
 
             <div class="row">
               <div class="col-md-4 px-1">
@@ -61,7 +61,7 @@
                   <input type="text" class="form-control" placeholder="Estado" id="estgrupo" name="estgrupo" value="<?php echo $ESTGRUPO; ?>">
                 </div>
               </div>
-            </id>
+            </div>
               
           </div>
           <div class="modal-footer">

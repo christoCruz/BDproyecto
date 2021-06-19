@@ -182,7 +182,8 @@
                 array('name'=>':vidcarrera','value'=>$data['idcarrera'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcorreocoor','value'=>$data['correocoor'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vnomcoor','value'=>$data['nomcoor'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vapecoor','value'=>$data['apecoor'],'length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vapecoor','value'=>$data['apecoor'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vpassword','value'=>'hola','length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_coordinador',$parametro);
         }
@@ -267,13 +268,14 @@
 
         function agregar_docente($data){ 
             $parametro=array(
-                array('name'=>':viddepto','value'=>$data['viddepto'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':viddepto','value'=>$data['iddepto'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vnomdocente','value'=>$data['nomdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapedocente','value'=>$data['apedocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vprofdocente','value'=>$data['profdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vestdocente','value'=>$data['estdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtipocontrato','value'=>$data['tipocontrato'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vcorreodocente','value'=>$data['correodocente'],'length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vcorreodocente','value'=>$data['correodocente'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vpassword','value'=>'hola','length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_docente',$parametro);
         }
@@ -297,7 +299,7 @@
         function actualizar_docente($data,$id){
             $parametro=array(
                 array('name'=>':viddocente','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':viddepto','value'=>$data['viddepto'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':viddepto','value'=>$data['iddepto'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vnomdocente','value'=>$data['nomdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapedocente','value'=>$data['apedocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vprofdocente','value'=>$data['profdocente'],'length'=>-1,'type'=>SQLT_CHR),
@@ -324,7 +326,8 @@
                 array('name'=>':vapelestudiante','value'=>$data['apelestudiante'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcarnetestu','value'=>$data['carnetestu'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcorreoestu','value'=>$data['correoestu'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vtelestudiante','value'=>$data['telestudiante'],'length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vtelestudiante','value'=>$data['telestudiante'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vpassword','value'=>'hola','length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_estudiantes',$parametro);
         }
@@ -453,7 +456,7 @@
                 array('name'=>':vdiahorario','value'=>$data['diahorario'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vhorashorario','value'=>$data['horashorario'],'length'=>-1,'type'=>SQLT_CHR)
             );
-            $this->db->stored_procedure('package1','actualizar_horarios_grupos',$parametro);
+            $this->db->stored_procedure('package1','editar_horarios_grupos',$parametro);
         }
     
         function eliminar_horarios_grupos($id){

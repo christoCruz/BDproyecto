@@ -56,7 +56,7 @@
               <div class="col-md-4 pr-1">
                 <div class="form-group">
                   <label>Correo</label>
-                  <input value="<?php echo $CRREODOCENTE; ?>" type="text" class="form-control" placeholder="correo" id="correodocente" name="correodocente">
+                  <input value="<?php echo $CORREODOCENTE; ?>" type="text" class="form-control" placeholder="correo" id="correodocente" name="correodocente">
                 </div>
               </div>
               <div class="col-md-4 ">

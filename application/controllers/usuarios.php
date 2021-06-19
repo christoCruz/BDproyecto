@@ -41,7 +41,7 @@ class usuarios extends CI_Controller {
 
 		$this->load->view('menuadmin',$data);
 		$this->load->view('usuarios',$mostrar);
-    $this->load->view('editar_usuario',$valor);
+    	$this->load->view('editar_usuario',$valor);
 		$this->load->view('footer');
 	}
 
