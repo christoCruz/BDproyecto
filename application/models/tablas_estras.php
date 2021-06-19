@@ -51,8 +51,8 @@
 
         function agregar_accion($data){ 
             $parametro=array(
-                array('name'=>':vfechainicio','value'=>$data['fechainicio'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vfechafinal','value'=>$data['fechafinal'],'length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vfechainicio','value'=>date('d-m-y',$data['fechainicio']),'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vfechafinal','value'=>date('d-m-y',$data['fechafinal']),'length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_accion',$parametro);
         }
@@ -825,7 +825,7 @@
             $parametro=array(
                 array('name'=>':vidusuario','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vusuario','value'=>$data['usuario'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vpassword','value'=>$data['password'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vpassword','value'=>sha1($data['password']),'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtipousuairo','value'=>$data['tipousuairo'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vestadousuario','value'=>$data['estadousuario'],'length'=>-1,'type'=>SQLT_CHR)
             );

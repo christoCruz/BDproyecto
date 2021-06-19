@@ -246,13 +246,13 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Fecha de inicio</label>
-                                  <input type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control datepicker" placeholder="Num. aula" id="fechainicio" name="fechainicio">
+                                  <input type="date" value="<?php echo date('d-m-y'); ?>" class="form-control datepicker" placeholder="Num. aula" id="fechainicio" name="fechainicio">
                                 </div>
                               </div>
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Fecha de fin</label>
-                                  <input type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control datepicker" placeholder="Num. aula" id="fechafinal" name="fechafinal">
+                                  <input type="date" value="<?php echo date('d-m-y'); ?>" class="form-control datepicker" placeholder="Num. aula" id="fechafinal" name="fechafinal">
                                 </div>
                               </div>
                             </div>
