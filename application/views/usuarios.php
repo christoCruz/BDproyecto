@@ -53,6 +53,63 @@
           width:100%;
         } 
       </style>
+      <script language="javascript">
+        function doSearch2(nombre)
+        {
+            const tableReg = document.getElementById(nombre);
+            const searchText = document.getElementById('searchTermv').value.toLowerCase();
+            let total = 0;
+ 
+            // Recorremos todas las filas con contenido de la tabla
+            for (let i = 1; i < tableReg.rows.length; i++) {
+                // Si el td tiene la clase "noSearch" no se busca en su cntenido
+                if (tableReg.rows[i].classList.contains("noSearch")) {
+                    continue;
+                }
+ 
+                let found = false;
+                const cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                // Recorremos todas las celdas
+                for (let j = 0; j < cellsOfRow.length && !found; j++) {
+                    const compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                    // Buscamos el texto en el contenido de la celda
+                    if (searchText.length == 0 || compareWith.indexOf(searchText) > -1) {
+                        found = true;
+                        total++;
+                    }
+                }
+                if (found) {
+                    tableReg.rows[i].style.display = '';
+                } else {
+                    // si no ha encontrado ninguna coincidencia, esconde la
+                    // fila de la tabla
+                    tableReg.rows[i].style.display = 'none';
+                }
+            }
+ 
+            // mostramos las coincidencias
+            const lastTR=tableReg.rows[tableReg.rows.length-1];
+            const td=lastTR.querySelector("td");
+            lastTR.classList.remove("hide", "red");
+            if (searchText == "") {
+                lastTR.classList.add("hide");
+            } else if (total) {
+                td.innerHTML="Se ha encontrado "+total+" coincidencia"+((total>1)?"s":"");
+            } else {
+                lastTR.classList.add("red");
+                td.innerHTML="No se han encontrado coincidencias";
+            }
+        }
+    </script>
+    <style>
+        #datos {border:1px solid #ccc;padding:10px;font-size:1em;}
+        #datos tr:nth-child(even) {background:#ccc;}
+        #datos td {padding:5px;}
+        #datos tr.noSearch {background:White;font-size:0.8em;}
+        #datos tr.noSearch td {padding-top:10px;text-align:right;}
+        .hide {display:none;}
+        .red {color:Red;}
+    </style>
       <!-- End Navbar -->
 
       
@@ -118,7 +175,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="searchTermv" type="text" onkeyup="doSearch2('usuarioc')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="usuarioc">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID USUARIO</th>
@@ -140,6 +201,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>usuarios/seleccion_usuario/<?php echo $usuario->IDUSUARIO; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>usuarios/eliminar_usuario/<?php echo $usuario->IDUSUARIO; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?> 
                     </tbody>

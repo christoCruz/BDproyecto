@@ -77,10 +77,10 @@
 
 
       <script language="javascript">
-        function doSearch(nombre)
+        function doSearch(nombre,apellido)
         {
             const tableReg = document.getElementById(nombre);
-            const searchText = document.getElementById('searchTerm').value.toLowerCase();
+            const searchText = document.getElementById(apellido).value.toLowerCase();
             let total = 0;
  
             // Recorremos todas las filas con contenido de la tabla
@@ -186,7 +186,7 @@
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
                 <form>
-                    <input class="form-control" id="searchTerm" type="text" onkeyup="doSearch('datos')"  placeholder="Buscar"/>
+                    <input class="form-control" id="datoss" type="text" onkeyup="doSearch('datos','datoss')"  placeholder="Buscar"/>
                     <br>
                 </form>
                   <table class="table" id="datos">
@@ -270,7 +270,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="accionessv" type="text" onkeyup="doSearch('accionesv','accionessv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="accionesv">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>IDACCION</th>
@@ -287,6 +291,9 @@
                           <td><?php echo $acc->FECHAFINAL; ?></td>
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_accion/<?php echo $acc->IDACCION; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           <a href="<?php echo base_url(); ?>tablas/eliminar_accion/<?php echo $acc->IDACCION; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>  
                     </tbody>
@@ -342,7 +349,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="aulass" type="text" onkeyup="doSearch('aulas','aulass')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="aulas">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>IDAULA</th>
@@ -359,6 +370,9 @@
                          
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_aulas/<?php echo $aula->IDAULA; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           <a href="<?php echo base_url(); ?>tablas/eliminar_aulas/<?php echo $aula->IDAULA; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>  
                     </tbody>
@@ -434,7 +448,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="carrerass" type="text" onkeyup="doSearch('carrerav','carrerass')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="carrerav">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>IDCARRERA</th>
@@ -456,6 +474,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_carrera/<?php echo $carrera->IDCARRERA;?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_carrera/<?php echo $carrera->IDCARRERA; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -532,7 +553,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="coordinadors" type="text" onkeyup="doSearch('coordinadorv','coordinadors')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="coordinadorv">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID COORDINADOR</th>
@@ -555,6 +580,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_coordinador/<?php echo $coordinador->IDCOORDINADOR; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_coordinador/<?php echo $coordinador->IDCOORDINADOR; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -616,7 +644,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="deptos" type="text" onkeyup="doSearch('depto','deptos')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="depto">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID DEPTO</th>
@@ -636,6 +668,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_departamento/<?php echo $departamento->IDDEPTO; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_departamento/<?php echo $departamento->IDDEPTO; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?> 
                     </tbody>
@@ -737,7 +772,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="docentesv" type="text" onkeyup="doSearch('docentev','docentesv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="docentev">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID DOCENTE</th>
@@ -767,6 +806,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_docente/<?php echo $docentes->IDDOCENTE; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_docente/<?php echo $docentes->IDDOCENTE; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?> 
                     </tbody>
@@ -866,7 +908,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="estudiantesv" type="text" onkeyup="doSearch('estudiantev','estudiantesv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="estudiantev">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID ESTUDIANTE</th>
@@ -892,6 +938,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_estudiantes/<?php echo $estudiantes->IDESTUDIANTE; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_estudiantes/<?php echo $estudiantes->IDESTUDIANTE; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -991,7 +1040,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="gruposv" type="text" onkeyup="doSearch('grupov','gruposv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="grupov">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID GRUPOS</th>
@@ -1021,6 +1074,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_grupos/<?php echo $grupo->IDGRUPOS; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_grupos/<?php echo $grupo->IDGRUPOS; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -1090,7 +1146,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="horariossv" type="text" onkeyup="doSearch('horariosv','horariossv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="horariosv">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID HORARIO DE GRUPO</th>
@@ -1112,6 +1172,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horarios_grupos/<?php echo $horarios->IDHORARIO_GRU; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_horarios_grupos/<?php echo $horarios->IDHORARIO_GRU; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>   
                     </tbody>
@@ -1213,7 +1276,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="socialess" type="text" onkeyup="doSearch('sociales','socialess')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="sociales">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>IDHORASSOCIALES</th>
@@ -1245,6 +1312,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_horas_sociales/<?php echo $sociales->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_horas_sociales/<?php echo $sociales->IDHORASSOCIALES; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>  
                     </tbody>
@@ -1312,7 +1382,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="inscripcionsv" type="text" onkeyup="doSearch('inscripcionv','inscripcionsv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="inscripcionv">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID INSCRIPCION</th>
@@ -1332,6 +1406,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_inscripcion/<?php echo $inscripcion->IDINCRIPCION;?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_inscripcion/<?php echo $inscripcion->IDINCRIPCION; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?> 
                     </tbody>
@@ -1399,7 +1476,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="jefesv" type="text" onkeyup="doSearch('jefev','jefesv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="jefev">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID JEFE</th>
@@ -1420,6 +1501,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_jefe/<?php echo $jefe->IDJEFE;?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_jefe/<?php echo $jefe->IDJEFE; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -1501,7 +1585,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="materiasv" type="text" onkeyup="doSearch('materiav','materiasv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="materiav">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID MATERIA</th>
@@ -1525,6 +1613,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_materias/<?php echo $materia->IDMATERIA; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_materias/<?php echo $materia->IDMATERIA; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>   
                     </tbody>
@@ -1584,7 +1675,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="preinscripcionsvv" type="text" onkeyup="doSearch('vpreinscripcionv','preinscripcionsvv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="vpreinscripcionv">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID PREINSCRIPCION</th>
@@ -1604,6 +1699,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_preinscripcion/<?php echo $preinscripcion->IDPREINSCRIPCION; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_preinscripcion/<?php echo $preinscripcion->IDPREINSCRIPCION; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>
                     </tbody>
@@ -1671,7 +1769,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="registroestudiantesv" type="text" onkeyup="doSearch('registroestudiantev','registroestudiantesv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="registroestudiantev">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID REGISTRO</th>
@@ -1694,6 +1796,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_registro_estudiante/<?php echo $registroestudiante->IDREGISTROESTU; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_registro_estudiante/<?php echo $registroestudiante->IDREGISTROESTU; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?>   
                     </tbody>
@@ -1761,7 +1866,11 @@
               </div>
               <div  class="card-body">
                 <div id="scroll" class="table-responsive">
-                  <table class="table">
+                <form>
+                    <input class="form-control" id="reportechoquesv" type="text" onkeyup="doSearch('reportechoquev','reportechoquesv')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="reportechoquev">
                     <thead class=" text-primary">
                       <th>#</th>
                       <th>ID CHOQUE</th>
@@ -1783,6 +1892,9 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_reportechoque/<?php echo $reportechoque->IDCHOQUE; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_reportechoque/<?php echo $reportechoque->IDCHOQUE; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
                         </tr>
                       <?php }?> 
                     </tbody>
