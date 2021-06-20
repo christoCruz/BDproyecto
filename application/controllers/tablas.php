@@ -7,6 +7,8 @@ class tablas extends CI_Controller {
 		    $this->load->helper("form"); 
         $this->load->model("tablas_model");
         $this->load->model("tablas_estras");
+        $this->load->library('session');
+        $this->load->model('login_model');
         
 		
     }//end
@@ -14,13 +16,21 @@ class tablas extends CI_Controller {
    
 	public function index()
 	{
-    
-		$data = array('tablas' => 'active',
+    if(isset($_SESSION['IdUsuario'])){
+      if($_SESSION['TipoUsuario'] == 'ADMIN'){
+        $data = array('tablas' => 'active',
         'usuarios' => ''); 
         //$mostrar = array('tablas'=>$this->tablas_model->mostrar());
-		$this->load->view('menuadmin',$data);
-		$this->load->view('tablas',$this-> retornoprueba());
-		$this->load->view('footer');
+        $this->load->view('menuadmin',$data);
+        $this->load->view('tablas',$this-> retornoprueba());
+        $this->load->view('footer');
+      }
+      
+    }else{
+      redirect('Login');
+    }
+    
+		
 	}
 
 	public function agregar(){

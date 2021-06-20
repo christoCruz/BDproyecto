@@ -800,7 +800,7 @@
         function agregar_usuario($data){ 
             $parametro=array(
                 array('name'=>':vusuario','value'=>$data['usuario'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vpassword','value'=>$data['password'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vpassword','value'=>sha1($data['password']),'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtipousuairo','value'=>$data['tipousuairo'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vestadousuario','value'=>$data['estadousuario'],'length'=>-1,'type'=>SQLT_CHR)
             );

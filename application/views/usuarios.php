@@ -131,7 +131,7 @@
                         <div class="modal-header">
                           <h5 class="modal-title">Agregar usuario </h5>
                         </div>
-                        <?php echo form_open("tablas/agregar_usuario")?>
+                        <?php echo form_open("usuarios/agregar_usuario")?>
                           <div class="modal-body">
                             <div class="row">
                               <div class="col-md-4 pr-1">

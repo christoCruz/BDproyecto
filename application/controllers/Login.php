@@ -35,21 +35,23 @@ class Login extends CI_Controller {
                 $obtenciondatos = $this->login_model->obtener($_POST['usuario']);
                 $this->session->Nombre= $obtenciondatos->USUARIO;
                 $this->session->IdUsuario= $obtenciondatos->IDUSUARIO;
-                if($this->session->IdUsuario= $obtenciondatos->ESTADOUSUARIO == 'A')
+                $this->session->TipoUsuario= $obtenciondatos->TIPOUSUAIRO;
+                $this->session->EstadooUsuario= $obtenciondatos->ESTADOUSUARIO;
+                if($this->session->EstadooUsuario=='A')
                 {
-                    if($this->session->IdUsuario= $obtenciondatos->TIPOUSUAIRO == 'ADMIN'){
+                    if($this->session->TipoUsuario == 'ADMIN'){
                         redirect('tablas');
                     }
-                    elseif($this->session->IdUsuario= $obtenciondatos->TIPOUSUAIRO == 'JEFE'){
+                    elseif($this->session->TipoUsuario == 'JEFE'){
                         redirect('planificaciones');
                     }
-                    elseif($this->session->IdUsuario= $obtenciondatos->TIPOUSUAIRO == 'COORDINADOR'){
+                    elseif($this->session->TipoUsuario  == 'COORDINADOR'){
                         redirect('planeacion');
                     }
-                    elseif($this->session->IdUsuario= $obtenciondatos->TIPOUSUAIRO == 'DOCENTE'){
+                    elseif($this->session->TipoUsuario  == 'DOCENTE'){
                         redirect('registronotas');
                     }
-                    elseif($this->session->IdUsuario= $obtenciondatos->TIPOUSUAIRO == 'ESTUDIANTE'){
+                    elseif($this->session->TipoUsuario  == 'ESTUDIANTE'){
                         redirect('inscripcion');
                     }
                 }
@@ -60,7 +62,7 @@ class Login extends CI_Controller {
                         $this->login_model->update($_POST['usuario']);
                     }
                 }
-                redirect('login');                
+                redirect('Login');                
             }
         }   
 		$this->load->view('login');
