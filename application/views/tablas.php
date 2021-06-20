@@ -18,16 +18,6 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
             <ul class="navbar-nav">
               <li class="nav-item btn-rotate dropdown">
               <a class="btn btn-danger btn-round" href="<?php echo base_url('Login/salir'); ?>">Cerrar sesion</a>
@@ -1056,6 +1046,57 @@
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_grupos/<?php echo $grupo->IDGRUPOS; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_grupos/<?php echo $grupo->IDGRUPOS; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                        </tr>
+                        <tr class='noSearch hide'>
+                            <td colspan="5"></td>
+                        </tr>
+                      <?php }?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- **************************************************
+        ************** TABLA AULAS DE GRUPOS *************************
+        ******************************************************* -->
+
+        <section class="row" id="grupocopia">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Tabla Copia de Grupos </h4>
+              </div>
+              <div  class="card-body">
+                <div id="scroll" class="table-responsive">
+                <form>
+                    <input class="form-control" id="gruposvn" type="text" onkeyup="doSearch('grupovn','gruposvn')"  placeholder="Buscar"/>
+                    <br>
+                </form>
+                  <table class="table" id="grupovn">
+                    <thead class=" text-primary">
+                      <th>#</th>
+                      <th>ID COPIA</th>
+                      <th>ID GRUPO</th>
+                      <th>CANTIDAD CUPOS</th>
+                      <th>FECHA ACCION</th>
+                      <th>NUM GRUPO</th>
+                      <th>ACCION</th>
+                    </thead>
+                    <tbody>
+                      <?php $number =1; foreach ($grupoc as $key => $grupoc) {?>
+                        <tr>
+                          <th scope="row"><?php echo $number++; ?></th>
+                          <td><?php echo $grupoc->IDCOPIAGRUPO;?></td>
+                          <td><?php echo $grupoc->IDGRUPOS; ?></td>
+                          <td><?php echo $grupoc->COP_CANTICUPOS; ?></td>
+                          <td><?php echo $grupoc->FECHAMODIGRUPO; ?></td>
+                          <td><?php echo $grupoc->COP_NUMGRUPO; ?></td>
+                          <td><?php echo $grupoc->ACCIONCOPIA; ?></td>
+                          
                         </tr>
                         <tr class='noSearch hide'>
                             <td colspan="5"></td>

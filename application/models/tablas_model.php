@@ -435,6 +435,14 @@
          $resultados =$this->db->get();
          return $resultados->result();
      }
+
+     function mostrar_copia(){
+        $this->db->select("*");
+        $this->db->from("COPIAGRUPO");
+        $this->db->order_by("IDCOPIAGRUPO ASC");
+        $resultados =$this->db->get();
+        return $resultados->result();
+    }
          
      function seleccion_grupos($id){
          $this->db->select("*");
