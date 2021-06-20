@@ -8,13 +8,21 @@ class horassociales extends CI_Controller {
     
 	public function index()
 	{
-		$data = array('inscripcion' => '',
-        'notas' => '',
-        'preinscripcion' => '',
-        'horassociales' => 'active'); 
+		
+		if(isset($_SESSION['IdUsuario'])){
+			if($_SESSION['TipoUsuario'] == 'ESTUDIANTE'){
+				$data = array('inscripcion' => '',
+				'notas' => '',
+				'preinscripcion' => '',
+				'horassociales' => 'active'); 
 
-		$this->load->view('menuestudiante',$data);
-		$this->load->view('horassociales');
-		$this->load->view('footer');
+				$this->load->view('menuestudiante',$data);
+				$this->load->view('horassociales');
+				$this->load->view('footer');
+			}
+			
+		  }else{
+			redirect('Login');
+		  }
 	}
 }

@@ -8,12 +8,20 @@ class proyectohorassociales extends CI_Controller {
     
 	public function index()
 	{
-		$data = array('planeacion' => '',
-        'historialplaneacion' => '',
-        'proyectohorassociales' => 'active'); 
+		
+		if(isset($_SESSION['IdUsuario'])){
+			if($_SESSION['TipoUsuario'] == 'COORDINADOR'){
+				$data = array('planeacion' => '',
+				'historialplaneacion' => '',
+				'proyectohorassociales' => 'active'); 
 
-		$this->load->view('menucoordinador',$data);
-		$this->load->view('proyectohorassociales');
-		$this->load->view('footer');
+				$this->load->view('menucoordinador',$data);
+				$this->load->view('proyectohorassociales');
+				$this->load->view('footer');
+			}
+			
+		  }else{
+			redirect('Login');
+		  }
 	}
 }

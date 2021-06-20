@@ -8,13 +8,21 @@ class notas extends CI_Controller {
     
 	public function index()
 	{
-		$data = array('inscripcion' => '',
-        'notas' => 'active',
-        'preinscripcion' => '',
-        'horassociales' => ''); 
+		
+		if(isset($_SESSION['IdUsuario'])){
+			if($_SESSION['TipoUsuario'] == 'ESTUDIANTE'){
+				$data = array('inscripcion' => '',
+				'notas' => 'active',
+				'preinscripcion' => '',
+				'horassociales' => ''); 
 
-		$this->load->view('menuestudiante',$data);
-		$this->load->view('notas');
-		$this->load->view('footer');
+				$this->load->view('menuestudiante',$data);
+				$this->load->view('notas');
+				$this->load->view('footer');
+			}
+			
+		  }else{
+			redirect('Login');
+		  }
 	}
 }

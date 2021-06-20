@@ -8,12 +8,20 @@ class planeacion extends CI_Controller {
     
 	public function index()
 	{
-		$data = array('planeacion' => 'active',
-        'historialplaneacion' => '',
-        'proyectohorassociales' => ''); 
+		
+		if(isset($_SESSION['IdUsuario'])){
+			if($_SESSION['TipoUsuario'] == 'COORDINADOR'){
+				$data = array('planeacion' => 'active',
+				'historialplaneacion' => '',
+				'proyectohorassociales' => ''); 
 
-		$this->load->view('menucoordinador',$data);
-		$this->load->view('planeacion');
-		$this->load->view('footer');
+				$this->load->view('menucoordinador',$data);
+				$this->load->view('planeacion');
+				$this->load->view('footer');
+			}
+			
+		  }else{
+			redirect('Login');
+		  }
 	}
 }

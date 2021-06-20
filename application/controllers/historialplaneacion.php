@@ -8,12 +8,21 @@ class historialplaneacion extends CI_Controller {
     
 	public function index()
 	{
-		$data = array('planeacion' => '',
-        'historialplaneacion' => 'active',
-        'proyectohorassociales' => ''); 
+		
 
-		$this->load->view('menucoordinador',$data);
-		$this->load->view('historialplaneacion');
-		$this->load->view('footer');
+		if(isset($_SESSION['IdUsuario'])){
+			if($_SESSION['TipoUsuario'] == 'COORDINADOR'){
+				$data = array('planeacion' => '',
+				'historialplaneacion' => 'active',
+				'proyectohorassociales' => ''); 
+		
+				$this->load->view('menucoordinador',$data);
+				$this->load->view('historialplaneacion');
+				$this->load->view('footer');
+			}
+			
+		  }else{
+			redirect('Login');
+		  }
 	}
 }

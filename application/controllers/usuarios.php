@@ -9,13 +9,21 @@ class usuarios extends CI_Controller {
     
 	public function index()
 	{
-		$data = array('tablas' => '',
+		
+    if(isset($_SESSION['IdUsuario'])){
+			if($_SESSION['TipoUsuario'] == 'ADMIN'){
+				$data = array('tablas' => '',
         'usuarios' => 'active'); 
-		$mostrar = array('usuario'=>$this->tablas_estras->mostrar_usuario());
+          $mostrar = array('usuario'=>$this->tablas_estras->mostrar_usuario());
 
-		$this->load->view('menuadmin',$data);
-		$this->load->view('usuarios',$mostrar);
-		$this->load->view('footer');
+          $this->load->view('menuadmin',$data);
+          $this->load->view('usuarios',$mostrar);
+          $this->load->view('footer');
+			}
+			
+		  }else{
+			redirect('Login');
+		  }
 	}
 
 	////////////

@@ -8,11 +8,19 @@ class registronotas extends CI_Controller {
     
 	public function index()
 	{
-		$data = array('registronotas' => 'active',
-        'horariotrabajo' => ''); 
+		
+		if(isset($_SESSION['IdUsuario'])){
+			if($_SESSION['TipoUsuario'] == 'DOCENTE'){
+				$data = array('registronotas' => 'active',
+				'horariotrabajo' => ''); 
 
-		$this->load->view('menudocente',$data);
-		$this->load->view('registronotas');
-		$this->load->view('footer');
+				$this->load->view('menudocente',$data);
+				$this->load->view('registronotas');
+				$this->load->view('footer');
+			}
+			
+		  }else{
+			redirect('Login');
+		  }
 	}
 }

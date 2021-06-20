@@ -8,13 +8,22 @@ class inscripcion extends CI_Controller {
 
 	public function index()
 	{
-		$data = array('inscripcion' => 'active',
-        'notas' => '',
-        'preinscripcion' => '',
-        'horassociales' => ''); 
+		
 
-		$this->load->view('menuestudiante',$data);
-		$this->load->view('inscripcion');
-		$this->load->view('footer');
+		if(isset($_SESSION['IdUsuario'])){
+			if($_SESSION['TipoUsuario'] == 'ESTUDIANTE'){
+				$data = array('inscripcion' => 'active',
+				'notas' => '',
+				'preinscripcion' => '',
+				'horassociales' => ''); 
+
+				$this->load->view('menuestudiante',$data);
+				$this->load->view('inscripcion');
+				$this->load->view('footer');
+			}
+			
+		  }else{
+			redirect('Login');
+		  }
 	}
 }

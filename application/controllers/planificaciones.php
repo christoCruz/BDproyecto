@@ -8,10 +8,18 @@ class planificaciones extends CI_Controller {
     
 	public function index()
 	{
-		$data = array('planificaciones' => 'active'); 
+		
+		if(isset($_SESSION['IdUsuario'])){
+			if($_SESSION['TipoUsuario'] == 'JEFE'){
+				$data = array('planificaciones' => 'active'); 
 
-		$this->load->view('menujefe',$data);
-		$this->load->view('planificaciones');
-		$this->load->view('footer');
+				$this->load->view('menujefe',$data);
+				$this->load->view('planificaciones');
+				$this->load->view('footer');
+			}
+			
+		  }else{
+			redirect('Login');
+		  }
 	}
 }
