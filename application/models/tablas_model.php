@@ -144,6 +144,7 @@
      function mostrar_aulas(){
          $this->db->select("*");
          $this->db->from("AULAS");
+         $this->db->where("FOTOAULA",'A');
          $this->db->order_by("IDAULA ASC");
          $resultados =$this->db->get();
          return $resultados->result();
@@ -187,6 +188,7 @@
      function mostrar_carrera(){
          $this->db->select("*");
          $this->db->from("CARRERA");
+         $this->db->where("ESTADOCARRERA",'A');
          $this->db->order_by("IDCARRERA ASC");
          $resultados =$this->db->get();
          return $resultados->result();
@@ -233,6 +235,7 @@
      function mostrar_coordinador(){
          $this->db->select("*");
          $this->db->from("COORDINADOR");
+         $this->db->where("ESTADOCOOR",'A');
          $this->db->order_by("IDCOORDINADOR ASC");
          $resultados =$this->db->get();
          return $resultados->result();
@@ -277,6 +280,7 @@
      function mostrar_departamento(){
          $this->db->select("*");
          $this->db->from("DEPARTAMENTO");
+         $this->db->where("ESTADODEPTO",'A');
          $this->db->order_by("IDDEPTO ASC");
          $resultados =$this->db->get();
          return $resultados->result();
@@ -314,7 +318,6 @@
              array('name'=>':vnomdocente','value'=>$data['nomdocente'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vapedocente','value'=>$data['apedocente'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vprofdocente','value'=>$data['profdocente'],'length'=>-1,'type'=>SQLT_CHR),
-             array('name'=>':vestdocente','value'=>$data['estdocente'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vtipocontrato','value'=>$data['tipocontrato'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vcorreodocente','value'=>$data['correodocente'],'length'=>-1,'type'=>SQLT_CHR)
          );
@@ -324,6 +327,7 @@
      function mostrar_docente(){
          $this->db->select("*");
          $this->db->from("DOCENTE");
+         $this->db->where("ESTDOCENTE",'A');
          $this->db->order_by("IDDOCENTE ASC");
          $resultados =$this->db->get();
          return $resultados->result();
@@ -344,7 +348,6 @@
              array('name'=>':vnomdocente','value'=>$data['nomdocente'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vapedocente','value'=>$data['apedocente'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vprofdocente','value'=>$data['profdocente'],'length'=>-1,'type'=>SQLT_CHR),
-             array('name'=>':vestdocente','value'=>$data['estdocente'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vtipocontrato','value'=>$data['tipocontrato'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vcorreodocente','value'=>$data['correodocente'],'length'=>-1,'type'=>SQLT_CHR)
          );
@@ -375,6 +378,7 @@
      function mostrar_estudiantes(){
          $this->db->select("*");
          $this->db->from("ESTUDIANTES");
+         $this->db->where("ESTADOESTU",'A');
          $this->db->order_by("IDESTUDIANTE ASC");
          $resultados =$this->db->get();
          return $resultados->result();
@@ -426,6 +430,7 @@
      function mostrar_grupos(){
          $this->db->select("*");
          $this->db->from("GRUPOS");
+         $this->db->where("ESTADOGRUPO",'A');
          $this->db->order_by("IDGRUPOS ASC");
          $resultados =$this->db->get();
          return $resultados->result();
@@ -573,6 +578,7 @@
      function mostrar_inscripcion(){
          $this->db->select("*");
          $this->db->from("INSCRIPCION");
+         $this->db->where("ESTADOINSCRIPCION",'A');
          $this->db->order_by("IDINCRIPCION ASC");
          $resultados =$this->db->get();
          return $resultados->result();
@@ -614,11 +620,13 @@
      }
      
      function mostrar_jefe(){
-         $this->db->select("*");
-         $this->db->from("JEFE");
-         $this->db->order_by("IDJEFE ASC");
-         $resultados =$this->db->get();
-         return $resultados->result();
+        $es='A';
+        $this->db->select("*");
+        $this->db->from("JEFE");
+        $this->db->where("ESTADOJEFE",$es);
+        $this->db->order_by("IDJEFE ASC");
+        $resultados =$this->db->get();
+        return $resultados->result();
      }
          
      function seleccion_jefe($id){
@@ -662,6 +670,7 @@
      function mostrar_materias(){
          $this->db->select("*");
          $this->db->from("MATERIAS");
+         $this->db->where("ESTADOMATERIA",'A');
          $this->db->order_by("IDMATERIA ASC");
          $resultados =$this->db->get();
          return $resultados->result();

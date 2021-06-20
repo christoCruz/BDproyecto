@@ -33,12 +33,6 @@
                   <input value="<?php echo $PROFDOCENTE; ?>" type="text" class="form-control" placeholder="profesion" id="profdocente" name="profdocente">
                 </div>
               </div>
-              <div class="col-md-4 px-1">
-                <div class="form-group">
-                  <label>Estado de docente</label>
-                  <input value="<?php echo $ESTDOCENTE; ?>" type="text" class="form-control" placeholder="Estado" id="estdocente" name="estdocente">
-                </div>
-              </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Tipo de contrato</label>

@@ -583,8 +583,10 @@
         }
         
         function mostrar_jefe(){
+            $es='A';
             $this->db->select("*");
             $this->db->from("JEFE");
+            $this->db->where("ESTADOJEFE",$es);
             $this->db->order_by("IDJEFE ASC");
             $resultados =$this->db->get();
             return $resultados->result();

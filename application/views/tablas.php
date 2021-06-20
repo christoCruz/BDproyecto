@@ -725,12 +725,6 @@
                                   <input type="text" class="form-control" placeholder="profesion" id="profdocente" name="profdocente">
                                 </div>
                               </div>
-                              <div class="col-md-4 px-1">
-                                <div class="form-group">
-                                  <label>Estado de docente</label>
-                                  <input type="text" class="form-control" placeholder="Estado" id="estdocente" name="estdocente">
-                                </div>
-                              </div>
                               <div class="col-md-4">
                                 <div class="form-group">
                                   <label>Tipo de contrato</label>
@@ -784,7 +778,6 @@
                       <th>NOMBRE DEL DOCENTE</th>
                       <th>APELLIDO</th>
                       <th>PROFESION</th>
-                      <th>ESTADO</th>
                       <th>TIPO DE CONTRATO</th>
                       <th>FEHCA DE INGRESO</th>
                       <th>CORREO</th>
@@ -799,7 +792,6 @@
                           <td><?php echo $docentes->NOMDOCENTE; ?></td>
                           <td><?php echo $docentes->APEDOCENTE; ?></td>
                           <td><?php echo $docentes->PROFDOCENTE; ?></td>
-                          <td><?php echo $docentes->ESTDOCENTE; ?></td>
                           <td><?php echo $docentes->TIPOCONTRATO; ?></td>
                           <td><?php echo $docentes->INGREDOCENTE; ?></td>
                           <td><?php echo $docentes->CORREODOCENTE; ?></td>
