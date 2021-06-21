@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class preinscripcion extends CI_Controller {
 	function __construct(){
         parent::__construct();
+		$this->load->library('session');
     }//end
     
 	public function index()

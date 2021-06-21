@@ -286,7 +286,6 @@ class tablas extends CI_Controller {
       "nomdocente" =>$this->input->post("nomdocente"),
       "apedocente" =>$this->input->post("apedocente"),
       "profdocente" =>$this->input->post("profdocente"),
-      "estdocente" =>$this->input->post("estdocente"),
       "tipocontrato" =>$this->input->post("tipocontrato"),
       "correodocente" =>$this->input->post("correodocente")
     
@@ -313,7 +312,6 @@ class tablas extends CI_Controller {
       "nomdocente" =>$this->input->post("nomdocente"),
       "apedocente" =>$this->input->post("apedocente"),
       "profdocente" =>$this->input->post("profdocente"),
-      "estdocente" =>$this->input->post("estdocente"),
       "tipocontrato" =>$this->input->post("tipocontrato"),
       "correodocente" =>$this->input->post("correodocente")
       
@@ -386,7 +384,8 @@ class tablas extends CI_Controller {
       "numgrupo" =>$this->input->post("numgrupo"),
       "ciclogrupo" =>$this->input->post("ciclogrupo"),
       "aniogrupo" =>$this->input->post("aniogrupo"),
-      "estgrupo" =>$this->input->post("estgrupo")
+      "estgrupo" =>$this->input->post("estgrupo"),
+      "iddcocente" =>$this->input->post("iddocente")
 
     );
     $this->tablas_estras->agregar_grupos($datos);
@@ -413,7 +412,8 @@ class tablas extends CI_Controller {
       "numgrupo" =>$this->input->post("numgrupo"),
       "ciclogrupo" =>$this->input->post("ciclogrupo"),
       "aniogrupo" =>$this->input->post("aniogrupo"),
-      "estgrupo" =>$this->input->post("estgrupo")
+      "estgrupo" =>$this->input->post("estgrupo"),
+      "iddcocente" =>$this->input->post("iddocente")
     );
     $this->tablas_estras->actualizar_grupos($datos,$id);
     redirect(base_url()."tablas/#grupo");

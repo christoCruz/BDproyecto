@@ -88,7 +88,7 @@
         }
 
 
-      ////////////
+        ////////////
         //crud accion
         ////////////
 
@@ -872,7 +872,6 @@
      function actualizar_usuario($data,$id){
          $parametro=array(
              array('name'=>':vidusuario','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
-             array('name'=>':vusuario','value'=>$data['usuario'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vpassword','value'=>$data['password'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vtipousuairo','value'=>$data['tipousuairo'],'length'=>-1,'type'=>SQLT_CHR),
              array('name'=>':vestadousuario','value'=>$data['estadousuario'],'length'=>-1,'type'=>SQLT_CHR)

@@ -995,6 +995,12 @@
                                   <input type="text" class="form-control" placeholder="Estado" id="estgrupo" name="estgrupo">
                                 </div>
                               </div>
+                              <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                  <label>Id Docente</label>
+                                  <input type="text" class="form-control" placeholder="Id docente" id="iddocente" name="iddocente">
+                                </div>
+                              </div>
                             </div>
                               
                             
@@ -1028,6 +1034,7 @@
                       <th>CICLO</th>
                       <th>AÑO</th>
                       <th>ESTADO</th>
+                      <th>ID DOCENTE</th>
                       <th class="text-right"> ACCIONES</th>
                     </thead>
                     <tbody>
@@ -1043,6 +1050,7 @@
                           <td><?php echo $grupo->CICLOGRUPO; ?></td>
                           <td><?php echo $grupo->ANIOGRUPO; ?></td>
                           <td><?php echo $grupo->ESTGRUPO; ?></td>
+                          <td><?php echo $grupo->IDDOCENTE; ?></td>
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_grupos/<?php echo $grupo->IDGRUPOS; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
                           
                           <a href="<?php echo base_url(); ?>tablas/eliminar_grupos/<?php echo $grupo->IDGRUPOS; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>

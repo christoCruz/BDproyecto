@@ -60,6 +60,7 @@ class Login extends CI_Controller {
                 if($cont =3){
                     if($this->login_model->errordecontra($_POST['usuario'])){
                         $this->login_model->update($_POST['usuario']);
+                        $cont=0;
                     }
                 }
                 redirect('Login');                

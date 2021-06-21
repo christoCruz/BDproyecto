@@ -13,12 +13,6 @@
                         <form action="<?php echo base_url(); ?>usuarios/actualizar_usuario/<?php echo $IDUSUARIO; ?>" method="post" role="form" >
                           <div class="modal-body">
                             <div class="row">
-                              <div class="col-md-4 pr-1">
-                                <div class="form-group">
-                                  <label>Usuario</label>
-                                  <input type="text" class="form-control" placeholder="usuario" id="usuario" name="usuario" value="<?php echo $USUARIO; ?>">
-                                </div>
-                              </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Contraseña</label>

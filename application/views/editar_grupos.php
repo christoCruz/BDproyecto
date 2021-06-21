@@ -61,6 +61,12 @@
                   <input type="text" class="form-control" placeholder="Estado" id="estgrupo" name="estgrupo" value="<?php echo $ESTGRUPO; ?>">
                 </div>
               </div>
+              <div class="col-md-4 px-1">
+                <div class="form-group">
+                  <label>Id Docente</label>
+                  <input type="text" class="form-control" placeholder="Id docente" id="iddocente" name="iddocente">
+                </div>
+              </div>
             </div>
               
           </div>

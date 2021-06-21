@@ -31,7 +31,7 @@ class login_model extends CI_Model{
     }
 
     function update($id){
-        $this->db->query("update USUARIO set ESTADOUSUARIO= 'I' WHERE USUARIO=".$id);
+        $this->db->query("update USUARIO set ESTADOUSUARIO= 'I' WHERE USUARIO='".$id."'");
     }
 
     public function errordecontra($username){

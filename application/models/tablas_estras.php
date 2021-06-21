@@ -384,7 +384,8 @@
                 array('name'=>':vnumgrupo','value'=>$data['numgrupo'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vciclogrupo','value'=>$data['ciclogrupo'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vaniogrupo','value'=>$data['aniogrupo'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vestgrupo','value'=>$data['estgrupo'],'length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vestgrupo','value'=>$data['estgrupo'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':viddocente','value'=>$data['iddocente'],'length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_grupos',$parametro);
         }
@@ -414,7 +415,8 @@
                 array('name'=>':vnumgrupo','value'=>$data['numgrupo'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vciclogrupo','value'=>$data['ciclogrupo'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vaniogrupo','value'=>$data['aniogrupo'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vestgrupo','value'=>$data['estgrupo'],'length'=>-1,'type'=>SQLT_CHR)
+                array('name'=>':vestgrupo','value'=>$data['estgrupo'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':viddocente','value'=>$data['iddocente'],'length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','actualizar_grupos',$parametro);
         }
@@ -826,7 +828,6 @@
         function actualizar_usuario($data,$id){
             $parametro=array(
                 array('name'=>':vidusuario','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vusuario','value'=>$data['usuario'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vpassword','value'=>sha1($data['password']),'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtipousuairo','value'=>$data['tipousuairo'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vestadousuario','value'=>$data['estadousuario'],'length'=>-1,'type'=>SQLT_CHR)

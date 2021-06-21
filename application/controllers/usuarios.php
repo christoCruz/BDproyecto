@@ -5,6 +5,7 @@ class usuarios extends CI_Controller {
 	function __construct(){
         parent::__construct();
 		$this->load->model("tablas_estras");
+    $this->load->library('session');
     }//end
     
 	public function index()
