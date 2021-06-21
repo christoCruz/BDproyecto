@@ -68,6 +68,7 @@ $route['index.php/tablas/seleccion_preinscripcion/(:num)'] = 'index,php/editar_p
 $route['index.php/tablas/seleccion_registro_estudiante/(:num)'] = 'index,php/editar_registro_estudiante/seleccion_registro_estudiante/$1';
 $route['index.php/tablas/seleccion_reportechoque/(:num)'] = 'index,php/editar_reportechoque/seleccion_reportechoque/$1';
 $route['index.php/usuarios/seleccion_usuario/(:num)'] = 'index,php/editar_usuario/seleccion_usuario/$1';
+$route['index.php/tablas/seleccion_re/(:num)'] = 'index,php/editar_re/seleccion_re/$1';
 
 //$route['index.php/Detalles/(:num)'] = 'index,php/Detalles/$1';
 $route['404_override'] = 'welcome';

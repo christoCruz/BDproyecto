@@ -763,6 +763,28 @@ class tablas extends CI_Controller {
     redirect(base_url()."tablas/#reportechoque");
   }
 
+  public function seleccion_re($dato){
+    $valor=$this->tablas_estras->seleccion_re($dato);
+   
+    $data = array('registronotas' => 'active',
+				'horariotrabajo' => '',
+				'docentesocial' => ''); 
+
+		$this->load->view('menudocente',$data);
+		$this->load->view('registronotas');
+    $this->load->view('editar_re',$valor);
+		$this->load->view('footer');
+  }
+
+  public function actualizar_re($id){
+    $datos = array(
+      "notamateria" =>$this->input->post("nota")
+    );
+    $this->tablas_estras->actualizar_re($datos,$id);
+    redirect(base_url()."registronotas");
+  }
+  
+
 
   
 

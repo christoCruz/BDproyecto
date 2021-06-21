@@ -68,6 +68,12 @@ Coded by www.creative-tim.com
               <p>Registro de notas</p>
             </a>
           </li>
+          <li class="<?= $docentesocial ?>">
+            <a href="<?php echo base_url('docentesocial'); ?>">
+              <i class="nc-icon nc-diamond"></i>
+              <p>Horas Sociales</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

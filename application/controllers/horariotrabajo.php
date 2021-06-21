@@ -14,7 +14,8 @@ class horariotrabajo extends CI_Controller {
 		if(isset($_SESSION['IdUsuario'])){
 			if($_SESSION['TipoUsuario'] == 'DOCENTE'){
 				$data = array('registronotas' => '',
-				'horariotrabajo' => 'active'); 
+				'horariotrabajo' => 'active',
+				'docentesocial' => ''); 
 
 				$this->load->view('menudocente',$data);
 				$this->load->view('horariotrabajo');

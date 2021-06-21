@@ -840,5 +840,23 @@
             $this->db->stored_procedure('package1','eliminar_usuario',$parametro);
         }
 
+        function seleccion_re($id){
+            $this->db->select("*");
+            $this->db->from("REGISTRO_ESTUDIANTE");
+            $this->db->where("IDREGISTROESTU",$id);
+            $resultados =$this->db->get();
+            return $resultados->row();
+        }
+
+        function actualizar_re($data,$id){
+            $estado;
+            if($data['notamateria']>=6){
+                $estado='A';
+            }else{
+                $estado='R';
+            }
+            $this->db->query("UPDATE REGISTRO_ESTUDIANTE SET NOTAMATERIA=".$data['notamateria'].", ESTADOMATERIA='".$estado."' WHERE IDREGISTROESTU=".$id);
+        }
+
     }
 ?>

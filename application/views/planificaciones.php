@@ -18,16 +18,6 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
             <ul class="navbar-nav">
               <li class="nav-item btn-rotate dropdown">
               <a class="btn btn-danger btn-round" href="<?php echo base_url('Login/salir'); ?>">Cerrar sesion</a>
@@ -171,6 +161,7 @@
 
                               $querygrupo= $this->db->query("SELECT * FROM GRUPOS WHERE IDCOORDINADOR=".$coordinador->IDCOORDINADOR."");
                               foreach ($querygrupo->result() as $grupo){
+                                if($grupo->ESTADOGRUPO=='A'){
 
                                 $querydocente= $this->db->query("SELECT * FROM DOCENTE WHERE IDDOCENTE=".$grupo->IDDOCENTE."");
                                 foreach ($querydocente->result() as $docente){
@@ -227,7 +218,7 @@
                                 }
 
                                 }
-
+                              }
                             }
 
                             }

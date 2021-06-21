@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class registronotas extends CI_Controller {
+class docentesocial extends CI_Controller {
 	function __construct(){
         parent::__construct();
 		$this->load->library('session');
@@ -10,14 +10,15 @@ class registronotas extends CI_Controller {
 	public function index()
 	{
 		
+
 		if(isset($_SESSION['IdUsuario'])){
 			if($_SESSION['TipoUsuario'] == 'DOCENTE'){
-				$data = array('registronotas' => 'active',
+				$data = array('registronotas' => '',
 				'horariotrabajo' => '',
-				'docentesocial' => ''); 
+				'docentesocial' => 'active'); 
 
 				$this->load->view('menudocente',$data);
-				$this->load->view('registronotas');
+				$this->load->view('docentesocial');
 				$this->load->view('footer');
 			}
 			
