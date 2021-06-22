@@ -25,12 +25,6 @@
                                   <input type="text" class="form-control" placeholder="Id grupo" id="idgrupos" name="idgrupos" value="<?php echo $IDGRUPOS; ?>">
                                 </div>
                               </div>
-                              <div class="col-md-4 px-1">
-                                <div class="form-group">
-                                  <label>Fecha de inscripcion</label>
-                                  <input type="text" class="form-control" placeholder="Fecha" id="fechainscrip" name="fechainscrip" value="<?php echo $FECHAINSCRIP; ?>">
-                                </div>
-                              </div>
                             </div>
                           </div>
                           <div class="modal-footer">

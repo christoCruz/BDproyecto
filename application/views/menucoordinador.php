@@ -74,6 +74,12 @@ Coded by www.creative-tim.com
               <p>Proyectos de horas sociales</p>
             </a>
           </li>
+          <li class="<?= $reportesdechoque ?>">
+            <a href="<?php echo base_url('reportesdechoque'); ?>">
+              <i class="nc-icon nc-pin-3"></i>
+              <p>Reportes de choque</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

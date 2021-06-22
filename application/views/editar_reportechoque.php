@@ -15,8 +15,8 @@
                             <div class="row">
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
-                                  <label>Id docente</label>
-                                  <input type="text" class="form-control" placeholder="id docente" id="iddocente" name="iddocente" value="<?php echo $IDDOCENTE; ?>">
+                                  <label>Id Coordinador</label>
+                                  <input type="text" class="form-control" placeholder="Id coordinador" id="iddocente" name="iddocente" value="<?php echo $IDCOORDINADOR; ?>">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">

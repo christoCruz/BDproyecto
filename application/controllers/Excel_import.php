@@ -38,17 +38,40 @@ class Excel_import extends CI_Controller {
 			for ($i = 2; $i <= $sheets['numRows']; $i++) {
 				if ($sheets['cells'][$i][1] == '') break;
 
-				$data_excel[$i - 1]['NOMBRE']    = $sheets['cells'][$i][1];
-				$data_excel[$i - 1]['APELLIDO']   = $sheets['cells'][$i][2];
+				$data_excel[$i - 1]['IDCARRERA']    = $sheets['cells'][$i][1];
+				$data_excel[$i - 1]['NOMESTUDIANTE']   = $sheets['cells'][$i][2];
+				$data_excel[$i - 1]['APELESTUDIANTE']   = $sheets['cells'][$i][3];
+				$data_excel[$i - 1]['CARNETESTU']   = $sheets['cells'][$i][4];
+				$data_excel[$i - 1]['CORREOESTU']   = $sheets['cells'][$i][5];
+				$data_excel[$i - 1]['TELESTUDIANTE']   = $sheets['cells'][$i][6];
 			}
 
-			$this->db->insert_batch('PROBAR', $data_excel);
+			$this->db->insert_batch('ESTUDIANTES', $data_excel);
 			@unlink($data['full_path']);
 			redirect('tablas/#estudiantes');
 			
 		}else
 		{
 			redirect('usuarios');
+		}
+		//redirect('tablas');
+		
+	}
+
+
+	public function import_doc() {
+		$config = array(
+			'upload_path'   => FCPATH.'uploads/',
+			'allowed_types' => 'pdf|doc|docx'
+		);
+
+		$this->load->library('upload', $config);
+		if ($this->upload->do_upload('file')) {
+			$data = $this->upload->data();
+			@chmod($data['full_path'], 0777);
+
+			redirect('horassociales');
+			
 		}
 		//redirect('tablas');
 		

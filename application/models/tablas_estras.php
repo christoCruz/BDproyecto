@@ -276,7 +276,6 @@
                 array('name'=>':vnomdocente','value'=>$data['nomdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapedocente','value'=>$data['apedocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vprofdocente','value'=>$data['profdocente'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vestdocente','value'=>$data['estdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtipocontrato','value'=>$data['tipocontrato'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcorreodocente','value'=>$data['correodocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vpassword','value'=>$id,'length'=>-1,'type'=>SQLT_CHR)
@@ -307,7 +306,6 @@
                 array('name'=>':vnomdocente','value'=>$data['nomdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapedocente','value'=>$data['apedocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vprofdocente','value'=>$data['profdocente'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vestdocente','value'=>$data['estdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtipocontrato','value'=>$data['tipocontrato'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcorreodocente','value'=>$data['correodocente'],'length'=>-1,'type'=>SQLT_CHR)
             );
@@ -389,6 +387,21 @@
             );
             $this->db->stored_procedure('package1','agregar_grupos',$parametro);
         }
+
+        function grupos_agregar($data){ 
+            $parametro=array(
+                array('name'=>':vidmateria','value'=>$data['idmateria'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vidcoordinador','value'=>$data['idcoordinador'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vcantcupos','value'=>$data['cantcupos'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vnumgrupo','value'=>$data['numgrupo'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vciclogrupo','value'=>$data['ciclogrupo'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vaniogrupo','value'=>$data['aniogrupo'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vestgrupo','value'=>'HABILITADO','length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':viddocente','value'=>$data['iddocente'],'length'=>-1,'type'=>SQLT_CHR)
+            );
+            $this->db->stored_procedure('package1','agregar_grupos',$parametro);
+           
+        }
         
         function mostrar_grupos(){
             $this->db->select("*");
@@ -420,6 +433,21 @@
             );
             $this->db->stored_procedure('package1','actualizar_grupos',$parametro);
         }
+
+        function grupos_actualizar($data,$id){
+            $parametro=array(
+                array('name'=>':vidgrupos','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vidmateria','value'=>$data['idmateria'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vidcoordinador','value'=>$data['idcoordinador'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vcantcupos','value'=>$data['cantcupos'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vnumgrupo','value'=>$data['numgrupo'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vciclogrupo','value'=>$data['ciclogrupo'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vaniogrupo','value'=>$data['aniogrupo'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vestgrupo','value'=>$data['estgrupo'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':viddocente','value'=>$data['iddocente'],'length'=>-1,'type'=>SQLT_CHR)
+            );
+            $this->db->stored_procedure('package1','actualizar_grupos',$parametro);
+        }
     
         function eliminar_grupos($id){
             $parametro=array(array('name'=>':vidgrupos','value'=>$id,'length'=>-1,'type'=>SQLT_CHR));
@@ -431,6 +459,8 @@
         ////////////
 
         function agregar_horarios_grupos($data){ 
+
+
             $parametro=array(
                 array('name'=>':vidgrupos','value'=>$data['idgrupos'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vidaula','value'=>$data['idaula'],'length'=>-1,'type'=>SQLT_CHR),
@@ -757,7 +787,7 @@
 
         function agregar_reportechoque($data){ 
             $parametro=array(
-                array('name'=>':viddocente','value'=>$data['iddocente'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vidcoordinador','value'=>$data['iddocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':videstudiante','value'=>$data['idestudiante'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcomentariochoque','value'=>$data['comentariochoque'],'length'=>-1,'type'=>SQLT_CHR)
             );
@@ -783,7 +813,7 @@
         function actualizar_reportechoque($data,$id){
             $parametro=array(
                 array('name'=>':vidchoque','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':viddocente','value'=>$data['iddocente'],'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vidcoodinador','value'=>$data['iddocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':videstudiante','value'=>$data['idestudiante'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vcomentariochoque','value'=>$data['comentariochoque'],'length'=>-1,'type'=>SQLT_CHR)
             );
@@ -856,6 +886,27 @@
                 $estado='R';
             }
             $this->db->query("UPDATE REGISTRO_ESTUDIANTE SET NOTAMATERIA=".$data['notamateria'].", ESTADOMATERIA='".$estado."' WHERE IDREGISTROESTU=".$id);
+        }
+
+        function docente_comentario($id){
+            $this->db->select("*");
+            $this->db->from("HORAS_SOCIALES");
+            $this->db->where("IDHORASSOCIALES",$id);
+            $resultados =$this->db->get();
+            return $resultados->row();
+        }
+
+        function actualizar_comentario($data,$id){
+            
+            $this->db->query("UPDATE HORAS_SOCIALES SET COMENTARIOPRO='".$data['comentario']."'WHERE IDHORASSOCIALES=".$id);
+        }
+
+        function estado_anteproyecto($id){
+            $this->db->query("UPDATE HORAS_SOCIALES SET ESTADOANTEPROYECTO= 'A' WHERE IDHORASSOCIALES=".$id);
+        }
+
+        function estado_proyecto($id){
+            $this->db->query("UPDATE HORAS_SOCIALES SET ESTADOPROYECTO= 'A' WHERE IDHORASSOCIALES=".$id);
         }
 
     }

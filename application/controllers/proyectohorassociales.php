@@ -14,7 +14,8 @@ class proyectohorassociales extends CI_Controller {
 			if($_SESSION['TipoUsuario'] == 'COORDINADOR'){
 				$data = array('planeacion' => '',
 				'historialplaneacion' => '',
-				'proyectohorassociales' => 'active'); 
+				'proyectohorassociales' => 'active',
+                'reportesdechoque'=>''); 
 
 				$this->load->view('menucoordinador',$data);
 				$this->load->view('proyectohorassociales');

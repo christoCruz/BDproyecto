@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class planeacion extends CI_Controller {
+class reportesdechoque extends CI_Controller {
 	function __construct(){
         parent::__construct();
 		$this->load->library('session');
@@ -12,13 +12,13 @@ class planeacion extends CI_Controller {
 		
 		if(isset($_SESSION['IdUsuario'])){
 			if($_SESSION['TipoUsuario'] == 'COORDINADOR'){
-				$data = array('planeacion' => 'active',
+				$data = array('planeacion' => '',
 				'historialplaneacion' => '',
 				'proyectohorassociales' => '',
-                'reportesdechoque'=>''); 
+                'reportesdechoque'=>'active'); 
 
 				$this->load->view('menucoordinador',$data);
-				$this->load->view('planeacion');
+				$this->load->view('reportesdechoque');
 				$this->load->view('footer');
 			}
 			

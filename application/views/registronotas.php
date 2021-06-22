@@ -118,8 +118,10 @@
     </style>
       <!-- End Navbar -->
 
-      
+      <div class="content">
       <?php
+      $var1=1;
+      $var2=100;
       $iddocente=$_SESSION['Nombre'];
       $queryiddocente= $this->db->query("SELECT * FROM DOCENTE WHERE CORREODOCENTE='".$iddocente."'");
       foreach ($queryiddocente->result() as $docente){
@@ -129,6 +131,41 @@
 
           $queryidmateria= $this->db->query("SELECT * FROM MATERIAS WHERE IDMATERIA='".$grupo->IDMATERIA."'");
           foreach ($queryidmateria->result() as $materia){
+            $number =1;
+            if($grupo->ESTADOGRUPO=="A" && $grupo->ESTGRUPO=="HABILITADO"){
+            ?>
+              
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3 class="description"><?php echo $materia->CODMATERIA." - ".$materia->NOMMATERIA?></h3>
+                    
+                  </div>
+                </div>
+              
+                  <section id="accion" class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h4 class="card-title"><?php echo ($grupo->CICLOGRUPO." - ".$grupo->ANIOGRUPO." - #".$grupo->NUMGRUPO); ?></h4>
+                          <div  class="card-body">
+                            <div id="scroll" class="table-responsive">
+                            <form>
+                                <input class="form-control" id="<?php echo $var2?>" type="text" onkeyup="doSearch(''+ <?php echo $var1 ?>+'',''+<?php echo $var2 ?> +'')"  placeholder="Buscar"/>
+                                <br>
+                            </form>
+                            
+                              <table class="table" id="<?php echo $var1?>">
+                                <thead class=" text-primary">
+                                  <th>#</th>
+                                  <th>CARNET</th>
+                                  <th>ESTUDIANTE</th>
+                                  <th>ESTADO</th>
+                                  <th>NOTA</th>
+                                  <th class="text-right">ACCION</th>
+                                </thead>
+                                <tbody>
+
+            <?php
 
             $queryidinscripcion= $this->db->query("SELECT * FROM INSCRIPCION WHERE IDGRUPOS='".$grupo->IDGRUPOS."'");
             foreach ($queryidinscripcion->result() as $inscripcion){
@@ -139,37 +176,9 @@
                 $queryidregistro= $this->db->query("SELECT * FROM REGISTRO_ESTUDIANTE WHERE IDINCRIPCION='".$inscripcion->IDINCRIPCION."'");
                 foreach ($queryidregistro->result() as $registro){
 
-                  $number =1;
+                  
       ?>
-            <div class="content">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h3 class="description"><?php echo $materia->CODMATERIA." - ".$materia->NOMMATERIA?></h3>
-                  </div>
-                </div>
-              </div>
-                  <section id="accion" class="row">
-                    <div class="col-md-12">
-                      <div class="card">
-                        <div class="card-header">
-                          <h4 class="card-title"><?php echo ($grupo->CICLOGRUPO." - ".$grupo->ANIOGRUPO." - #".$grupo->NUMGRUPO); ?></h4>
-                          <div  class="card-body">
-                            <div id="scroll" class="table-responsive">
-                            <form>
-                                <input class="form-control" id="reg" type="text" onkeyup="doSearch('data_table','reg')"  placeholder="Buscar"/>
-                                <br>
-                            </form>
-                            
-                              <table class="table" id="data_table">
-                                <thead class=" text-primary">
-                                  <th>#</th>
-                                  <th>CARNET</th>
-                                  <th>ESTUDIANTE</th>
-                                  <th>ESTADO</th>
-                                  <th>NOTA</th>
-                                  <th class="text-right">ACCION</th>
-                                </thead>
-                                <tbody>
+            
                                   
                                     <tr>
                                     <th scope="row"><?php echo $number++; ?></th>
@@ -183,7 +192,18 @@
                                         <td colspan="5"></td>
                                     </tr>
                                   
-                                </tbody>
+                                
+
+      <?php
+      $var1++;
+      $var2++;
+                  }
+                }
+            }
+
+          }
+?>
+          </tbody>
                               </table>
                               
                             </div>
@@ -191,17 +211,11 @@
                         </div>
                       </div>
                     </section>
-
-      <?php
-      
-                }
-            }
-
-          }
-
+<?php
         }
 
 
         }
       }
       ?>
+      </div>

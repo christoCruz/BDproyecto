@@ -26,8 +26,34 @@
           </div>
         </div>
       </nav>
+
+      
+      <style>
+      .btn-file {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+      }</style>
       <!-- End Navbar -->
 
+
+
+      <!-- End Navbar -->
+      <div class="content">
       <?php
       $iddocente=$_SESSION['Nombre'];
       $queryiddocente= $this->db->query("SELECT * FROM DOCENTE WHERE CORREODOCENTE='".$iddocente."'");
@@ -39,24 +65,20 @@
             $queryidestudiante= $this->db->query("SELECT * FROM ESTUDIANTES WHERE IDESTUDIANTE='".$horas->IDESTUDIANTE."'");
             foreach ($queryidestudiante->result() as $estudiante){
                 $number =1;
-                if($horas->ESTADOPROYECTO=='A'){
+                if($horas->ESTADOPROYECTO=='A' && $horas->ESTADOANTEPROYECTO!='A'){
 
     ?>
     
-            <div class="content">
+            
                   <section id="accion" class="row">
                     <div class="col-md-12">
                       <div class="card">
                         <div class="card-header">
-                          <h4 class="card-title"><?php echo ($estudiante->NOMESTUDIANTE." - ".$estudiante->APELESTUDIANTE); ?></h4>
+                          <h4 class="card-title"><?php echo ($estudiante->NOMESTUDIANTE." ".$estudiante->APELESTUDIANTE); ?></h4>
                           <div  class="card-body">
                             <div id="scroll" class="table-responsive">
-                            <form>
-                                <input class="form-control" id="reg" type="text" onkeyup="doSearch('data_table','reg')"  placeholder="Buscar"/>
-                                <br>
-                            </form>
                             
-                              <table class="table" id="data_table">
+                              <table class="table" id="soc">
                                 <thead class=" text-primary">
                                   <th>#</th>
                                   <th>PROYECTO</th>
@@ -72,15 +94,13 @@
                                     <th scope="row"><?php echo $number++; ?></th>
                                       <td><?php echo $horas->NOMPROYECTO; ?></td>
                                       <td><?php echo $horas->DURACIONPROYEC;?></td>
-                                      <td ><?php echo $horas->ANTEPROYECTO; ?></td>
+                                      <td><a class="btn btn-info btn-round btn-icon " title="Descargar Archivo" href="<?php echo base_url(); ?>uploads/<?php echo $horas->ANTEPROYECTO; ?>" download="<?php echo $horas->ANTEPROYECTO; ?>" ><i class="fa fa-download"></i> </a></td>
+                                      
                                       <td><?php echo $horas->ESTADOANTEPROYECTO; ?></td>
                                       <td><?php echo $horas->FECHASOCIALES; ?></td>
-                                      <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_re/<?php echo $horas->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
-                                      <a href="<?php echo base_url(); ?>tablas/seleccion_re/<?php echo $horas->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a></td>
+                                      <td class="text-right"><a href="<?php echo base_url(); ?>tablas/docente_comentario/<?php echo $horas->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-comment"></i></a>
+                                      <a href="<?php echo base_url(); ?>tablas/estado_anteproyecto/<?php echo $horas->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-check"></i></a></td>
 
-                                    <tr class='noSearch hide'>
-                                        <td colspan="5"></td>
-                                    </tr>
                                   
                                 </tbody>
                               </table>
@@ -90,6 +110,7 @@
                         </div>
                       </div>
                     </section>
+                  
     <?php
                 }
             }
@@ -99,5 +120,5 @@
       }
 
       ?>
-
+</div>
     

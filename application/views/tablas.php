@@ -715,12 +715,6 @@
                             <div class="row">
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
-                                  <label>Fecha de infreso del docente</label>
-                                  <input type="text" class="form-control" placeholder="Fecha" id="ingredocente" name="ingredocente">
-                                </div>
-                              </div>
-                              <div class="col-md-4 pr-1">
-                                <div class="form-group">
                                   <label>Correo</label>
                                   <input type="text" class="form-control" placeholder="correo" id="correodocente" name="correodocente">
                                 </div>
@@ -1392,12 +1386,6 @@
                                   <input type="text" class="form-control" placeholder="Id grupo" id="idgrupos" name="idgrupos">
                                 </div>
                               </div>
-                              <div class="col-md-4 px-1">
-                                <div class="form-group">
-                                  <label>Fecha de inscripcion</label>
-                                  <input type="text" class="form-control" placeholder="Fecha" id="fechainscrip" name="fechainscrip">
-                                </div>
-                              </div>
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -1866,8 +1854,8 @@
                             <div class="row">
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
-                                  <label>Id docente</label>
-                                  <input type="text" class="form-control" placeholder="id docente" id="iddocente" name="iddocente">
+                                  <label>Id Coordinador</label>
+                                  <input type="text" class="form-control" placeholder="Id coordinador" id="iddocente" name="iddocente">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -1906,7 +1894,7 @@
                       <th>#</th>
                       <th>ID CHOQUE</th>
                       <th>ID ESTUDIANTE</th>
-                      <th>IDDOCENTE</th>
+                      <th>ID COORDINADOR</th>
                       <th>FECHA</th>
                       <th>COMENTARIO</th>
                       <th class="text-right"> ACCIONES</th>
@@ -1917,7 +1905,7 @@
                           <th scope="row"><?php echo $number++; ?></th>
                           <td><?php echo $reportechoque->IDCHOQUE;?></td>
                           <td><?php echo $reportechoque->IDESTUDIANTE; ?></td>
-                          <td><?php echo $reportechoque->IDDOCENTE; ?></td>
+                          <td><?php echo $reportechoque->IDCOORDINADOR; ?></td>
                           <td><?php echo $reportechoque->FECHACHOQUE; ?></td>
                           <td><?php echo $reportechoque->COMENTARIOCHOQUE; ?></td>
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_reportechoque/<?php echo $reportechoque->IDCHOQUE; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>

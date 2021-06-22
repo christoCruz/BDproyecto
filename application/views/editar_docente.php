@@ -43,12 +43,6 @@
             <div class="row">
               <div class="col-md-4 pr-1">
                 <div class="form-group">
-                  <label>Fecha de infreso del docente</label>
-                  <input value="<?php echo $INGREDOCENTE; ?>" type="text" class="form-control" placeholder="Fecha" id="ingredocente" name="ingredocente">
-                </div>
-              </div>
-              <div class="col-md-4 pr-1">
-                <div class="form-group">
                   <label>Correo</label>
                   <input value="<?php echo $CORREODOCENTE; ?>" type="text" class="form-control" placeholder="correo" id="correodocente" name="correodocente">
                 </div>

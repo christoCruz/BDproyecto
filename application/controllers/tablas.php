@@ -385,12 +385,28 @@ class tablas extends CI_Controller {
       "ciclogrupo" =>$this->input->post("ciclogrupo"),
       "aniogrupo" =>$this->input->post("aniogrupo"),
       "estgrupo" =>$this->input->post("estgrupo"),
-      "iddcocente" =>$this->input->post("iddocente")
+      "iddocente" =>$this->input->post("iddocente")
 
     );
     $this->tablas_estras->agregar_grupos($datos);
     redirect(base_url()."tablas/#grupo");
   }
+
+  public function grupos_agregar(){
+    $datos = array(
+      "idmateria" =>$this->input->post("idmateria"),
+      "idcoordinador" =>$this->input->post("idcoordinador"),
+      "cantcupos" =>$this->input->post("cantcupos"),
+      "numgrupo" =>$this->input->post("numgrupo"),
+      "ciclogrupo" =>$this->input->post("ciclogrupo"),
+      "aniogrupo" =>$this->input->post("aniogrupo"),
+      "iddocente" =>$this->input->post("iddocente")
+
+    );
+    $this->tablas_estras->grupos_agregar($datos);
+    redirect(base_url()."");
+  }
+
 
   public function seleccion_grupos($dato){
     $valor=$this->tablas_estras->seleccion_grupos($dato);
@@ -404,6 +420,20 @@ class tablas extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+  public function grupos_seleccion($dato){
+    $valor=$this->tablas_estras->seleccion_grupos($dato);
+  
+    $data = array('planeacion' => 'active',
+				'historialplaneacion' => '',
+				'proyectohorassociales' => '',
+        'reportesdechoque'=>''); 
+
+		$this->load->view('menucoordinador',$data);
+		$this->load->view('planeacion');
+    $this->load->view('grupos_editar',$valor);
+		$this->load->view('footer');
+	}
+
   public function actualizar_grupos($id){
     $datos = array(
       "idmateria" =>$this->input->post("idmateria"),
@@ -413,16 +443,38 @@ class tablas extends CI_Controller {
       "ciclogrupo" =>$this->input->post("ciclogrupo"),
       "aniogrupo" =>$this->input->post("aniogrupo"),
       "estgrupo" =>$this->input->post("estgrupo"),
-      "iddcocente" =>$this->input->post("iddocente")
+      "iddocente" =>$this->input->post("iddocente")
     );
     $this->tablas_estras->actualizar_grupos($datos,$id);
     redirect(base_url()."tablas/#grupo");
+  }
+
+  public function grupos_actualizar($id){
+    $datos = array(
+      "idmateria" =>$this->input->post("idmateria"),
+      "idcoordinador" =>$this->input->post("idcoordinador"),
+      "cantcupos" =>$this->input->post("cantcupos"),
+      "numgrupo" =>$this->input->post("numgrupo"),
+      "ciclogrupo" =>$this->input->post("ciclogrupo"),
+      "aniogrupo" =>$this->input->post("aniogrupo"),
+      "estgrupo" =>$this->input->post("estgrupo"),
+      "iddocente" =>$this->input->post("iddocente")
+    );
+    $this->tablas_estras->grupos_actualizar($datos,$id);
+    redirect(base_url()."planeacion");
   }
 
   function eliminar_grupos($id){
     $this->tablas_estras->eliminar_grupos($id);
     redirect(base_url()."tablas/#grupo");
   }
+
+  function grupos_eliminar($id){
+    $this->tablas_estras->eliminar_grupos($id);
+    redirect(base_url()."planeacion");
+  }
+
+  
 
   ////////////
   //crud horarios_grupos
@@ -439,6 +491,37 @@ class tablas extends CI_Controller {
     redirect(base_url()."tablas/#horariosgrupos");
   }
 
+  public function horario_agregar(){
+    $datos = array(
+      "idgrupos" =>$this->input->post("idgrupos"),
+      "idaula" =>$this->input->post("idaula"),
+      "diahorario" =>$this->input->post("diahorario"),
+      "horashorario" =>$this->input->post("horashorario"),
+      "nivel" =>$this->input->post("nivel")
+    );
+
+    $queryid= $this->db->query("SELECT * FROM HORARIOS_GRUPOS");
+    $aux=0;
+    foreach ($queryid->result() as $gr){
+
+        if($gr->IDGRUPOS==$datos['idgrupos'] && $gr->IDAULA==$datos['idaula'] && $gr->DIAHORARIO==$datos['diahorario'] && $gr->HORASHORARIO==$datos['horashorario']  )
+        {
+          $aux=1;
+        }
+    }
+    if($aux==1){
+      $this->session->set_flashdata("success","El horario que desea ingresar ya existe");
+      redirect(base_url()."planeacion");
+    }else{
+      $this->tablas_estras->agregar_horarios_grupos($datos);
+      redirect(base_url()."planeacion");
+
+    }
+    
+    
+  }
+
+
   public function seleccion_horarios_grupos($dato){
     $valor=$this->tablas_estras->seleccion_horarios_grupos($dato);
     
@@ -448,6 +531,20 @@ class tablas extends CI_Controller {
 		$this->load->view('menuadmin',$data);
 		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_horarios_grupos',$valor);
+		$this->load->view('footer');
+	}
+
+  public function horario_seleccion($dato){
+    $valor=$this->tablas_estras->seleccion_horarios_grupos($dato);
+    
+    $data = array('planeacion' => 'active',
+				'historialplaneacion' => '',
+				'proyectohorassociales' => '',
+        'reportesdechoque'=>''); 
+
+		$this->load->view('menucoordinador',$data);
+		$this->load->view('planeacion');
+    $this->load->view('horario_editar',$valor);
 		$this->load->view('footer');
 	}
 
@@ -462,9 +559,25 @@ class tablas extends CI_Controller {
     redirect(base_url()."tablas/#horariosgrupos");
   }
 
+  public function horario_editar($id){
+    $datos = array(
+      "idgrupos" =>$this->input->post("idgrupos"),
+      "idaula" =>$this->input->post("idaula"),
+      "diahorario" =>$this->input->post("diahorario"),
+      "horashorario" =>$this->input->post("horashorario")
+    );
+    $this->tablas_estras->actualizar_horarios_grupos($datos,$id);
+    redirect(base_url()."planeacion");
+  }
+
   function eliminar_horarios_grupos($id){
     $this->tablas_estras->eliminar_horarios_grupos($id);
     redirect(base_url()."tablas/#horariosgrupos");
+  }
+
+  function horario_eliminar($id){
+    $this->tablas_estras->eliminar_horarios_grupos($id);
+    redirect(base_url()."planeacion");
   }
 
   ////////////
@@ -486,6 +599,35 @@ class tablas extends CI_Controller {
     redirect(base_url()."tablas/#horassociales");
   }
 
+  public function horas_agregar(){
+
+    $config = array(
+			'upload_path'   => FCPATH.'uploads/',
+			'allowed_types' => 'pdf|doc|docx'
+		);
+
+		$this->load->library('upload', $config);
+		if ($this->upload->do_upload('file')) {
+			$data = $this->upload->data();
+			@chmod($data['full_path'], 0777);
+
+			
+		}
+
+    $datos = array(
+      "idestudiante" =>$this->input->post("idestudiante"),
+      "iddocente" =>$this->input->post("iddocente"),
+      "nomproyecto" =>$this->input->post("nomproyecto"),
+      "duracionproyec" =>$this->input->post("duracionproyec"),
+      "estadoproyecto" =>'P',
+      "anteproyecto" =>$this->input->post("file"),
+      "estadoanteproyecto" =>'P',
+      "comentariopro" =>''
+    );
+    $this->tablas_estras->agregar_horas_sociales($datos);
+    redirect(base_url()."horassociales");
+  }
+
   public function seleccion_horas_sociales($dato){
     $valor=$this->tablas_estras->seleccion_horas_sociales($dato);
    
@@ -495,6 +637,20 @@ class tablas extends CI_Controller {
 		$this->load->view('menuadmin',$data);
 		$this->load->view('tablas',$this->retornoprueba());
     $this->load->view('editar_horas_sociales',$valor);
+		$this->load->view('footer');
+	}
+
+  public function horas_seleccion($dato){
+    $valor=$this->tablas_estras->seleccion_horas_sociales($dato);
+   
+    $data = array('inscripcion' => '',
+				'notas' => '',
+				'preinscripcion' => '',
+				'horassociales' => 'active'); 
+
+		$this->load->view('menuestudiante',$data);
+		$this->load->view('horassociales');
+    $this->load->view('social_editar',$valor);
 		$this->load->view('footer');
 	}
 
@@ -511,6 +667,21 @@ class tablas extends CI_Controller {
     );
     $this->tablas_estras->actualizar_horas_sociales($datos,$id);
     redirect(base_url()."tablas/#horassociales");
+  }
+
+  public function social_editar($id){
+    $datos = array(
+      "idestudiante" =>$this->input->post("idestudiante"),
+      "iddocente" =>$this->input->post("iddocente"),
+      "nomproyecto" =>$this->input->post("nomproyecto"),
+      "duracionproyec" =>$this->input->post("duracionproyec"),
+      "estadoproyecto" =>'P',
+      "anteproyecto" =>$this->input->post("file"),
+      "estadoanteproyecto" =>'P',
+      "comentariopro" =>''
+    );
+    $this->tablas_estras->actualizar_horas_sociales($datos,$id);
+    redirect(base_url()."horassociales");
   }
 
   function eliminar_horas_sociales($id){
@@ -782,6 +953,61 @@ class tablas extends CI_Controller {
     );
     $this->tablas_estras->actualizar_re($datos,$id);
     redirect(base_url()."registronotas");
+  }
+
+  
+
+  public function docente_comentario($dato){
+    $valor=$this->tablas_estras->docente_comentario($dato);
+   
+    $data = array('registronotas' => '',
+				'horariotrabajo' => '',
+				'docentesocial' => 'active'); 
+
+		$this->load->view('menudocente',$data);
+		$this->load->view('docentesocial');
+    $this->load->view('docente_comentario',$valor);
+		$this->load->view('footer');
+  }
+
+  public function actualizar_comentario($id){
+    $datos = array(
+      "comentario" =>$this->input->post("comentario")
+    );
+    $this->tablas_estras->actualizar_comentario($datos,$id);
+    redirect(base_url()."docentesocial");
+  }
+
+  function estado_anteproyecto($id){
+    $this->tablas_estras->estado_anteproyecto($id);
+    redirect(base_url()."docentesocial");
+  }
+
+  function estado_proyecto($id){
+    $this->tablas_estras->estado_proyecto($id);
+    redirect(base_url()."proyectohorassociales");
+  }
+
+  public function coordinador_comentario($dato){
+    $valor=$this->tablas_estras->docente_comentario($dato);
+   
+    $data = array('planeacion' => '',
+				'historialplaneacion' => '',
+				'proyectohorassociales' => 'active',
+        'reportesdechoque'=>''); 
+
+		$this->load->view('menucoordinador',$data);
+		$this->load->view('proyectohorassociales');
+    $this->load->view('coordinador_comentario',$valor);
+		$this->load->view('footer');
+  }
+
+  public function actualizar_comentarios($id){
+    $datos = array(
+      "comentario" =>$this->input->post("comentario")
+    );
+    $this->tablas_estras->actualizar_comentario($datos,$id);
+    redirect(base_url()."proyectohorassociales");
   }
   
 

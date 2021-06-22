@@ -114,9 +114,11 @@
         .hide {display:none;}
         .red {color:Red;}
     </style>
-
+    <div class="content">
       <!-- End Navbar -->
       <?php
+      $var1=1;
+      $var2=100;
       $iddocente=$_SESSION['Nombre'];
       $queryiddocente= $this->db->query("SELECT * FROM DOCENTE WHERE CORREODOCENTE='".$iddocente."'");
       foreach ($queryiddocente->result() as $docente){
@@ -134,19 +136,35 @@
                   $queryidcarrera= $this->db->query("SELECT * FROM CARRERA WHERE IDCARRERA='".$materia->IDCARRERA."'");
                   foreach ($queryidcarrera->result() as $carrera){
         ?>
-        <div class="content">
+        
                 <div class="row">
                   <div class="col-md-12">
                     <h3 class="description"><?php echo $carrera->NOMCARRERA?></h3>
                   </div>
                 </div>
-              </div>
+              
                   <section id="accion" class="row">
                     <div class="col-md-12">
                       <div class="card">
                         <div class="card-header">
                           <h4 class="card-title"><?php echo $materia->CODMATERIA." - ".$materia->NOMMATERIA?></h4>
                           <h4 class="card-title"><?php echo ($grupo->CICLOGRUPO." - ".$grupo->ANIOGRUPO); ?></h4>
+                          <div  class="card-body">
+                            <div id="scroll" class="table-responsive">
+                            <form>
+                                <input class="form-control" id="<?php echo $var2?>" type="text" onkeyup="doSearch(''+ <?php echo $var1 ?>+'',''+<?php echo $var2 ?> +'')"  placeholder="Buscar"/>
+                                <br>
+                            </form>
+                            
+                              <table class="table" id="<?php echo $var1?>">
+                                <thead class=" text-primary">
+                                  <th>#</th>
+                                  <th>GRUPO</th>
+                                  <th>DIA</th>
+                                  <th>HORA</th>
+                                  <th>AULA</th>
+                                </thead>
+                                <tbody>
                           
                           
         <?php
@@ -158,21 +176,7 @@
                        foreach ($queryaula->result() as $aula){
 
         ?>
-                <div  class="card-body">
-                <div id="scroll" class="table-responsive">
-                <form>
-                    <input class="form-control" id="hor" type="text" onkeyup="doSearch('rario','hor')"  placeholder="Buscar"/>
-                    <br>
-                </form>
-                  <table class="table" id="rario">
-                    <thead class=" text-primary">
-                      <th>#</th>
-                      <th>GRUPO</th>
-                      <th>DIA</th>
-                      <th>HORA</th>
-                      <th>AULA</th>
-                    </thead>
-                    <tbody>
+                
                       
                         <tr>
                          <th scope="row"><?php echo $number++; ?></th>
@@ -184,6 +188,16 @@
                             <td colspan="5"></td>
                         </tr>
                        
+                    
+
+        <?php
+        $var1++;
+        $var2++;
+                       }
+
+                    
+                    }
+?>
                     </tbody>
                   </table>
                 </div>
@@ -191,12 +205,8 @@
             </div>
           </div>
         </section>
+<?php
 
-        <?php
-                       }
-
-                    
-                    }
                   }
                 }
               }
@@ -206,4 +216,5 @@
       
 
       ?>
+      </div>
       
