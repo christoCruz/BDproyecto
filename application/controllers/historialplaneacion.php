@@ -16,7 +16,8 @@ class historialplaneacion extends CI_Controller {
 				$data = array('planeacion' => '',
 				'historialplaneacion' => 'active',
 				'proyectohorassociales' => '',
-                'reportesdechoque'=>''); 
+                'reportesdechoque'=>'',
+				'micuenta' => ''); 
 		
 				$this->load->view('menucoordinador',$data);
 				$this->load->view('historialplaneacion');

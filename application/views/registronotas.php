@@ -30,10 +30,10 @@
       </nav>
       <style>
       #scroll {
-          overflow:scroll;
-          height:27em;
+          overflow:auto;
+          max-height:27em;
           width:100%;
-        } 
+        }  
       </style>
       <style>
       .btn-file {
@@ -135,17 +135,12 @@
             if($grupo->ESTADOGRUPO=="A" && $grupo->ESTGRUPO=="HABILITADO"){
             ?>
               
-                <div class="row">
-                  <div class="col-md-12">
-                    <h3 class="description"><?php echo $materia->CODMATERIA." - ".$materia->NOMMATERIA?></h3>
-                    
-                  </div>
-                </div>
               
                   <section id="accion" class="row">
                     <div class="col-md-12">
                       <div class="card">
                         <div class="card-header">
+                        <h3 class="card-title"><?php echo $materia->CODMATERIA." - ".$materia->NOMMATERIA?></h3>
                           <h4 class="card-title"><?php echo ($grupo->CICLOGRUPO." - ".$grupo->ANIOGRUPO." - #".$grupo->NUMGRUPO); ?></h4>
                           <div  class="card-body">
                             <div id="scroll" class="table-responsive">

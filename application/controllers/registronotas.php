@@ -14,7 +14,8 @@ class registronotas extends CI_Controller {
 			if($_SESSION['TipoUsuario'] == 'DOCENTE'){
 				$data = array('registronotas' => 'active',
 				'horariotrabajo' => '',
-				'docentesocial' => ''); 
+				'docentesocial' => '',
+				'micuenta' => ''); 
 
 				$this->load->view('menudocente',$data);
 				$this->load->view('registronotas');

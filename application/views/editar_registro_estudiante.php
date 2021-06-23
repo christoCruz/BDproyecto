@@ -16,13 +16,37 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id inscripcion</label>
-                                  <input type="text" class="form-control" placeholder="id inscripcion" id="idincripcion" name="idincripcion" value="<?php echo $IDINCRIPCION; ?>">
+                                  <select  id="idincripcion" name="idincripcion" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Inscripcion --</option>
+                                    <?php
+                                       $queryri= $this->db->query("SELECT * FROM INSCRIPCION ");
+                                            foreach ($queryri->result() as $ri){
+                                                ?>
+                                        <option value="<?php echo $ri->IDINCRIPCION ?>"  <?php if($IDINCRIPCION==$ri->IDINCRIPCION){  echo 'selected="selected"';} ?>><?php echo $ri->IDINCRIPCION?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>estado de materia</label>
-                                  <input type="text" class="form-control" placeholder="estado de materia" id="estadomateria" name="estadomateria" value="<?php echo $ESTADOMATERIA; ?>">
+                                  <select id="estadomateria" name="estadomateria" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estado --</option>
+                                    <?php
+                                    
+                                      $esm = array(
+                                        1=> "A",
+                                        2=> "C",
+                                        3=> "R"
+                                      );
+                                      foreach($esm as $key => $h) { ?>
+                                        <option h="<?php echo $key ?>" <?php if($ESTADOMATERIA==$h){  echo 'selected="selected"';} ?>><?php echo $h ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">

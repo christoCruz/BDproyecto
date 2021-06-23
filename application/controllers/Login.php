@@ -11,7 +11,9 @@ class Login extends CI_Controller {
      
 	public function index()
 	{
-       $cont=0;
+        $this->session->intentos; 
+        
+       
         if(isset($_SESSION["IDUSUARIO"])){
             if($_SESSION["TIPOUSUAIRO"] == 'ADMIN'){
                 redirect('tablas');
@@ -39,6 +41,8 @@ class Login extends CI_Controller {
                 $this->session->EstadooUsuario= $obtenciondatos->ESTADOUSUARIO;
                 if($this->session->EstadooUsuario=='A')
                 {
+                    $_SESSION['intentos'] = $_SESSION['intentos']; 
+
                     if($this->session->TipoUsuario == 'ADMIN'){
                         redirect('tablas');
                     }
@@ -54,16 +58,32 @@ class Login extends CI_Controller {
                     elseif($this->session->TipoUsuario  == 'ESTUDIANTE'){
                         redirect('inscripcion');
                     }
+                }else{
+                    $this->session->set_flashdata("error","Su cuenta esta inhabilitada");
+                    redirect('Login');
+                    $_SESSION['intentos'] = 0; 
                 }
             }else{
-                $cont++;
-                if($cont =3){
+
+                
+                $_SESSION['intentos'] += 1; 
+                //$aux=$cont;
+
+                if($_SESSION['intentos'] >= 3){
                     if($this->login_model->errordecontra($_POST['usuario'])){
+                        
                         $this->login_model->update($_POST['usuario']);
-                        $cont=0;
+                        
+                        $_SESSION['intentos'] = 0; 
+                        //session_destroy();
+                        $this->session->set_flashdata("error","La cuenta ha sido inhabilitada");
+                        redirect('Login');
+                        
                     }
                 }
-                redirect('Login');                
+            
+                
+                                
             }
         }   
 		$this->load->view('login');

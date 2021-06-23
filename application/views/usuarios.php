@@ -28,8 +28,8 @@
       </nav>
       <style>
         #scroll {
-          overflow:scroll;
-          height:27em;
+          overflow:auto;
+          max-height:27em;
           width:100%;
         } 
       </style>

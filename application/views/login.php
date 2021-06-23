@@ -23,53 +23,58 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<style>
+    .center-block {
+        text-align: center;
+}
+</style>
+<body style="background-color:#f4f3ef;">
+    <div class="wrapper wrapper-full-page ">
+    
 
-    <div class="container-fluid ">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-sm-10 login-box">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-7 log-det">
-                            <div class="small-logo">
-                               LOGIN
-                            </div>
-                            <h3 style="text-align: center">UNIVERSIDAD DE EL SALVADOR</h3>
-                            <div class="row">
-                             
-                            </div>
-                            <form method="post" action="<?php echo base_url();?>Login" enctype="multipart/form-data">
-                            <div class="text-box-cont">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                    </div>
-                                    <input type="text" name="usuario" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
-                                </div>
-                                 <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                                    </div>
-                                    <input type="Password" name="contra" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
-                                </div>
-                                <div class="input-group center mb-3">
-                                    <input type="submit" class="btn btn-success btn-round" value="Ingresar">
-                                                          
-                                </div>    
-                            </div>
-                            </form>
-
-                        </div>
-                        <div class="col-lg-4 col-md-5 box-de">
-                            <div class="ditk-inf">
-                               <!--imagen de la minerva-->
-                            </div>
-                        </div>
-                    </div>
+    <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+    <div class="content">
+        <div class="container">
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+            <form method="post" action="<?php echo base_url();?>Login" enctype="multipart/form-data">
+              <div class="card card-login">
+                <div class="card-header ">
+                  <div class="card-header ">
+                    <h3 class="header text-center">Login</h3>
+                    <h4 class="header text-center">Univeridad de El Salvador</h4>
+                  </div>
                 </div>
-            </div>
+                <div class="card-body ">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-single-02"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="usuario" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-key-25"></i>
+                      </span>
+                    </div>
+                    <input type="Password" name="contra" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <br>
+                <div class="card-footer center-block ">
+                <input type="submit" class="btn btn-danger btn-round" value="Ingresar">
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-    </div>
+      </div>
+     </div>
+  </div>
     
 </body>
 
@@ -77,6 +82,22 @@
 <script src="<?php echo base_url(); ?>assets/extra/assets/js/popper.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/extra/assets/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/extra/assets/js/script.js"></script>
+<script>
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+<?php if($this->session->flashdata("error")): ?>  
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '<?php echo $this->session->flashdata("error"); ?>',
+            showConfirmButton: false,
+            timer: 3000
+    });
+    <?php endif;
+
+     ?>
+</script>
 
 
 </html>

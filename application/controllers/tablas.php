@@ -426,7 +426,8 @@ class tablas extends CI_Controller {
     $data = array('planeacion' => 'active',
 				'historialplaneacion' => '',
 				'proyectohorassociales' => '',
-        'reportesdechoque'=>''); 
+        'reportesdechoque'=>'',
+				'micuenta' => '');   
 
 		$this->load->view('menucoordinador',$data);
 		$this->load->view('planeacion');
@@ -508,9 +509,16 @@ class tablas extends CI_Controller {
         {
           $aux=1;
         }
+        if($gr->IDAULA==$datos['idaula'] && $gr->DIAHORARIO==$datos['diahorario'] && $gr->HORASHORARIO==$datos['horashorario']  )
+        {
+          $aux=2;
+        }
     }
     if($aux==1){
-      $this->session->set_flashdata("success","El horario que desea ingresar ya existe");
+      $this->session->set_flashdata("success","El horario que desea ingresar ya existe para este grupo");
+      redirect(base_url()."planeacion");
+    }else if($aux==2){
+      $this->session->set_flashdata("success","Aulla ocupada en el horario ingresado");
       redirect(base_url()."planeacion");
     }else{
       $this->tablas_estras->agregar_horarios_grupos($datos);
@@ -540,7 +548,8 @@ class tablas extends CI_Controller {
     $data = array('planeacion' => 'active',
 				'historialplaneacion' => '',
 				'proyectohorassociales' => '',
-        'reportesdechoque'=>''); 
+        'reportesdechoque'=>'',
+				'micuenta' => '');  
 
 		$this->load->view('menucoordinador',$data);
 		$this->load->view('planeacion');
@@ -939,7 +948,8 @@ class tablas extends CI_Controller {
    
     $data = array('registronotas' => 'active',
 				'horariotrabajo' => '',
-				'docentesocial' => ''); 
+				'docentesocial' => '',
+				'micuenta' => '');  
 
 		$this->load->view('menudocente',$data);
 		$this->load->view('registronotas');
@@ -962,7 +972,8 @@ class tablas extends CI_Controller {
    
     $data = array('registronotas' => '',
 				'horariotrabajo' => '',
-				'docentesocial' => 'active'); 
+				'docentesocial' => 'active',
+				'micuenta' => '');   
 
 		$this->load->view('menudocente',$data);
 		$this->load->view('docentesocial');
@@ -994,7 +1005,8 @@ class tablas extends CI_Controller {
     $data = array('planeacion' => '',
 				'historialplaneacion' => '',
 				'proyectohorassociales' => 'active',
-        'reportesdechoque'=>''); 
+        'reportesdechoque'=>'',
+				'micuenta' => '');  
 
 		$this->load->view('menucoordinador',$data);
 		$this->load->view('proyectohorassociales');

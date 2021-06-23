@@ -36,7 +36,21 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Tipo de contrato</label>
-                  <input value="<?php echo $TIPOCONTRATO; ?>" type="text" class="form-control" placeholder="tipo de contrato" id="tipocontrato" name="tipocontrato">
+                  <select id="tipocontrato" name="tipocontrato" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Tipo--</option>
+                                    <?php
+                                    
+                                      $tipo = array(
+                                        1=> "HORAS CLASE",
+                                        2=> "PLAZA"
+                                      );
+
+                                      foreach($tipo as $key => $d) { ?>
+                                        <option d="<?php echo $key ?>" <?php if($TIPOCONTRATO==$d){  echo 'selected="selected"';} ?>><?php echo $d ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
                 </div>
               </div>
             </div>

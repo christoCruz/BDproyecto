@@ -16,7 +16,17 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id estudiante</label>
-                                  <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante" value="<?php echo $IDESTUDIANTE; ?>">
+                                  <select  id="idestudiante" name="idestudiante" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estudiante --</option>
+                                    <?php
+                                       $queryhe= $this->db->query("SELECT * FROM ESTUDIANTES ");
+                                            foreach ($queryhe->result() as $he){
+                                                ?>
+                                        <option value="<?php echo $he->IDESTUDIANTE ?>" <?php if($IDESTUDIANTE==$he->IDESTUDIANTE){  echo 'selected="selected"';} ?> ><?php echo $he->NOMESTUDIANTE." ".$he->APELESTUDIANTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -36,7 +46,20 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Estado del proyecto</label>
-                                  <input type="text" class="form-control" placeholder="Estado del proyeto" id="estadoproyecto" name="estadoproyecto" value="<?php echo $ESTADOPROYECTO; ?>">
+                                  <select id="estadoproyecto" name="estadoproyecto" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>--  Estado Proyecto  --</option>
+                                    <?php
+                                    
+                                      $estp = array(
+                                        1=> "P",
+                                        2=> "A"
+                                      );
+                                      foreach($estp as $key => $h) { ?>
+                                        <option h="<?php echo $key ?>"<?php if($ESTADOPROYECTO==$h){  echo 'selected="selected"';} ?>><?php echo $h ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -48,7 +71,20 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Estado de ante proyecto</label>
-                                  <input type="text" class="form-control" placeholder="Estado ante-proyecto" id="estadoanteproyecto" name="estadoanteproyecto" value="<?php echo $ESTADOANTEPROYECTO; ?>">
+                                  <select id="estadoanteproyecto" name="estadoanteproyecto" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>--  Estado Anteproyecto  --</option>
+                                    <?php
+                                    
+                                      $estap = array(
+                                        1=> "P",
+                                        2=> "A"
+                                      );
+                                      foreach($estap as $key => $h) { ?>
+                                        <option h="<?php echo $key ?>"<?php if($ESTADOANTEPROYECTO==$h){  echo 'selected="selected"';} ?>><?php echo $h ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                             </div>

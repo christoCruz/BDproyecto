@@ -28,8 +28,8 @@
       </nav>
       <style>
         #scroll {
-          overflow:scroll;
-          height:27em;
+          overflow:auto;
+          max-height:27em;
           width:100%;
         } 
       </style>
@@ -117,6 +117,8 @@
 
       <!-- End Navbar -->
       <?php 
+      $var1=1;
+      $var2=100;
       $correo=$_SESSION['Nombre'];
       //$this->db->select("IDJEFE");
       //$this->db->from("JEFE");
@@ -125,6 +127,7 @@
       //$query=$this->db->get();
       foreach ($queryid->result() as $jefe)
       {
+        
               $idjefe = $jefe->IDJEFE; 
               $querydepartamento= $this->db->query("SELECT * FROM DEPARTAMENTO WHERE IDJEFE=".$idjefe."");
               foreach ($querydepartamento->result() as $depto)
@@ -138,7 +141,7 @@
                     <h3 class="description">Departamento de <?php echo $depto->NOMBREDEPTO?></h3>
                   </div>
                 </div>
-              </div>
+              
 
       <?php 
                   $querycarrera= $this->db->query("SELECT * FROM CARRERA WHERE IDDEPTO=".$depto->IDDEPTO."");
@@ -154,6 +157,25 @@
                         foreach ($querycoordinador->result() as $coordinador){
       ?>
                         <hr class="card-title">Coordinador: <?php echo $coordinador->NOMCOOR." ".$coordinador->APECOOR?></h3>
+                        <div  class="card-body">
+                          <div id="scroll" class="table-responsive">
+                          <form>
+                                <input class="form-control" id="<?php echo $var2?>" type="text" onkeyup="doSearch(''+ <?php echo $var1 ?>+'',''+<?php echo $var2 ?> +'')"  placeholder="Buscar"/>
+                                <br>
+                            </form>
+                            
+                              <table class="table" id="<?php echo $var1?>">
+                              <thead class=" text-primary">
+                                <th>#</th>
+                                <th>MATERIA</th>
+                                <th>DOCENTE</th>
+                                <th>N GRUPO</th>
+                                <th>CICLO</th>
+                                <th>CUPOS</th>
+                                <th>HORARIO</th>
+                                <th>AULA</th>
+                              </thead>
+                              <tbody>
       <?php
       $number =1;
                             $querymateria= $this->db->query("SELECT * FROM MATERIAS WHERE IDCARRERA=".$carrera->IDCARRERA."");
@@ -173,24 +195,7 @@
                                     foreach ($queryaula->result() as $aula){
       ?>
 </div>
-              <div  class="card-body">
-                <div id="scroll" class="table-responsive">
-                <form>
-                    <input class="form-control" id="planc" type="text" onkeyup="doSearch('pl','planc')"  placeholder="Buscar"/>
-                    <br>
-                </form>
-                  <table class="table" id="pl">
-                    <thead class=" text-primary">
-                      <th>#</th>
-                      <th>MATERIA</th>
-                      <th>DOCENTE</th>
-                      <th>N GRUPO</th>
-                      <th>CICLO</th>
-                      <th>CUPOS</th>
-                      <th>HORARIO</th>
-                      <th>AULA</th>
-                    </thead>
-                    <tbody>
+              
                       
                         <tr>
                          <th scope="row"><?php echo $number++; ?></th>
@@ -205,25 +210,41 @@
                             <td colspan="5"></td>
                         </tr>
                        
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+                    
 
     <?php
-                                  }  
+                                  }
+                                  $var1++;
+      $var2++;  
                                 }
 
                                 }
                               }
                             }
 
+                            
+
                             }
+                            ?>
+                            </tbody>
+                          </table>
+                        </div>
+
+                            <?php
                         }
+
+                        ?>
+              </div>
+            </div>
+          </div>
+        </section>
+                        <?php
                   }
+
+                  ?>
+                  </div>
+
+                  <?php
 
               }
 
@@ -231,7 +252,8 @@
       
        
        ?>
-      
+                    
+              
      
       
                 

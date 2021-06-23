@@ -28,8 +28,8 @@
       </nav>
       <style>
         #scroll {
-          overflow:scroll;
-          height:27em;
+          overflow:auto;
+          max-height:27em;
           width:100%;
         } 
       </style>
@@ -52,7 +52,11 @@
         background: white;
         cursor: inherit;
         display: block;
-      }</style>
+      }
+      #scrolll {
+          overflow:auto;
+          width:100%;
+        } </style>
       <!-- End Navbar -->
 
 
@@ -212,8 +216,8 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">Tabla Acciones</h4>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_accion">Agregar Accion</button>
-                <!-- Modal de Agregar -->
+                <!--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_accion"  >Agregar Accion</button>
+                 Modal de Agregar -->
                 <div class="modal fade bd-example-modal-lg" id="agregar_accion" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                       <div class="modal-content">
@@ -249,11 +253,7 @@
                 <!-- Fin de Modal -->
               </div>
               <div  class="card-body">
-                <div id="scroll" class="table-responsive">
-                <form>
-                    <input class="form-control" id="accionessv" type="text" onkeyup="doSearch('accionesv','accionessv')"  placeholder="Buscar"/>
-                    <br>
-                </form>
+                <div  id="scrolll" class="table-responsive">
                   <table class="table" id="accionesv">
                     <thead class=" text-primary">
                       <th>#</th>
@@ -270,7 +270,7 @@
                           <td><?php echo $acc->FECHAINICIO; ?></td>
                           <td><?php echo $acc->FECHAFINAL; ?></td>
                           <td class="text-right"><a href="<?php echo base_url(); ?>tablas/seleccion_accion/<?php echo $acc->IDACCION; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
-                          <a href="<?php echo base_url(); ?>tablas/eliminar_accion/<?php echo $acc->IDACCION; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a> </td>
+                          <!--<a href="<?php echo base_url(); ?>tablas/eliminar_accion/<?php echo $acc->IDACCION; ?>" class="btn btn-danger btn-round btn-icon" ><i class="fa fa-trash"></i></a>--> </td>
                         </tr>
                         <tr class='noSearch hide'>
                             <td colspan="5"></td>
@@ -390,7 +390,18 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id departamento</label>
-                                  <input type="text" class="form-control" placeholder="id departamento" id="iddepto" name="iddepto">
+                                  <select  id="iddepto" name="iddepto" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Departamento --</option>
+                                    <?php
+                                            $querydc= $this->db->query("SELECT * FROM DEPARTAMENTO ");
+                                            foreach ($querydc->result() as $dc){
+                                                ?>
+                                        <option value="<?php echo $dc->IDDEPTO ?>"  ><?php echo $dc->NOMBREDEPTO?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -494,7 +505,18 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id carrera</label>
-                                  <input type="text" class="form-control" placeholder="id carrera" id="idcarrera" name="idcarrera">
+                                  <select  id="idcarrera" name="idcarrera" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Carrera --</option>
+                                    <?php
+                                       $querycc= $this->db->query("SELECT * FROM CARRERA ");
+                                            foreach ($querycc->result() as $cc){
+                                                ?>
+                                        <option value="<?php echo $cc->IDCARRERA ?>"  ><?php echo $cc->NOMCARRERA?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -606,7 +628,17 @@
                               <div class="col-md-4">
                                 <div class="form-group">
                                   <label>Id jefe</label>
-                                  <input type="text" class="form-control" placeholder="Id jefe" id="idjefe" name="idjefe">
+                                  <select  id="idjefe" name="idjefe" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Jefe --</option>
+                                    <?php
+                                       $querydj= $this->db->query("SELECT * FROM JEFE ");
+                                            foreach ($querydj->result() as $dj){
+                                                ?>
+                                        <option value="<?php echo $dj->IDJEFE ?>"  ><?php echo $dj->NOMJEFE." ".$dj->APEJEFE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                             </div>
@@ -708,7 +740,22 @@
                               <div class="col-md-4">
                                 <div class="form-group">
                                   <label>Tipo de contrato</label>
-                                  <input type="text" class="form-control" placeholder="tipo de contrato" id="tipocontrato" name="tipocontrato">
+                                  <select id="tipocontrato" name="tipocontrato" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Tipo--</option>
+                                    <?php
+                                    
+                                      $tipo = array(
+                                        1=> "HORAS CLASE",
+                                        2=> "PLAZA"
+                                      );
+
+                                      foreach($tipo as $key => $d) { ?>
+                                        <option d="<?php echo $key ?>"><?php echo $d ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -722,7 +769,18 @@
                               <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Id departamento</label>
-                                  <input type="text" class="form-control" placeholder="Id departamento" id="iddepto" name="iddepto">
+                                  <select  id="iddepto" name="iddepto" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Departamento --</option>
+                                    <?php
+                                            $querydc= $this->db->query("SELECT * FROM DEPARTAMENTO ");
+                                            foreach ($querydc->result() as $dc){
+                                                ?>
+                                        <option value="<?php echo $dc->IDDEPTO ?>"  ><?php echo $dc->NOMBREDEPTO?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -824,7 +882,18 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id carrera</label>
-                                  <input type="text" class="form-control" placeholder="id carrera" id="idcarrera" name="idcarrera">
+                                  <select  id="idcarrera" name="idcarrera" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Carrera --</option>
+                                    <?php
+                                       $queryce= $this->db->query("SELECT * FROM CARRERA ");
+                                            foreach ($queryce->result() as $cc){
+                                                ?>
+                                        <option value="<?php echo $cc->IDCARRERA ?>"  ><?php echo $cc->NOMCARRERA?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -944,13 +1013,35 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id materia</label>
-                                  <input type="text" class="form-control" placeholder="id materia" id="idmateria" name="idmateria">
+                                  <select  id="idmateria" name="idmateria" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Materia --</option>
+                                    <?php
+                                       $querymg= $this->db->query("SELECT * FROM MATERIAS ");
+                                            foreach ($querymg->result() as $mg){
+                                                ?>
+                                        <option value="<?php echo $mg->IDMATERIA ?>"  ><?php echo $mg->NOMMATERIA?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id coordinador</label>
-                                  <input type="text" class="form-control" placeholder="id coordinador" id="idcoordinador" name="idcoordinador">
+                                  <select  id="idcoordinador" name="idcoordinador" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Coordinador --</option>
+                                    <?php
+                                       $querycg= $this->db->query("SELECT * FROM COORDINADOR ");
+                                            foreach ($querycg->result() as $cg){
+                                                ?>
+                                        <option value="<?php echo $cg->IDCOORDINADOR ?>"  ><?php echo $cg->NOMCOOR." ".$cg->APECOOR?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -972,7 +1063,22 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Ciclo del grupo</label>
-                                  <input type="text" class="form-control" placeholder="Ciclo grupo" id="ciclogrupo" name="ciclogrupo">
+                                  <select id="ciclogrupo" name="ciclogrupo" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Ciclo--</option>
+                                    <?php
+                                    
+                                      $ci = array(
+                                        1=> "CICLO 1",
+                                        2=> "CICLO 2"
+                                      );
+
+                                      foreach($ci as $key => $d) { ?>
+                                        <option d="<?php echo $key ?>"><?php echo $d ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -986,13 +1092,39 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Estado</label>
-                                  <input type="text" class="form-control" placeholder="Estado" id="estgrupo" name="estgrupo">
+                                  <select id="estgrupo" name="estgrupo" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estado--</option>
+                                    <?php
+                                    
+                                      $est = array(
+                                        1=> "HABILITADO",
+                                        2=> "DESHABILITADO"
+                                      );
+
+                                      foreach($est as $key => $d) { ?>
+                                        <option d="<?php echo $key ?>"><?php echo $d ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id Docente</label>
-                                  <input type="text" class="form-control" placeholder="Id docente" id="iddocente" name="iddocente">
+                                  <select  id="iddocente" name="iddocente" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Docente --</option>
+                                    <?php
+                                       $querydg= $this->db->query("SELECT * FROM DOCENTE ");
+                                            foreach ($querydg->result() as $dg){
+                                                ?>
+                                        <option value="<?php echo $dg->IDDOCENTE ?>"  ><?php echo $dg->NOMDOCENTE." ".$dg->APEDOCENTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -1135,25 +1267,85 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id grupo</label>
-                                  <input type="text" class="form-control" placeholder="Id de grupo" id="idgrupos" name="idgrupos">
+                                  <select  id="idgrupos" name="idgrupos" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Grupo --</option>
+                                    <?php
+                                       $querygh= $this->db->query("SELECT * FROM GRUPOS ");
+                                            foreach ($querygh->result() as $gh){
+                                                ?>
+                                        <option value="<?php echo $gh->IDGRUPOS ?>"  ><?php echo $gh->NUMGRUPO?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Dia</label>
-                                  <input type="text" class="form-control" placeholder="dia" id="diahorario" name="diahorario">
+                                  <select id="diahorario" name="diahorario" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Dia--</option>
+                                    <?php
+                                    
+                                      $dia = array(
+                                        1=> "L",
+                                        2=> "M",
+                                        3=> "X",
+                                        4=> "J",
+                                        5=> "V"
+                                      );
+
+                                      foreach($dia as $key => $d) { ?>
+                                        <option d="<?php echo $key ?>"><?php echo $d ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Hora</label>
-                                  <input type="text" class="form-control" placeholder="Hora" id="horashorario" name="horashorario">
+                                  <select id="horashorario" name="horashorario" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Hora --</option>
+                                    <?php
+                                    
+                                      $horas = array(
+                                        1=> "07:00 - 08:00",
+                                        2=> "08:00 - 09:00",
+                                        3=> "09:00 - 10:00",
+                                        4=> "10:00 - 11:00",
+                                        5=> "11:00 - 12:00",
+                                        6=> "13:00 - 14:00",
+                                        7=> "14:00 - 15:00",
+                                        8=> "15:00 - 16:00",
+                                        9=> "16:00 - 17:00",
+                                        10=> "17:00 - 18:00"
+                                      );
+                                      foreach($horas as $key => $h) { ?>
+                                        <option h="<?php echo $key ?>"><?php echo $h ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id aula</label>
-                                  <input type="text" class="form-control" placeholder="Id Aula" id="idaula" name="idaula">
+                                  <select  id="idaula" name="idaula" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Aula --</option>
+                                    <?php
+                                       $queryga= $this->db->query("SELECT * FROM AULAS ");
+                                            foreach ($queryga->result() as $ga){
+                                                ?>
+                                        <option value="<?php echo $ga->IDAULA ?>"  ><?php echo $ga->NUMAULA?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                             </div>
@@ -1237,7 +1429,17 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id estudiante</label>
-                                  <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante">
+                                  <select  id="idestudiante" name="idestudiante" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estudiante --</option>
+                                    <?php
+                                       $queryhe= $this->db->query("SELECT * FROM ESTUDIANTES ");
+                                            foreach ($queryhe->result() as $he){
+                                                ?>
+                                        <option value="<?php echo $he->IDESTUDIANTE ?>"  ><?php echo $he->NOMESTUDIANTE." ".$he->APELESTUDIANTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -1257,7 +1459,21 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Estado del proyecto</label>
-                                  <input type="text" class="form-control" placeholder="Estado del proyeto" id="estadoproyecto" name="estadoproyecto">
+                                  <select id="estadoproyecto" name="estadoproyecto" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>--  Estado Proyecto  --</option>
+                                    <?php
+                                    
+                                      $estp = array(
+                                        1=> "P",
+                                        2=> "A"
+                                      );
+                                      foreach($estp as $key => $h) { ?>
+                                        <option h="<?php echo $key ?>"><?php echo $h ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -1269,12 +1485,26 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Estado de ante proyecto</label>
-                                  <input type="text" class="form-control" placeholder="Estado ante-proyecto" id="estadoanteproyecto" name="estadoanteproyecto">
+                                  <select id="estadoanteproyecto" name="estadoanteproyecto" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>--  Estado Anteproyecto  --</option>
+                                    <?php
+                                    
+                                      $estap = array(
+                                        1=> "P",
+                                        2=> "A"
+                                      );
+                                      foreach($estap as $key => $h) { ?>
+                                        <option h="<?php echo $key ?>"><?php echo $h ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                             </div>
                             <div class="row">
-                              <div class="col-md-4 px-1">
+                              <div class="col-md-8 px-1">
                                 <div class="form-group">
                                   <label>Comentario</label>
                                   <input type="text" class="form-control" placeholder="Comentario" id="comentariopro" name="comentariopro">
@@ -1283,7 +1513,18 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id docente</label>
-                                  <input type="text" class="form-control" placeholder="Id docente" id="iddocente" name="iddocente">
+                                  <select  id="iddocente" name="iddocente" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Docente --</option>
+                                    <?php
+                                       $queryhd= $this->db->query("SELECT * FROM DOCENTE ");
+                                            foreach ($queryhd->result() as $hd){
+                                                ?>
+                                        <option value="<?php echo $hd->IDDOCENTE ?>"  ><?php echo $hd->NOMDOCENTE." ".$hd->APEDOCENTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               </div>
@@ -1377,13 +1618,35 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id estudiante</label>
-                                  <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante">
+                                  <select  id="idestudiante" name="idestudiante" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estudiante --</option>
+                                    <?php
+                                       $queryie= $this->db->query("SELECT * FROM ESTUDIANTES ");
+                                            foreach ($queryie->result() as $ie){
+                                                ?>
+                                        <option value="<?php echo $ie->IDESTUDIANTE ?>"  ><?php echo $ie->NOMESTUDIANTE." ".$ie->APELESTUDIANTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id grupos</label>
-                                  <input type="text" class="form-control" placeholder="Id grupo" id="idgrupos" name="idgrupos">
+                                  <select  id="idgrupos" name="idgrupos" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Grupo --</option>
+                                    <?php
+                                       $queryig= $this->db->query("SELECT * FROM GRUPOS ");
+                                            foreach ($queryig->result() as $ig){
+                                                ?>
+                                        <option value="<?php echo $ig->IDGRUPOS ?>"  ><?php echo $ig->NUMGRUPO?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -1586,7 +1849,18 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id carrera</label>
-                                  <input type="text" class="form-control" placeholder="id carrera" id="idcarrera" name="idcarrera">
+                                  <select  id="idcarrera" name="idcarrera" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Carrera --</option>
+                                    <?php
+                                       $querycm= $this->db->query("SELECT * FROM CARRERA ");
+                                            foreach ($querycm->result() as $cm){
+                                                ?>
+                                        <option value="<?php echo $cm->IDCARRERA ?>"  ><?php echo $cm->NOMCARRERA?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -1670,13 +1944,35 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id estudiante</label>
-                                  <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante">
+                                  <select  id="idestudiante" name="idestudiante" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estudiante --</option>
+                                    <?php
+                                       $querype= $this->db->query("SELECT * FROM ESTUDIANTES ");
+                                            foreach ($querype->result() as $pe){
+                                                ?>
+                                        <option value="<?php echo $pe->IDESTUDIANTE ?>"  ><?php echo $pe->NOMESTUDIANTE." ".$pe->APELESTUDIANTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id materia</label>
-                                  <input type="text" class="form-control" placeholder="id materia" id="idmateria" name="idmateria">
+                                  <select  id="idmateria" name="idmateria" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Materia --</option>
+                                    <?php
+                                       $querypm= $this->db->query("SELECT * FROM MATERIAS ");
+                                            foreach ($querypm->result() as $pm){
+                                                ?>
+                                        <option value="<?php echo $pm->IDMATERIA ?>"  ><?php echo $pm->NOMMATERIA?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -1758,13 +2054,38 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id inscripcion</label>
-                                  <input type="text" class="form-control" placeholder="id inscripcion" id="idincripcion" name="idincripcion">
+                                  <select  id="idincripcion" name="idincripcion" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Inscripcion --</option>
+                                    <?php
+                                       $queryri= $this->db->query("SELECT * FROM INSCRIPCION ");
+                                            foreach ($queryri->result() as $ri){
+                                                ?>
+                                        <option value="<?php echo $ri->IDINCRIPCION ?>"  ><?php echo $ri->IDINCRIPCION?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>estado de materia</label>
-                                  <input type="text" class="form-control" placeholder="estado de materia" id="estadomateria" name="estadomateria">
+                                  <select id="estadomateria" name="estadomateria" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estado --</option>
+                                    <?php
+                                    
+                                      $esm = array(
+                                        1=> "A",
+                                        2=> "C",
+                                        3=> "R"
+                                      );
+                                      foreach($esm as $key => $h) { ?>
+                                        <option h="<?php echo $key ?>"><?php echo $h ?></option>
+                                      <?php }
+                                        
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -1855,13 +2176,34 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id Coordinador</label>
-                                  <input type="text" class="form-control" placeholder="Id coordinador" id="iddocente" name="iddocente">
+                                  <select  id="iddocente" name="iddocente" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Coordinador --</option>
+                                    <?php
+                                       $querycch= $this->db->query("SELECT * FROM COORDINADOR ");
+                                            foreach ($querycch->result() as $cch){
+                                                ?>
+                                        <option value="<?php echo $cch->IDCOORDINADOR ?>"  ><?php echo $cch->NOMCOOR." ".$cch->APECOOR?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id estudiante</label>
-                                  <input type="text" class="form-control" placeholder="Id estudiante" id="idestudiante" name="idestudiante">
+                                  <select  id="idestudiante" name="idestudiante" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estudiante --</option>
+                                    <?php
+                                       $querypes= $this->db->query("SELECT * FROM ESTUDIANTES ");
+                                            foreach ($querypes->result() as $pe){
+                                                ?>
+                                        <option value="<?php echo $pe->IDESTUDIANTE ?>"  ><?php echo $pe->NOMESTUDIANTE." ".$pe->APELESTUDIANTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
+                                  
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">

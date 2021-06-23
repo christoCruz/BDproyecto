@@ -15,7 +15,8 @@ class preinscripcion extends CI_Controller {
 				$data = array('inscripcion' => '',
 				'notas' => '',
 				'preinscripcion' => 'active',
-				'horassociales' => ''); 
+				'horassociales' => '',
+				'micuenta' => ''); 
 
 				$this->load->view('menuestudiante',$data);
 				$this->load->view('preinscripcion');

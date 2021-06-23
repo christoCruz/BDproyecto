@@ -41,13 +41,13 @@ Coded by www.creative-tim.com
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <a class="simple-text logo-mini">
           <!-- <div class="logo-image-small">
             <img src="./assets/img/logo-small.png">
           </div> -->
           <!-- <p>CT</p> -->
         </a>
-        <a href="<?php echo base_url('sValor'); ?>" class="simple-text logo-normal">
+        <a  class="simple-text logo-normal">
           Estudiante
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -64,20 +64,26 @@ Coded by www.creative-tim.com
           </li>
           <li class="<?= $notas ?>">
             <a href="<?php echo base_url('notas'); ?>">
-              <i class="nc-icon nc-diamond"></i>
+              <i class="nc-icon nc-book-bookmark"></i>
               <p>Ver notas</p>
             </a>
           </li>
           <li class="<?= $preinscripcion ?>">
             <a href="<?php echo base_url('preinscripcion'); ?>">
-              <i class="nc-icon nc-pin-3"></i>
+              <i class="nc-icon nc-bookmark-2"></i>
               <p>Pre-inscripcion</p>
             </a>
           </li>
           <li class="<?= $horassociales ?>">
             <a href="<?php echo base_url('horassociales'); ?>">
-              <i class="nc-icon nc-pin-3"></i>
+              <i class="nc-icon nc-paper"></i>
               <p>Horas sociales</p>
+            </a>
+          </li>
+          <li class="<?= $micuenta ?>">
+            <a href="<?php echo base_url('micuenta'); ?>">
+              <i class="nc-icon nc-circle-10"></i>
+              <p>Mi cuenta</p>
             </a>
           </li>
         </ul>

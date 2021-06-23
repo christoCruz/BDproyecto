@@ -69,4 +69,37 @@ class usuarios extends CI_Controller {
     $this->tablas_estras->eliminar_usuario($id);
     redirect(base_url()."usuarios");
   }
+
+  public function usuario_actualizar($id){
+
+    
+    $datos = array(
+      "usuario" =>$this->input->post("usuario"),
+      "oldpassword" =>$this->input->post("oldpassword"),
+      "password" =>$this->input->post("password"),
+      "tipousuairo" =>$this->input->post("tipousuairo"),
+      "estadousuario" =>$this->input->post("estadousuario")
+    );
+
+    $queryid= $this->db->query("SELECT * FROM USUARIO WHERE IDUSUARIO=".$id);
+    $aux=0;
+    foreach ($queryid->result() as $gr){
+
+        if($gr->PASSWORD!=sha1($datos['oldpassword'] ))
+        {
+          $aux=1;
+        }
+    }
+    if($aux==1){
+      $this->session->set_flashdata("error","La contraseña anterior no coincide");
+      redirect(base_url()."micuenta");
+    }else{
+      $this->tablas_estras->actualizar_usuario($datos,$id);
+      $this->session->set_flashdata("success","La contraseña ha sido cambiada");
+      redirect(base_url()."micuenta");
+
+    }
+
+    
+  }
 }

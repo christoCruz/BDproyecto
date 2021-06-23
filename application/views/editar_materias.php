@@ -42,7 +42,17 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id carrera</label>
-                                  <input type="text" class="form-control" placeholder="id carrera" id="idcarrera" name="idcarrera" value="<?php echo $IDCARRERA; ?>">
+                                  <select  id="idcarrera" name="idcarrera" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Carrera --</option>
+                                    <?php
+                                       $querycm= $this->db->query("SELECT * FROM CARRERA ");
+                                            foreach ($querycm->result() as $cm){
+                                                ?>
+                                        <option value="<?php echo $cm->IDCARRERA ?>" <?php if($IDCARRERA==$cm->IDCARRERA){  echo 'selected="selected"';} ?> ><?php echo $cm->NOMCARRERA?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                             </div>

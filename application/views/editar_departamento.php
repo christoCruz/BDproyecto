@@ -23,7 +23,17 @@
               <div class="col-md-4 ">
                 <div class="form-group">
                   <label>Id jefe</label>
-                  <input type="text" class="form-control" placeholder="Id jefe" id="idjefe" name="idjefe" value="<?php echo $IDJEFE; ?>">
+                  <select  id="idjefe" name="idjefe" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Jefe --</option>
+                                    <?php
+                                       $querydj= $this->db->query("SELECT * FROM JEFE ");
+                                            foreach ($querydj->result() as $dj){
+                                                ?>
+                                        <option value="<?php echo $dj->IDJEFE ?>"  <?php if($IDJEFE==$dj->IDJEFE){  echo 'selected="selected"';} ?>><?php echo $dj->NOMJEFE." ".$dj->APEJEFE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                 </div>
               </div>
             </div>

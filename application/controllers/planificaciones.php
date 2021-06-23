@@ -12,7 +12,8 @@ class planificaciones extends CI_Controller {
 		
 		if(isset($_SESSION['IdUsuario'])){
 			if($_SESSION['TipoUsuario'] == 'JEFE'){
-				$data = array('planificaciones' => 'active'); 
+				$data = array('planificaciones' => 'active',
+				'micuenta' => ''); 
 
 				$this->load->view('menujefe',$data);
 				$this->load->view('planificaciones');

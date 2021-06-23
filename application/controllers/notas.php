@@ -15,7 +15,8 @@ class notas extends CI_Controller {
 				$data = array('inscripcion' => '',
 				'notas' => 'active',
 				'preinscripcion' => '',
-				'horassociales' => ''); 
+				'horassociales' => '',
+				'micuenta' => ''); 
 
 				$this->load->view('menuestudiante',$data);
 				$this->load->view('notas');

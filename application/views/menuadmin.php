@@ -41,13 +41,13 @@ Coded by www.creative-tim.com
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <a class="simple-text logo-mini">
           <!-- <div class="logo-image-small">
             <img src="./assets/img/logo-small.png">
           </div> -->
           <!-- <p>CT</p> -->
         </a>
-        <a href="<?php echo base_url('sValor'); ?>" class="simple-text logo-normal">
+        <a  class="simple-text logo-normal">
           Adminstrador
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -58,13 +58,13 @@ Coded by www.creative-tim.com
         <ul class="nav">
           <li class="<?= $tablas ?>">
             <a href="<?php echo base_url('tablas'); ?>">
-              <i class="nc-icon nc-bank"></i>
+              <i class="nc-icon nc-layout-11"></i>
               <p>Tablas</p>
             </a>
           </li>
           <li class="<?= $usuarios ?>">
             <a href="<?php echo base_url('usuarios'); ?>">
-              <i class="nc-icon nc-diamond"></i>
+              <i class="nc-icon nc-single-02"></i>
               <p>Usuarios</p>
             </a>
           </li>

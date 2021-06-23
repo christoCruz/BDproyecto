@@ -15,7 +15,8 @@ class horassociales extends CI_Controller {
 				$data = array('inscripcion' => '',
 				'notas' => '',
 				'preinscripcion' => '',
-				'horassociales' => 'active'); 
+				'horassociales' => 'active',
+				'micuenta' => ''); 
 
 				$this->load->view('menuestudiante',$data);
 				$this->load->view('horassociales');

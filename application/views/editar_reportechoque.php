@@ -16,13 +16,33 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id Coordinador</label>
-                                  <input type="text" class="form-control" placeholder="Id coordinador" id="iddocente" name="iddocente" value="<?php echo $IDCOORDINADOR; ?>">
+                                  <select  id="iddocente" name="iddocente" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Coordinador --</option>
+                                    <?php
+                                       $querycch= $this->db->query("SELECT * FROM COORDINADOR ");
+                                            foreach ($querycch->result() as $cch){
+                                                ?>
+                                        <option value="<?php echo $cch->IDCOORDINADOR ?>" <?php if($IDCOORDINADOR==$cch->IDCOORDINADOR){  echo 'selected="selected"';} ?> ><?php echo $cch->NOMCOOR." ".$cch->APECOOR?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id estudiante</label>
-                                  <input type="text" class="form-control" placeholder="Id estudiante" id="idestudiante" name="idestudiante" value="<?php echo $IDESTUDIANTE; ?>">
+                                  <select  id="idestudiante" name="idestudiante" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estudiante --</option>
+                                    <?php
+                                       $querypes= $this->db->query("SELECT * FROM ESTUDIANTES ");
+                                            foreach ($querypes->result() as $pe){
+                                                ?>
+                                        <option value="<?php echo $pe->IDESTUDIANTE ?>" <?php if($IDESTUDIANTE==$pe->IDESTUDIANTE){  echo 'selected="selected"';} ?> ><?php echo $pe->NOMESTUDIANTE." ".$pe->APELESTUDIANTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">

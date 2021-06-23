@@ -37,12 +37,105 @@
         </div>
       </nav>
       <!-- End Navbar -->
+<?php
+      $number=1;
+          $idestudiante=$_SESSION['Nombre'];
+          $queryidestudiante= $this->db->query("SELECT * FROM ESTUDIANTES WHERE CORREOESTU='".$idestudiante."'");
+          foreach ($queryidestudiante->result() as $estudiante){
 
-      
-      <div class="content">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="description">Your content here</h3>
+            $queryidcarrera= $this->db->query("SELECT * FROM CARRERA WHERE IDCARRERA='".$estudiante->IDCARRERA."'");
+            foreach ($queryidcarrera->result() as $carrera){
+
+              $queryidmateria= $this->db->query("SELECT * FROM MATERIAS WHERE IDCARRERA='".$carrera->IDCARRERA."'");
+              foreach ($queryidmateria->result() as $materia){
+
+                $queryidpre= $this->db->query("SELECT  *  FROM PREINSCRIPCION WHERE IDMATERIA='".$materia->IDMATERIA."'");
+                   // foreach ($queryidpre->result() as $pre){
+
+                  $queryidinscripcion= $this->db->query("SELECT * FROM INSCRIPCION WHERE IDESTUDIANTE='".$estudiante->IDCARRERA."'");
+                  foreach ($queryidinscripcion->result() as $inscripcion){
+
+                    
+
+                    $queryidregistro= $this->db->query("SELECT * FROM REGISTRO_ESTUDIANTE WHERE IDINCRIPCION='".$inscripcion->IDINCRIPCION."'");
+                    //foreach ($queryidregistro->result() as $registro){
+
+                      if($queryidregistro->num_rows=0){
+                        
+                          if($queryidpre->num_rows=0){
+
+                            if($materia->NIVELMATERIA=1){
+              
+
+    ?>
+
+              <div class="content">
+                <section id="accion" class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h2><?php echo $materia->IDMATERIA?></h2>
+                      
+                          
+
+                          </form>
+                        <div  class="card-body">
+                          <div id="scroll" class="table-responsive">
+                          
+                            <table class="table" id="yecto">
+                              <thead class=" text-primary">
+                                <th>#</th>
+                                <th>MATERIA</th>
+                                <th class="text-right">ACCION</th>
+                              </thead>
+                              <tbody>
+    <?php
+
+                //if($queryidregistro->num_rows=0){
+
+                  
+
+                      $queryidpre= $this->db->query("SELECT * FROM PREINSCRIPCION WHERE IDESTUDIANTE='".$estudiante->IDESTUDIANTE."' AND IDMATERIA=".$materia->IDMATERIA);
+                      
+
+                        if($queryidpre->num_rows=0){
+
+                        
+
+?>
+                    <th scope="row"><?php echo $number++; ?></th>
+                    <td><?php echo $materia->NOMMATERIA; ?></td>
+                    <td class="text-right"><a href="<?php echo base_url(); ?>tablas/horas_seleccion/<?php echo $horas->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+
+
+<?php
+                        
+                      //}
+                    }
+                  }
+                  }
+                }
+                ?>
+                </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+  </div>
+  <?php
+
+              
+
+              }}
+
+            }
+
+
+
+          }
+
+?>
+
+      

@@ -41,13 +41,13 @@ Coded by www.creative-tim.com
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <a class="simple-text logo-mini">
           <!-- <div class="logo-image-small">
             <img src="./assets/img/logo-small.png">
           </div> -->
           <!-- <p>CT</p> -->
         </a>
-        <a href="<?php echo base_url('sValor'); ?>" class="simple-text logo-normal">
+        <a  class="simple-text logo-normal">
           Coordinador
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -58,26 +58,32 @@ Coded by www.creative-tim.com
         <ul class="nav">
           <li class="<?= $planeacion ?>">
             <a href="<?php echo base_url('planeacion'); ?>">
-              <i class="nc-icon nc-bank"></i>
+              <i class="nc-icon nc-calendar-60"></i>
               <p>Planeacion de horarios</p>
             </a>
           </li>
           <li class="<?= $historialplaneacion ?>">
             <a href="<?php echo base_url('historialplaneacion'); ?>">
-              <i class="nc-icon nc-diamond"></i>
+              <i class="nc-icon nc-single-copy-04"></i>
               <p>Historial de planeaciones</p>
             </a>
           </li>
           <li class="<?= $proyectohorassociales ?>">
             <a href="<?php echo base_url('proyectohorassociales'); ?>">
-              <i class="nc-icon nc-pin-3"></i>
+              <i class="nc-icon nc-paper"></i>
               <p>Proyectos de horas sociales</p>
             </a>
           </li>
           <li class="<?= $reportesdechoque ?>">
             <a href="<?php echo base_url('reportesdechoque'); ?>">
-              <i class="nc-icon nc-pin-3"></i>
+              <i class="nc-icon nc-alert-circle-i"></i>
               <p>Reportes de choque</p>
+            </a>
+          </li>
+          <li class="<?= $micuenta ?>">
+            <a href="<?php echo base_url('micuenta'); ?>">
+              <i class="nc-icon nc-circle-10"></i>
+              <p>Mi cuenta</p>
             </a>
           </li>
         </ul>

@@ -16,13 +16,33 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id estudiante</label>
-                                  <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante" value="<?php echo $IDESTUDIANTE; ?>">
+                                  <select  id="idestudiante" name="idestudiante" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estudiante --</option>
+                                    <?php
+                                       $queryie= $this->db->query("SELECT * FROM ESTUDIANTES ");
+                                            foreach ($queryie->result() as $ie){
+                                                ?>
+                                        <option value="<?php echo $ie->IDESTUDIANTE ?>" <?php if($IDESTUDIANTE==$ie->IDESTUDIANTE){  echo 'selected="selected"';} ?> ><?php echo $ie->NOMESTUDIANTE." ".$ie->APELESTUDIANTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id grupos</label>
-                                  <input type="text" class="form-control" placeholder="Id grupo" id="idgrupos" name="idgrupos" value="<?php echo $IDGRUPOS; ?>">
+                                  <select  id="idgrupos" name="idgrupos" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Grupo --</option>
+                                    <?php
+                                       $queryig= $this->db->query("SELECT * FROM GRUPOS ");
+                                            foreach ($queryig->result() as $ig){
+                                                ?>
+                                        <option value="<?php echo $ig->IDGRUPOS ?>"<?php if($IDGRUPOS==$ig->IDGRUPOS){  echo 'selected="selected"';} ?>  ><?php echo $ig->NUMGRUPO?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                             </div>

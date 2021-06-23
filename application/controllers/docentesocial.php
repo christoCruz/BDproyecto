@@ -15,7 +15,8 @@ class docentesocial extends CI_Controller {
 			if($_SESSION['TipoUsuario'] == 'DOCENTE'){
 				$data = array('registronotas' => '',
 				'horariotrabajo' => '',
-				'docentesocial' => 'active'); 
+				'docentesocial' => 'active',
+				'micuenta' => ''); 
 
 				$this->load->view('menudocente',$data);
 				$this->load->view('docentesocial');

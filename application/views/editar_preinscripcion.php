@@ -16,13 +16,33 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Id estudiante</label>
-                                  <input type="text" class="form-control" placeholder="id estudiante" id="idestudiante" name="idestudiante" value="<?php echo $IDESTUDIANTE; ?>">
+                                  <select  id="idestudiante" name="idestudiante" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Estudiante --</option>
+                                    <?php
+                                       $querype= $this->db->query("SELECT * FROM ESTUDIANTES ");
+                                            foreach ($querype->result() as $pe){
+                                                ?>
+                                        <option value="<?php echo $pe->IDESTUDIANTE ?>" <?php if($IDESTUDIANTE==$pe->IDESTUDIANTE){  echo 'selected="selected"';} ?> ><?php echo $pe->NOMESTUDIANTE." ".$pe->APELESTUDIANTE?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id materia</label>
-                                  <input type="text" class="form-control" placeholder="id materia" id="idmateria" name="idmateria" value="<?php echo $IDMATERIA; ?>">
+                                  <select  id="idmateria" name="idmateria" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Materia --</option>
+                                    <?php
+                                       $querypm= $this->db->query("SELECT * FROM MATERIAS ");
+                                            foreach ($querypm->result() as $pm){
+                                                ?>
+                                        <option value="<?php echo $pm->IDMATERIA ?>" <?php if($IDMATERIA==$pm->IDMATERIA){  echo 'selected="selected"';} ?> ><?php echo $pm->NOMMATERIA?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                             </div>
