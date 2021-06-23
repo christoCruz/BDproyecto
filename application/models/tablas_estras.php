@@ -75,11 +75,11 @@
     
         function actualizar_accion($data,$id){
             $parametro=array(
-                array('name'=>':viaccion','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
+                array('name'=>':vidaccion','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vfechainicio','value'=>$data['fechainicio'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vfechafinal','value'=>$data['fechafinal'],'length'=>-1,'type'=>SQLT_CHR)
             );
-            $this->db->stored_procedure('package1','actualizar_accion',$parametro);
+            $this->db->stored_procedure('package1','atualizar_accion',$parametro);
         }
     
         function eliminar_accion($id){

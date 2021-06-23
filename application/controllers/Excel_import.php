@@ -44,6 +44,7 @@ class Excel_import extends CI_Controller {
 				$data_excel[$i - 1]['CARNETESTU']   = $sheets['cells'][$i][4];
 				$data_excel[$i - 1]['CORREOESTU']   = $sheets['cells'][$i][5];
 				$data_excel[$i - 1]['TELESTUDIANTE']   = $sheets['cells'][$i][6];
+				$data_excel[$i - 1]['ESTADOESTU']   = 'A';
 			}
 
 			$this->db->insert_batch('ESTUDIANTES', $data_excel);

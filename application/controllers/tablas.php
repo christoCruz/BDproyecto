@@ -427,6 +427,7 @@ class tablas extends CI_Controller {
 				'historialplaneacion' => '',
 				'proyectohorassociales' => '',
         'reportesdechoque'=>'',
+        'pensum'=>'',
 				'micuenta' => '');   
 
 		$this->load->view('menucoordinador',$data);
@@ -549,6 +550,7 @@ class tablas extends CI_Controller {
 				'historialplaneacion' => '',
 				'proyectohorassociales' => '',
         'reportesdechoque'=>'',
+        'pensum'=>'',
 				'micuenta' => '');  
 
 		$this->load->view('menucoordinador',$data);
@@ -655,7 +657,9 @@ class tablas extends CI_Controller {
     $data = array('inscripcion' => '',
 				'notas' => '',
 				'preinscripcion' => '',
-				'horassociales' => 'active'); 
+        'pensum'=>'',
+				'horassociales' => 'active',
+        'micuenta' =>''); 
 
 		$this->load->view('menuestudiante',$data);
 		$this->load->view('horassociales');
@@ -850,6 +854,21 @@ class tablas extends CI_Controller {
     
   }
 
+  public function inscripcion_agregar($var){
+    $idestudiante=$_SESSION['Nombre'];
+          $queryidestudiante= $this->db->query("SELECT * FROM ESTUDIANTES WHERE CORREOESTU='".$idestudiante."'");
+          foreach ($queryidestudiante->result() as $estudiante){
+            $datos = array(
+              "idgrupos" =>$var,
+              "idestudiante" =>$estudiante->IDESTUDIANTE
+            );
+            $this->tablas_estras->agregar_inscripcion($datos);
+            redirect(base_url()."inscripcion");
+          }
+    
+    
+  }
+
   public function seleccion_preinscripcion($dato){
     $valor=$this->tablas_estras->seleccion_preinscripcion($dato);
     
@@ -929,6 +948,34 @@ class tablas extends CI_Controller {
     );
     $this->tablas_estras->agregar_reportechoque($datos);
     redirect(base_url()."tablas/#reportechoque");
+  }
+
+  public function reportechoque_agregar($var){
+
+    $idestudiante=$_SESSION['Nombre'];
+
+      $queryidestudiante= $this->db->query("SELECT * FROM ESTUDIANTES WHERE CORREOESTU='".$idestudiante."'");
+      foreach ($queryidestudiante->result() as $estudiante){
+
+        $queryidgrupo= $this->db->query("SELECT * FROM GRUPOS WHERE IDGRUPOS='".$var."'");
+        foreach ($queryidgrupo->result() as $grupo){
+
+          $queryidmateria= $this->db->query("SELECT * FROM MATERIAS WHERE IDMATERIA='".$grupo->IDMATERIA."'");
+          foreach ($queryidmateria->result() as $materia){
+
+            $datos = array(
+              "iddocente" =>$grupo->IDCOORDINADOR,
+              "idestudiante" =>$estudiante->IDESTUDIANTE,
+              "comentariochoque" =>'Choque de materia '.$materia->NOMMATERIA.', grupo #'.$grupo->NUMGRUPO
+            );
+            $this->tablas_estras->agregar_reportechoque($datos);
+            redirect(base_url()."inscripcion");
+
+          }
+
+        }
+      }
+    
   }
 
   public function seleccion_reportechoque($dato){
@@ -1021,6 +1068,7 @@ class tablas extends CI_Controller {
 				'historialplaneacion' => '',
 				'proyectohorassociales' => 'active',
         'reportesdechoque'=>'',
+        'pensum'=>'',
 				'micuenta' => '');  
 
 		$this->load->view('menucoordinador',$data);

@@ -80,6 +80,12 @@ Coded by www.creative-tim.com
               <p>Reportes de choque</p>
             </a>
           </li>
+          <li class="<?= $pensum ?>">
+            <a href="<?php echo base_url('pensum'); ?>">
+              <i class="nc-icon nc-hat-3"></i>
+              <p>Pensum</p>
+            </a>
+          </li>
           <li class="<?= $micuenta ?>">
             <a href="<?php echo base_url('micuenta'); ?>">
               <i class="nc-icon nc-circle-10"></i>

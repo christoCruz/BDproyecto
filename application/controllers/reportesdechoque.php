@@ -16,6 +16,7 @@ class reportesdechoque extends CI_Controller {
 				'historialplaneacion' => '',
 				'proyectohorassociales' => '',
                 'reportesdechoque'=>'active',
+				'pensum'=>'',
 				'micuenta' => ''); 
 
 				$this->load->view('menucoordinador',$data);

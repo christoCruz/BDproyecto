@@ -101,10 +101,11 @@
                         
 
 ?>
+                    <tr>
                     <th scope="row"><?php echo $number++; ?></th>
                     <td><?php echo $consulta->NOMMATERIA; ?></td>
                     <td class="text-right"><a href="<?php echo base_url(); ?>tablas/preinscripcion_agregar/<?php echo $consulta->IDMATERIA; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-check"></i></a>
-
+                    </tr>
 
 <?php
             }

@@ -17,6 +17,7 @@ class inscripcion extends CI_Controller {
 				'notas' => '',
 				'preinscripcion' => '',
 				'horassociales' => '',
+				'pensum'=>'',
 				'micuenta' => ''); 
 
 				$this->load->view('menuestudiante',$data);

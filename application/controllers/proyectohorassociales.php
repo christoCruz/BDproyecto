@@ -16,6 +16,7 @@ class proyectohorassociales extends CI_Controller {
 				'historialplaneacion' => '',
 				'proyectohorassociales' => 'active',
                 'reportesdechoque'=>'',
+				'pensum'=>'',
 				'micuenta' => ''); 
 
 				$this->load->view('menucoordinador',$data);

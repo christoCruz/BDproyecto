@@ -16,6 +16,7 @@ class micuenta extends CI_Controller {
 				'notas' => '',
 				'preinscripcion' => '',
 				'horassociales' => '',
+				'pensum' => '',
 				'micuenta' => 'active'); 
 
 				$this->load->view('menuestudiante',$data);
@@ -27,6 +28,7 @@ class micuenta extends CI_Controller {
 				'historialplaneacion' => '',
 				'proyectohorassociales' => '',
                 'reportesdechoque'=>'',
+				'pensum' => '',
 				'micuenta' => 'active'); 
 		
 				$this->load->view('menucoordinador',$data);
