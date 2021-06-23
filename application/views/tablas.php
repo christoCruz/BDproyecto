@@ -441,7 +441,7 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Correo</label>
-                                  <input type="email" class="form-control" placeholder="correo" id="correocoor" name="correocoor">
+                                  <input type="email" pattern=".+@ues\.edu\.sv" class="form-control" placeholder="correo" id="correocoor" name="correocoor">
                                 </div>
                               </div>
                               <div class="col-md-4 ">
@@ -682,7 +682,7 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Correo</label>
-                                  <input type="email" class="form-control" placeholder="correo" id="correodocente" name="correodocente">
+                                  <input type="email" pattern=".+@ues\.edu\.sv" class="form-control" placeholder="correo" id="correodocente" name="correodocente">
                                 </div>
                               </div>
                               <div class="col-md-4 ">
@@ -838,7 +838,7 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Correo del estudiante</label>
-                                  <input type="email" class="form-control" placeholder="correo" id="correoestu" name="correoestu">
+                                  <input type="email" pattern=".+@ues\.edu\.sv" class="form-control" placeholder="correo" id="correoestu" name="correoestu">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">
@@ -1647,7 +1647,7 @@
                               <div class="col-md-4 pr-1">
                                 <div class="form-group">
                                   <label>Correo</label>
-                                  <input type="email" class="form-control" placeholder="Correo" id="correojefe" name="correojefe">
+                                  <input type="email" pattern=".+@ues\.edu\.sv" class="form-control" placeholder="Correo" id="correojefe" name="correojefe">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">

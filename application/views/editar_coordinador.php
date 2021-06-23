@@ -33,13 +33,13 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Correo</label>
-                                  <input type="text" class="form-control" placeholder="correo" id="correocoor" name="correocoor" value="<?php echo $CORREOCOOR; ?>">
+                                  <input type="email"   pattern=".+@ues\.edu\.sv" class="form-control" placeholder="correo" id="correocoor" name="correocoor" value="<?php echo $CORREOCOOR; ?>">
                                 </div>
                               </div>
                               <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Nombre coordinador</label>
-                                  <input type="email" class="form-control" placeholder="Nombre del coordinador" id="nomcoor" name="nomcoor" value="<?php echo $NOMCOOR; ?>">
+                                  <input type="text" class="form-control" placeholder="Nombre del coordinador" id="nomcoor" name="nomcoor" value="<?php echo $NOMCOOR; ?>">
                                 </div>
                               </div>
                               

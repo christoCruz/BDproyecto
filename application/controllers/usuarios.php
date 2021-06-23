@@ -69,7 +69,7 @@ class usuarios extends CI_Controller {
 
   function eliminar_usuario($id){
     $this->tablas_estras->eliminar_usuario($id);
-    $this->session->set_flashdata("error","se elimino correctamente");
+    $this->session->set_flashdata("success","se elimino correctamente");
     redirect(base_url()."usuarios");
   }
 
