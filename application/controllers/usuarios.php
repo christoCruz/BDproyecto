@@ -39,6 +39,7 @@ class usuarios extends CI_Controller {
       "estadousuario" =>$this->input->post("estadousuario")
     );
     $this->tablas_estras->agregar_usuario($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."usuarios");
   }
 
@@ -62,11 +63,13 @@ class usuarios extends CI_Controller {
       "estadousuario" =>$this->input->post("estadousuario")
     );
     $this->tablas_estras->actualizar_usuario($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."usuarios");
   }
 
   function eliminar_usuario($id){
     $this->tablas_estras->eliminar_usuario($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."usuarios");
   }
 

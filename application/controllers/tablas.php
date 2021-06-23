@@ -41,7 +41,7 @@ class tablas extends CI_Controller {
 
     $this->tablas_model->agregar($datos);
     
-    //$this->session->set_flashdata("success","se guardo los datos correctamente");
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas");
   }
 
@@ -84,6 +84,7 @@ class tablas extends CI_Controller {
       "fechafinal" =>$this->input->post("fechafinal")
     );
     $this->tablas_estras->agregar_accion($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#accion");
   }
 
@@ -105,11 +106,13 @@ class tablas extends CI_Controller {
       "fechafinal" =>$this->input->post("fechafinal")
     );
     $this->tablas_estras->actualizar_accion($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#accion");
   }
 
   function eliminar_accion($id){
     $this->tablas_estras->eliminar_accion($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#accion");
   }
 
@@ -123,6 +126,7 @@ class tablas extends CI_Controller {
       "numaula" =>$this->input->post("numaula")
     );
     $this->tablas_estras->agregar_aulas($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#aula");
   }
 
@@ -143,11 +147,13 @@ class tablas extends CI_Controller {
       "numaula" =>$this->input->post("numaula")
     );
     $this->tablas_estras->actualizar_aulas($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#aula");
   }
 
   function eliminar_aulas($id){
     $this->tablas_estras->eliminar_aulas($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#aula");
   }
 
@@ -163,6 +169,7 @@ class tablas extends CI_Controller {
       "nomcarrera" =>$this->input->post("nomcarrera")
     );
     $this->tablas_estras->agregar_carrera($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#carrera");
   }
 
@@ -186,11 +193,13 @@ class tablas extends CI_Controller {
       "nomcarrera" =>$this->input->post("nomcarrera")
     );
     $this->tablas_estras->actualizar_carrera($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#carrera");
   }
 
   function eliminar_carrera($id){
     $this->tablas_estras->eliminar_carrera($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#carrera");
   }
 
@@ -206,6 +215,7 @@ class tablas extends CI_Controller {
       "idcarrera" =>$this->input->post("idcarrera")
     );
     $this->tablas_estras->agregar_coordinador($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#coordinador");
   }
 
@@ -229,11 +239,13 @@ class tablas extends CI_Controller {
       "idcarrera" =>$this->input->post("idcarrera")
     );
     $this->tablas_estras->actualizar_coordinador($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#coordinador");
   }
 
   function eliminar_coordinador($id){
     $this->tablas_estras->eliminar_coordinador($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#coordinador");
   }
 
@@ -247,6 +259,7 @@ class tablas extends CI_Controller {
       "idjefe" =>$this->input->post("idjefe"),
     );
     $this->tablas_estras->agregar_departamento($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#departamento");
   }
 
@@ -268,11 +281,13 @@ class tablas extends CI_Controller {
       "idjefe" =>$this->input->post("idjefe"),
     );
     $this->tablas_estras->actualizar_departamento($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#departamento");
   }
 
   function eliminar_departamento($id){
     $this->tablas_estras->eliminar_departamento($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#departamento");
   }
 
@@ -291,6 +306,7 @@ class tablas extends CI_Controller {
     
     );
     $this->tablas_estras->agregar_docente($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#docente");
   }
 
@@ -317,11 +333,13 @@ class tablas extends CI_Controller {
       
     );
     $this->tablas_estras->actualizar_docente($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#docente");
   }
 
   function eliminar_docente($id){
     $this->tablas_estras->eliminar_docente($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#docente");
   }
 
@@ -339,6 +357,7 @@ class tablas extends CI_Controller {
       "telestudiante" =>$this->input->post("telestudiante")
     );
     $this->tablas_estras->agregar_estudiantes($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#estudiantes");
   }
 
@@ -364,11 +383,13 @@ class tablas extends CI_Controller {
       "telestudiante" =>$this->input->post("telestudiante")
     );
     $this->tablas_estras->actualizar_estudiantes($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#estudiantes");
   }
 
   function eliminar_estudiantes($id){
     $this->tablas_estras->eliminar_estudiantes($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#estudiantes");
   }
 
@@ -389,6 +410,7 @@ class tablas extends CI_Controller {
 
     );
     $this->tablas_estras->agregar_grupos($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#grupo");
   }
 
@@ -404,7 +426,8 @@ class tablas extends CI_Controller {
 
     );
     $this->tablas_estras->grupos_agregar($datos);
-    redirect(base_url()."");
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
+    redirect(base_url()."planeacion");
   }
 
 
@@ -463,6 +486,7 @@ class tablas extends CI_Controller {
       "iddocente" =>$this->input->post("iddocente")
     );
     $this->tablas_estras->grupos_actualizar($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."planeacion");
   }
 
@@ -473,6 +497,7 @@ class tablas extends CI_Controller {
 
   function grupos_eliminar($id){
     $this->tablas_estras->eliminar_grupos($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."planeacion");
   }
 
@@ -490,6 +515,7 @@ class tablas extends CI_Controller {
       "horashorario" =>$this->input->post("horashorario")
     );
     $this->tablas_estras->agregar_horarios_grupos($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#horariosgrupos");
   }
 
@@ -523,6 +549,7 @@ class tablas extends CI_Controller {
       redirect(base_url()."planeacion");
     }else{
       $this->tablas_estras->agregar_horarios_grupos($datos);
+      $this->session->set_flashdata("success","se ejcuto correctamente la accion");
       redirect(base_url()."planeacion");
 
     }
@@ -578,6 +605,7 @@ class tablas extends CI_Controller {
       "horashorario" =>$this->input->post("horashorario")
     );
     $this->tablas_estras->actualizar_horarios_grupos($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."planeacion");
   }
 
@@ -588,6 +616,7 @@ class tablas extends CI_Controller {
 
   function horario_eliminar($id){
     $this->tablas_estras->eliminar_horarios_grupos($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."planeacion");
   }
 
@@ -607,6 +636,7 @@ class tablas extends CI_Controller {
       "comentariopro" =>$this->input->post("comentariopro")
     );
     $this->tablas_estras->agregar_horas_sociales($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#horassociales");
   }
 
@@ -636,6 +666,7 @@ class tablas extends CI_Controller {
       "comentariopro" =>''
     );
     $this->tablas_estras->agregar_horas_sociales($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."horassociales");
   }
 
@@ -679,6 +710,7 @@ class tablas extends CI_Controller {
       "comentariopro" =>$this->input->post("comentariopro")
     );
     $this->tablas_estras->actualizar_horas_sociales($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#horassociales");
   }
 
@@ -694,11 +726,13 @@ class tablas extends CI_Controller {
       "comentariopro" =>''
     );
     $this->tablas_estras->actualizar_horas_sociales($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."horassociales");
   }
 
   function eliminar_horas_sociales($id){
     $this->tablas_estras->eliminar_horas_sociales($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#horassociales");
   }
 
@@ -713,6 +747,7 @@ class tablas extends CI_Controller {
      
     );
     $this->tablas_estras->agregar_inscripcion($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#inscripcion");
   }
 
@@ -734,11 +769,13 @@ class tablas extends CI_Controller {
       "idgrupos" =>$this->input->post("idgrupos")
     );
     $this->tablas_estras->actualizar_inscripcion($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#inscripcion");
   }
 
   function eliminar_inscripcion($id){
     $this->tablas_estras->eliminar_inscripcion($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#inscripcion");
   }
 
@@ -753,6 +790,7 @@ class tablas extends CI_Controller {
       "apejefe" =>$this->input->post("apejefe")
     );
     $this->tablas_estras->agregar_jefe($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#jefe");
   }
 
@@ -773,11 +811,13 @@ class tablas extends CI_Controller {
       "idgrupos" =>$this->input->post("idgrupos")
     );
     $this->tablas_estras->actualizar_jefe($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#jefe");
   }
 
   function eliminar_jefe($id){
     $this->tablas_estras->eliminar_jefe($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#jefe");
   }
 
@@ -794,6 +834,8 @@ class tablas extends CI_Controller {
       "requisito" =>$this->input->post("requisito")
     );
     $this->tablas_estras->agregar_materias($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
+
     redirect(base_url()."tablas/#materias");
   }
 
@@ -818,11 +860,14 @@ class tablas extends CI_Controller {
       "requisito" =>$this->input->post("requisito")
     );
     $this->tablas_estras->actualizar_materias($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
+
     redirect(base_url()."tablas/#materias");
   }
 
   function eliminar_materias($id){
     $this->tablas_estras->eliminar_materias($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#materias");
   }
 
@@ -836,6 +881,7 @@ class tablas extends CI_Controller {
       "idestudiante" =>$this->input->post("idestudiante")
     );
     $this->tablas_estras->agregar_preinscripcion($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#preinscripcion");
   }
 
@@ -848,6 +894,7 @@ class tablas extends CI_Controller {
               "idestudiante" =>$estudiante->IDESTUDIANTE
             );
             $this->tablas_estras->agregar_preinscripcion($datos);
+            $this->session->set_flashdata("success","se ejcuto correctamente la accion");
             redirect(base_url()."preinscripcion");
           }
     
@@ -863,6 +910,7 @@ class tablas extends CI_Controller {
               "idestudiante" =>$estudiante->IDESTUDIANTE
             );
             $this->tablas_estras->agregar_inscripcion($datos);
+            $this->session->set_flashdata("success","se ejcuto correctamente la accion");
             redirect(base_url()."inscripcion");
           }
     
@@ -887,11 +935,13 @@ class tablas extends CI_Controller {
       "idestudiante" =>$this->input->post("idestudiante")
     );
     $this->tablas_estras->actualizar_preinscripcion($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#preinscripcion");
   }
 
   function eliminar_preinscripcion($id){
     $this->tablas_estras->eliminar_preinscripcion($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#preinscripcion");
   }
 
@@ -906,6 +956,8 @@ class tablas extends CI_Controller {
       "notamateria" =>$this->input->post("notamateria")
     );
     $this->tablas_estras->agregar_registro_estudiante($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
+
     redirect(base_url()."tablas/#registroestudiante");
   }
 
@@ -928,11 +980,14 @@ class tablas extends CI_Controller {
       "notamateria" =>$this->input->post("notamateria")
     );
     $this->tablas_estras->actualizar_registro_estudiante($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
+
     redirect(base_url()."tablas/#registroestudiante");
   }
 
   function eliminar_registro_estudiante($id){
     $this->tablas_estras->eliminar_registro_estudiante($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#registroestudiante");
   }
 
@@ -947,6 +1002,7 @@ class tablas extends CI_Controller {
       "comentariochoque" =>$this->input->post("comentariochoque")
     );
     $this->tablas_estras->agregar_reportechoque($datos);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#reportechoque");
   }
 
@@ -969,6 +1025,7 @@ class tablas extends CI_Controller {
               "comentariochoque" =>'Choque de materia '.$materia->NOMMATERIA.', grupo #'.$grupo->NUMGRUPO
             );
             $this->tablas_estras->agregar_reportechoque($datos);
+            $this->session->set_flashdata("success","se ejcuto correctamente la accion");
             redirect(base_url()."inscripcion");
 
           }
@@ -997,11 +1054,13 @@ class tablas extends CI_Controller {
       "comentariochoque" =>$this->input->post("comentariochoque")
     );
     $this->tablas_estras->actualizar_reportechoque($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."tablas/#reportechoque");
   }
 
   function eliminar_reportechoque($id){
     $this->tablas_estras->eliminar_reportechoque($id);
+    $this->session->set_flashdata("error","se elimino correctamente");
     redirect(base_url()."tablas/#reportechoque");
   }
 
@@ -1024,6 +1083,7 @@ class tablas extends CI_Controller {
       "notamateria" =>$this->input->post("nota")
     );
     $this->tablas_estras->actualizar_re($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."registronotas");
   }
 
@@ -1048,16 +1108,19 @@ class tablas extends CI_Controller {
       "comentario" =>$this->input->post("comentario")
     );
     $this->tablas_estras->actualizar_comentario($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."docentesocial");
   }
 
   function estado_anteproyecto($id){
     $this->tablas_estras->estado_anteproyecto($id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."docentesocial");
   }
 
   function estado_proyecto($id){
     $this->tablas_estras->estado_proyecto($id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."proyectohorassociales");
   }
 
@@ -1082,6 +1145,7 @@ class tablas extends CI_Controller {
       "comentario" =>$this->input->post("comentario")
     );
     $this->tablas_estras->actualizar_comentario($datos,$id);
+    $this->session->set_flashdata("success","se ejcuto correctamente la accion");
     redirect(base_url()."proyectohorassociales");
   }
   
