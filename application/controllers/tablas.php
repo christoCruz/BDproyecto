@@ -835,6 +835,21 @@ class tablas extends CI_Controller {
     redirect(base_url()."tablas/#preinscripcion");
   }
 
+  public function preinscripcion_agregar($var){
+    $idestudiante=$_SESSION['Nombre'];
+          $queryidestudiante= $this->db->query("SELECT * FROM ESTUDIANTES WHERE CORREOESTU='".$idestudiante."'");
+          foreach ($queryidestudiante->result() as $estudiante){
+            $datos = array(
+              "idmateria" =>$var,
+              "idestudiante" =>$estudiante->IDESTUDIANTE
+            );
+            $this->tablas_estras->agregar_preinscripcion($datos);
+            redirect(base_url()."preinscripcion");
+          }
+    
+    
+  }
+
   public function seleccion_preinscripcion($dato){
     $valor=$this->tablas_estras->seleccion_preinscripcion($dato);
     

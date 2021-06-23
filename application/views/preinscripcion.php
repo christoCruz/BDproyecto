@@ -18,16 +18,6 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
             <ul class="navbar-nav">
               <li class="nav-item btn-rotate dropdown">
               <a class="btn btn-danger btn-round" href="<?php echo base_url('Login/salir'); ?>">Cerrar sesion</a>
@@ -37,45 +27,13 @@
         </div>
       </nav>
       <!-- End Navbar -->
-<?php
-      $number=1;
-          $idestudiante=$_SESSION['Nombre'];
-          $queryidestudiante= $this->db->query("SELECT * FROM ESTUDIANTES WHERE CORREOESTU='".$idestudiante."'");
-          foreach ($queryidestudiante->result() as $estudiante){
 
-            $queryidcarrera= $this->db->query("SELECT * FROM CARRERA WHERE IDCARRERA='".$estudiante->IDCARRERA."'");
-            foreach ($queryidcarrera->result() as $carrera){
-
-              $queryidmateria= $this->db->query("SELECT * FROM MATERIAS WHERE IDCARRERA='".$carrera->IDCARRERA."'");
-              foreach ($queryidmateria->result() as $materia){
-
-                $queryidpre= $this->db->query("SELECT  *  FROM PREINSCRIPCION WHERE IDMATERIA='".$materia->IDMATERIA."'");
-                   // foreach ($queryidpre->result() as $pre){
-
-                  $queryidinscripcion= $this->db->query("SELECT * FROM INSCRIPCION WHERE IDESTUDIANTE='".$estudiante->IDCARRERA."'");
-                  foreach ($queryidinscripcion->result() as $inscripcion){
-
-                    
-
-                    $queryidregistro= $this->db->query("SELECT * FROM REGISTRO_ESTUDIANTE WHERE IDINCRIPCION='".$inscripcion->IDINCRIPCION."'");
-                    //foreach ($queryidregistro->result() as $registro){
-
-                      if($queryidregistro->num_rows=0){
-                        
-                          if($queryidpre->num_rows=0){
-
-                            if($materia->NIVELMATERIA=1){
-              
-
-    ?>
-
-              <div class="content">
+      <div class="content">
                 <section id="accion" class="row">
                   <div class="col-md-12">
                     <div class="card">
                       <div class="card-header">
-                        <h2><?php echo $materia->IDMATERIA?></h2>
-                      
+                      <h4 class="card-title">Materias a Preinscribir</h4>
                           
 
                           </form>
@@ -89,32 +47,67 @@
                                 <th class="text-right">ACCION</th>
                               </thead>
                               <tbody>
+<?php
+      $number=1;
+          $idestudiante=$_SESSION['Nombre'];
+          $queryidestudiante= $this->db->query("SELECT * FROM ESTUDIANTES WHERE CORREOESTU='".$idestudiante."'");
+          foreach ($queryidestudiante->result() as $estudiante){
+
+            $queryidconsulta= $this->db->query("select nommateria,idmateria from materias natural join carrera natural join estudiantes where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE." and materias.idmateria not in (select idmateria from preinscripcion where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE.")
+            union
+            select nommateria,idmateria from materias natural join grupos natural join inscripcion where inscripcion.idincripcion in (select idincripcion from registro_estudiante where registro_estudiante.estadomateria='R' ) and inscripcion.idestudiante=".$estudiante->IDESTUDIANTE."");
+            foreach ($queryidconsulta->result() as $consulta){
+
+            
+
+           // $queryidcarrera= $this->db->query("SELECT * FROM CARRERA WHERE IDCARRERA='".$estudiante->IDCARRERA."'");
+           // foreach ($queryidcarrera->result() as $carrera){
+
+             // $queryidmateria= $this->db->query("SELECT * FROM MATERIAS WHERE IDCARRERA='".$carrera->IDCARRERA."'");
+             // foreach ($queryidmateria->result() as $materia){
+
+              //  $queryidpre= $this->db->query("SELECT  *  FROM PREINSCRIPCION WHERE IDMATERIA='".$materia->IDMATERIA."'");
+                   // foreach ($queryidpre->result() as $pre){
+
+                //  $queryidinscripcion= $this->db->query("SELECT * FROM INSCRIPCION WHERE IDESTUDIANTE='".$estudiante->IDCARRERA."'");
+                //  foreach ($queryidinscripcion->result() as $inscripcion){
+
+                    
+
+                   // $queryidregistro= $this->db->query("SELECT * FROM REGISTRO_ESTUDIANTE WHERE IDINCRIPCION='".$inscripcion->IDINCRIPCION."'");
+                    //foreach ($queryidregistro->result() as $registro){
+
+                      //if($queryidregistro->num_rows=0){
+                        
+                        //  if($queryidpre->num_rows=0){
+
+                          //  if($materia->NIVELMATERIA=1){
+              
+
+    ?>
+
+              
     <?php
 
                 //if($queryidregistro->num_rows=0){
 
                   
 
-                      $queryidpre= $this->db->query("SELECT * FROM PREINSCRIPCION WHERE IDESTUDIANTE='".$estudiante->IDESTUDIANTE."' AND IDMATERIA=".$materia->IDMATERIA);
+                     // $queryidpre= $this->db->query("SELECT * FROM PREINSCRIPCION WHERE IDESTUDIANTE='".$estudiante->IDESTUDIANTE."' AND IDMATERIA=".$materia->IDMATERIA);
                       
 
-                        if($queryidpre->num_rows=0){
+                        //if($queryidpre->num_rows=0){
 
                         
 
 ?>
                     <th scope="row"><?php echo $number++; ?></th>
-                    <td><?php echo $materia->NOMMATERIA; ?></td>
-                    <td class="text-right"><a href="<?php echo base_url(); ?>tablas/horas_seleccion/<?php echo $horas->IDHORASSOCIALES; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-edit"></i></a>
+                    <td><?php echo $consulta->NOMMATERIA; ?></td>
+                    <td class="text-right"><a href="<?php echo base_url(); ?>tablas/preinscripcion_agregar/<?php echo $consulta->IDMATERIA; ?>" class="btn btn-info btn-round btn-icon " ><i class="fa fa-check"></i></a>
 
 
 <?php
-                        
-                      //}
-                    }
-                  }
-                  }
-                }
+            }
                 ?>
                 </tbody>
                 </table>
@@ -123,19 +116,56 @@
           </div>
         </div>
       </section>
-  </div>
+
+      <section id="accion" class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+            <h4 class="card-title">Materias preinscritas</h4>
+                
+
+                </form>
+              <div  class="card-body">
+                <div id="scroll" class="table-responsive">
+                
+                  <table class="table" id="yecto">
+                    <thead class=" text-primary">
+                      <th>#</th>
+                      <th>MATERIA</th>
+                      <th>FECHA DE PREINSCRIPCION</th>
+                    </thead>
+                    <tbody>
+  
   <?php
 
+                 $queryidpre= $this->db->query("SELECT  *  FROM PREINSCRIPCION WHERE IDESTUDIANTE='".$estudiante->IDESTUDIANTE."'");
+                foreach ($queryidpre->result() as $pre){ 
+                     
+                    $queryidmateria= $this->db->query("SELECT * FROM MATERIAS WHERE IDMATERIA='".$pre->IDMATERIA."'");
+                    foreach ($queryidmateria->result() as $materia){
+
+                      ?>
+
+                    <th scope="row"><?php echo $number++; ?></th>
+                    <td><?php echo $materia->NOMMATERIA; ?></td>
+                    <td><?php echo $pre->FECHAPREINCRIPCION; ?></td>
+
+
+<?php
+
+
+
+                    }
+
+                  }
+
               
-
-              }}
-
-            }
-
-
 
           }
 
 ?>
+
+
+</div>
 
       
