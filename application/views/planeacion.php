@@ -584,15 +584,25 @@ $var1++;
                 <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-
-<?php if($this->session->flashdata("success")): ?>  
+<?php if($this->session->flashdata("error")): ?>  
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: '<?php echo $this->session->flashdata("success"); ?>',
+            text: '<?php echo $this->session->flashdata("error"); ?>',
             showConfirmButton: false,
-            timer: 5000
+            timer: 3000
     });
-    <?php endif; ?>
-</script>
+    <?php endif;
 
+ if($this->session->flashdata("success")): ?>  
+  Swal.fire({
+      icon: 'success',
+      title: 'Bien hecho!',
+      text: '<?php echo $this->session->flashdata("success"); ?>',
+      showConfirmButton: false,
+      timer: 3000
+});
+<?php endif;
+
+     ?>
+</script>
