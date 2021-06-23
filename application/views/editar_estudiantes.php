@@ -54,7 +54,7 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Correo del estudiante</label>
-                                  <input type="text" class="form-control" placeholder="correo" id="correoestu" name="correoestu" value="<?php echo $CORREOESTU; ?>">
+                                  <input type="email" class="form-control" placeholder="correo" id="correoestu" name="correoestu" value="<?php echo $CORREOESTU; ?>">
                                 </div>
                               </div>
                               <div class="col-md-4 px-1">

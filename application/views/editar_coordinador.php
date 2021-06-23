@@ -39,7 +39,7 @@
                               <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Nombre coordinador</label>
-                                  <input type="text" class="form-control" placeholder="Nombre del coordinador" id="nomcoor" name="nomcoor" value="<?php echo $NOMCOOR; ?>">
+                                  <input type="email" class="form-control" placeholder="Nombre del coordinador" id="nomcoor" name="nomcoor" value="<?php echo $NOMCOOR; ?>">
                                 </div>
                               </div>
                               
