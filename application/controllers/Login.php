@@ -11,7 +11,11 @@ class Login extends CI_Controller {
      
 	public function index()
 	{
-        $this->session->intentos; 
+        if( array_key_exists( 'intentos', $_SESSION ) ){
+            $_SESSION['intentos'] = $_SESSION['intentos'] + 1;
+        } else {
+            $_SESSION['intentos'] = 0;
+        }
         
        
         if(isset($_SESSION["IDUSUARIO"])){
@@ -31,6 +35,7 @@ class Login extends CI_Controller {
                 redirect('inscripcion');
             }
         }
+
         if(isset($_POST['contra'])){
             $contra= sha1($_POST['contra']);
             if($this->login_model->login($_POST['usuario'],$contra)){
@@ -59,32 +64,10 @@ class Login extends CI_Controller {
                         redirect('inscripcion');
                     }
                 }else{
-                    $this->session->set_flashdata("error","Su cuenta esta inhabilitada");
+                    $this->session->set_flashdata("error","Su cuenta esta inhabilitada por intentos fallidos");
                     redirect('Login');
-                    $_SESSION['intentos'] = 0; 
                 }
-            }else{
-
-                
-                $_SESSION['intentos'] += 1; 
-                //$aux=$cont;
-
-                if($_SESSION['intentos'] >= 3){
-                    if($this->login_model->errordecontra($_POST['usuario'])){
-                        
-                        $this->login_model->update($_POST['usuario']);
-                        
-                        $_SESSION['intentos'] = 0; 
-                        //session_destroy();
-                        $this->session->set_flashdata("error","La cuenta ha sido inhabilitada");
-                        redirect('Login');
-                        
-                    }
-                }
-            
-                
-                                
-            }
+            }$this->session->set_flashdata("error","Datos incorectos");
         }   
 		$this->load->view('login');
     }

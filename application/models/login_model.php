@@ -11,10 +11,30 @@ class login_model extends CI_Model{
         $this->db->where('PASSWORD',$passwor);
         $q = $this->db->get('USUARIO');
         if($q->num_rows() > 0){
-            
+            $this->db->query("UPDATE USUARIO SET INTENTOS=0 WHERE USUARIO='".$username."'");
             return true;
         }else{
-            return false;
+            $usuarioquery=$this->db->query("SELECT INTENTOS FROM USUARIO WHERE USUARIO='".$username."'");
+            if($usuarioquery->num_rows()>0){
+                foreach ($usuarioquery->result() as $intento){
+
+                if($intento->INTENTOS==0){
+                    $this->db->query("UPDATE USUARIO SET INTENTOS=1 WHERE USUARIO='".$username."'");
+                    return false;
+                }
+                if($intento->INTENTOS==1){
+                    $this->db->query("UPDATE USUARIO SET INTENTOS=2 WHERE USUARIO='".$username."'");
+                    return false;
+                }
+                if($intento->INTENTOS==2){
+                    $this->db->query("UPDATE USUARIO SET INTENTOS=3, ESTADOUSUARIO='I' WHERE USUARIO='".$username."'");
+                    return false;
+                }
+            }
+            }
+            
+
+
         }
     }
 

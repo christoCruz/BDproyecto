@@ -47,7 +47,8 @@ class micuenta extends CI_Controller {
 			}
             if($_SESSION['TipoUsuario'] == 'JEFE'){
 				$data = array('planificaciones' => '',
-				'micuenta' => 'active'); 
+				'micuenta' => 'active',
+				'estadisticas'=>''); 
 
 				$this->load->view('menujefe',$data);
 				$this->load->view('micuenta');

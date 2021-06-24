@@ -54,7 +54,7 @@
                         <i class="nc-icon nc-single-02"></i>
                       </span>
                     </div>
-                    <input type="email" name="usuario" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="email" name="usuario" pattern=".+@ues\.edu\.sv" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
                   </div>
                   <div class="input-group">
                     <div class="input-group-prepend">

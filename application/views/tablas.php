@@ -217,6 +217,7 @@
               <div class="card-header">
                 <h4 class="card-title">Tabla Aula</h4>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar_aula">Agregar aula</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#vermapa">Consultar mapa</button>
                 <!-- Modal de Agregar -->
                 <div class="modal fade bd-example-modal-lg" id="agregar_aula" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
@@ -241,6 +242,15 @@
                             </div>
                           </div>
                         <?php echo form_close()?>
+                      </div>
+                    </div>
+                </div>
+                <!-- Fin de Modal -->
+                <!-- Modal de Agregar -->
+                <div class="modal fade bd-example-modal-lg" id="vermapa" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                      <img src='https://uca.edu.sv/wp-content/uploads/2016/06/mapa-campus-uca.jpg'>
                       </div>
                     </div>
                 </div>

@@ -62,6 +62,12 @@ Coded by www.creative-tim.com
               <p>Ver planificaciones</p>
             </a>
           </li>
+          <li class="<?= $estadisticas ?>">
+            <a href="<?php echo base_url('estadisticas'); ?>">
+              <i class="nc-icon nc-chart-bar-32"></i>
+              <p>Estadisticas de horas sociales</p>
+            </a>
+          </li>
           <li class="<?= $micuenta ?>">
             <a href="<?php echo base_url('micuenta'); ?>">
               <i class="nc-icon nc-circle-10"></i>
