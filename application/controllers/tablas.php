@@ -209,7 +209,6 @@ class tablas extends CI_Controller {
 
   public function agregar_coordinador(){
     $datos = array(
-      "correocoor" =>$this->input->post("correocoor"),
       "nomcoor" =>$this->input->post("nomcoor"),
       "apecoor" =>$this->input->post("apecoor"),
       "idcarrera" =>$this->input->post("idcarrera")
@@ -301,8 +300,7 @@ class tablas extends CI_Controller {
       "nomdocente" =>$this->input->post("nomdocente"),
       "apedocente" =>$this->input->post("apedocente"),
       "profdocente" =>$this->input->post("profdocente"),
-      "tipocontrato" =>$this->input->post("tipocontrato"),
-      "correodocente" =>$this->input->post("correodocente")
+      "tipocontrato" =>$this->input->post("tipocontrato")
     
     );
     $this->tablas_estras->agregar_docente($datos);
@@ -352,8 +350,6 @@ class tablas extends CI_Controller {
       "idcarrera" =>$this->input->post("idcarrera"),
       "nomestudiante" =>$this->input->post("nomestudiante"),
       "apelestudiante" =>$this->input->post("apelestudiante"),
-      "carnetestu" =>$this->input->post("carnetestu"),
-      "correoestu" =>$this->input->post("correoestu"),
       "telestudiante" =>$this->input->post("telestudiante")
     );
     $this->tablas_estras->agregar_estudiantes($datos);
@@ -785,7 +781,6 @@ class tablas extends CI_Controller {
 //crear las funciones respectivas en los modales tabla_estas
   public function agregar_jefe(){
     $datos = array(
-      "correojefe" =>$this->input->post("correojefe"),
       "nomjefe" =>$this->input->post("nomjefe"),
       "apejefe" =>$this->input->post("apejefe")
     );
@@ -808,7 +803,9 @@ class tablas extends CI_Controller {
 
   public function actualizar_jefe($id){
     $datos = array(
-      "idgrupos" =>$this->input->post("idgrupos")
+      "correojefe" =>$this->input->post("correojefe"),
+      "nomjefe" =>$this->input->post("nomjefe"),
+      "apejefe" =>$this->input->post("apejefe")
     );
     $this->tablas_estras->actualizar_jefe($datos,$id);
     $this->session->set_flashdata("success","se ejcuto correctamente la accion");

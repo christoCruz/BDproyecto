@@ -82,7 +82,17 @@
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Id aula</label>
-                                  <input type="text" class="form-control" placeholder="Id Aula" id="idaula" name="idaula" value="<?php echo $IDAULA; ?>">
+                                  <select  id="idaula" name="idaula" class="form-control  " aria-label="Default select example">
+                                    <option disabled selected>-- Seleccionar Aula --</option>
+                                    <?php
+                                       $queryga= $this->db->query("SELECT * FROM AULAS ");
+                                            foreach ($queryga->result() as $ga){
+                                                ?>
+                                        <option value="<?php echo $ga->IDAULA ?>"<?php if($IDAULA==$ga->IDAULA){  echo 'selected="selected"';} ?>  ><?php echo $ga->NUMAULA?></option>
+                                        <?php
+                                            }
+                                    ?>  
+                                  </select>
                                 </div>
                               </div>
                             </div>

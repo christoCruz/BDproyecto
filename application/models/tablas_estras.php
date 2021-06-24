@@ -210,7 +210,6 @@
             $parametro=array(
                 array('name'=>':vidcoordinador','value'=>$id,'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vidcarrera','value'=>$data['idcarrera'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vcorreocoor','value'=>$data['correocoor'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vnomcoor','value'=>$data['nomcoor'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapecoor','value'=>$data['apecoor'],'length'=>-1,'type'=>SQLT_CHR)
             );
@@ -277,7 +276,6 @@
                 array('name'=>':vapedocente','value'=>$data['apedocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vprofdocente','value'=>$data['profdocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtipocontrato','value'=>$data['tipocontrato'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vcorreodocente','value'=>$data['correodocente'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vpassword','value'=>$id,'length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_docente',$parametro);
@@ -328,8 +326,6 @@
                 array('name'=>':vidcarrera','value'=>$data['idcarrera'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vnomestudiante','value'=>$data['nomestudiante'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapelestudiante','value'=>$data['apelestudiante'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vcarnetestu','value'=>$data['carnetestu'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vcorreoestu','value'=>$data['correoestu'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vtelestudiante','value'=>$data['telestudiante'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vpassword','value'=>$id,'length'=>-1,'type'=>SQLT_CHR)
             );
@@ -608,7 +604,6 @@
             $parametro=array(
                 array('name'=>':vnomjefe','value'=>$data['nomjefe'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vapejefe','value'=>$data['apejefe'],'length'=>-1,'type'=>SQLT_CHR),
-                array('name'=>':vcorreojefe','value'=>$data['correojefe'],'length'=>-1,'type'=>SQLT_CHR),
                 array('name'=>':vpassword','value'=>$id,'length'=>-1,'type'=>SQLT_CHR)
             );
             $this->db->stored_procedure('package1','agregar_jefe',$parametro);

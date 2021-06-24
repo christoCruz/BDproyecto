@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-md-4 pr-1">
                 <div class="form-group">
-                  <label>proefesion del docente</label>
+                  <label>Profesion del docente</label>
                   <input value="<?php echo $PROFDOCENTE; ?>" type="text" class="form-control" placeholder="profesion" id="profdocente" name="profdocente">
                 </div>
               </div>
@@ -64,7 +64,17 @@
               <div class="col-md-4 ">
                 <div class="form-group">
                   <label>Id departamento</label>
-                  <input value="<?php echo $IDDEPTO; ?>" type="text" class="form-control" placeholder="Id departamento" id="iddepto" name="iddepto">
+                    <select  id="iddepto" name="iddepto" class="form-control  " aria-label="Default select example">
+                      <option disabled selected>-- Seleccionar Departamento --</option>
+                      <?php
+                              $querydc= $this->db->query("SELECT * FROM DEPARTAMENTO ");
+                              foreach ($querydc->result() as $dc){
+                                  ?>
+                          <option value="<?php echo $dc->IDDEPTO ?>" <?php if($IDDEPTO==$dc->IDDEPTO){  echo 'selected="selected"';} ?> ><?php echo $dc->NOMBREDEPTO?></option>
+                          <?php
+                              }
+                      ?>  
+                    </select>
                 </div>
               </div>
             </div>

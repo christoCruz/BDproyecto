@@ -438,12 +438,6 @@
                                   
                                 </div>
                               </div>
-                              <div class="col-md-4 px-1">
-                                <div class="form-group">
-                                  <label>Correo</label>
-                                  <input type="email" pattern=".+@ues\.edu\.sv" class="form-control" placeholder="correo" id="correocoor" name="correocoor">
-                                </div>
-                              </div>
                               <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Nombre coordinador</label>
@@ -679,12 +673,6 @@
                               </div>
                             </div>
                             <div class="row">
-                              <div class="col-md-4 pr-1">
-                                <div class="form-group">
-                                  <label>Correo</label>
-                                  <input type="email" pattern=".+@ues\.edu\.sv" class="form-control" placeholder="correo" id="correodocente" name="correodocente">
-                                </div>
-                              </div>
                               <div class="col-md-4 ">
                                 <div class="form-group">
                                   <label>Id departamento</label>
@@ -829,18 +817,6 @@
                               </div>
                             </div>
                             <div class="row">
-                              <div class="col-md-4 pr-1">
-                                <div class="form-group">
-                                  <label>Carnet</label>
-                                  <input type="text" class="form-control" placeholder="carnet" id="carnetestu" name="carnetestu">
-                                </div>
-                              </div>
-                              <div class="col-md-4 px-1">
-                                <div class="form-group">
-                                  <label>Correo del estudiante</label>
-                                  <input type="email" pattern=".+@ues\.edu\.sv" class="form-control" placeholder="correo" id="correoestu" name="correoestu">
-                                </div>
-                              </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Telefono del estudiante</label>
@@ -1644,12 +1620,6 @@
                         <?php echo form_open("tablas/agregar_jefe")?>
                           <div class="modal-body">
                             <div class="row">
-                              <div class="col-md-4 pr-1">
-                                <div class="form-group">
-                                  <label>Correo</label>
-                                  <input type="email" pattern=".+@ues\.edu\.sv" class="form-control" placeholder="Correo" id="correojefe" name="correojefe">
-                                </div>
-                              </div>
                               <div class="col-md-4 px-1">
                                 <div class="form-group">
                                   <label>Nombre jefe</label>

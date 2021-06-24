@@ -34,17 +34,55 @@ class Excel_import extends CI_Controller {
 			$sheets = $this->spreadsheet_excel_readerr->sheets[0];
 			error_reporting(0);
 
+			$yearr=date('y');
+			$carnet='';
+			$carnet='';
+			$size=1;
+			//$fecha=$yearr->format('y');
+
 			$data_excel = array();
 			for ($i = 2; $i <= $sheets['numRows']; $i++) {
 				if ($sheets['cells'][$i][1] == '') break;
 
+				$nombre = $sheets['cells'][$i][2];
+				$apellido = $sheets['cells'][$i][3];
+
+				substr($nombre,0,1);
+				substr($apellido,0,1);
+				$codigo=substr($nombre,0,1).substr($apellido,0,1);
+				$codigos=strtoupper($codigo);
+				
+				$codigoc=$codigos.date('y');
+				
+
+				$contador= $this->db->query("SELECT * FROM ESTUDIANTES WHERE CARNETESTU LIKE '".$codigo.date('y')."%'");
+				foreach ($contador->result() as $dc){
+					$size++;
+				}
+				//$size = $row['COUNT(*)'];
+				
+
+					if($cont<10){
+						$carnet=$codigo.date('y').'00'.$size;
+					}else if($contador<100){
+						$carnet=$codigo.date('y').'0'.$size;
+					}else if($contador<1000){
+						$carnet=$codigo.date('y').$size;
+					}
+				
+				
+				$correo=strtolower($carnet);
+				$correo=$correo.'@ues.edu.sv';
+
+
 				$data_excel[$i - 1]['IDCARRERA']    = $sheets['cells'][$i][1];
 				$data_excel[$i - 1]['NOMESTUDIANTE']   = $sheets['cells'][$i][2];
 				$data_excel[$i - 1]['APELESTUDIANTE']   = $sheets['cells'][$i][3];
-				$data_excel[$i - 1]['CARNETESTU']   = $sheets['cells'][$i][4];
-				$data_excel[$i - 1]['CORREOESTU']   = $sheets['cells'][$i][5];
-				$data_excel[$i - 1]['TELESTUDIANTE']   = $sheets['cells'][$i][6];
+				$data_excel[$i - 1]['CARNETESTU']   = $carnet;
+				$data_excel[$i - 1]['CORREOESTU']   = $correo;
+				$data_excel[$i - 1]['TELESTUDIANTE']   = $sheets['cells'][$i][4];
 				$data_excel[$i - 1]['ESTADOESTU']   = 'A';
+				$size=1;
 			}
 
 			$this->db->insert_batch('ESTUDIANTES', $data_excel);
@@ -53,9 +91,9 @@ class Excel_import extends CI_Controller {
 			
 		}else
 		{
-			redirect('usuarios');
+			//edirect('usuarios');
 		}
-		//redirect('tablas');
+		redirect('tablas');
 		
 	}
 
