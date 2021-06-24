@@ -59,17 +59,13 @@
           foreach ($queryidestudiante->result() as $estudiante){
 
             if(intval($fechaactual)<7){
-            $queryidconsulta= $this->db->query("select nommateria,idmateria from materias natural join carrera natural join estudiantes where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE." and materias.idmateria not in (select idmateria from preinscripcion where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE." and mod(materia.nivelmateria,2) = 0)
+            $queryidconsulta= $this->db->query("select nommateria,idmateria from materias natural join carrera natural join estudiantes where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE." and materias.idmateria not in (select idmateria from preinscripcion where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE." and mod(materias.nivelmateria,2) = 0)
             union
-            select nommateria,idmateria from materias natural join grupos natural join inscripcion where inscripcion.idincripcion in (select idincripcion from registro_estudiante where registro_estudiante.estadomateria='R' ) and inscripcion.idestudiante=".$estudiante->IDESTUDIANTE."
-            union 
-            select nommateria,idmateria from materias where materias.requisito like  (select nommateria,idmateria from materias natural join grupos natural join inscripcion where inscripcion.idincripcion in  (select idincripcion from registro_estudiante where registro_estudiante.estadomateria='A' ) and inscripcion.idestudiante=".$estudiante->IDESTUDIANTE.")");
+            select nommateria,idmateria from materias natural join grupos natural join inscripcion where inscripcion.idincripcion in (select idincripcion from registro_estudiante where registro_estudiante.estadomateria='R' ) and inscripcion.idestudiante=".$estudiante->IDESTUDIANTE."");
             }else{
-              $queryidconsulta= $this->db->query("select nommateria,idmateria from materias natural join carrera natural join estudiantes where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE." and materias.idmateria not in (select idmateria from preinscripcion where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE."and mod(materia.nivelmateria,2) <> 0)
+              $queryidconsulta= $this->db->query("select nommateria,idmateria from materias natural join carrera natural join estudiantes where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE." and materias.idmateria not in (select idmateria from preinscripcion where estudiantes.idestudiante=".$estudiante->IDESTUDIANTE."and mod(materias.nivelmateria,2) <> 0)
             union
-            select nommateria,idmateria from materias natural join grupos natural join inscripcion where inscripcion.idincripcion in (select idincripcion from registro_estudiante where registro_estudiante.estadomateria='R' ) and inscripcion.idestudiante=".$estudiante->IDESTUDIANTE." 
-            union
-            select nommateria,idmateria from materias where materias.requisito like  (select nommateria,idmateria from materias natural join grupos natural join inscripcion where inscripcion.idincripcion in  (select idincripcion from registro_estudiante where registro_estudiante.estadomateria='A' ) and inscripcion.idestudiante=".$estudiante->IDESTUDIANTE.")");
+            select nommateria,idmateria from materias natural join grupos natural join inscripcion where inscripcion.idincripcion in (select idincripcion from registro_estudiante where registro_estudiante.estadomateria='R' ) and inscripcion.idestudiante=".$estudiante->IDESTUDIANTE."");
 
             }
             foreach ($queryidconsulta->result() as $consulta){

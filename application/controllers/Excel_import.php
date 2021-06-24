@@ -86,7 +86,7 @@ class Excel_import extends CI_Controller {
 				$data_excel[$i - 1]['ESTADOESTU']   = 'A';
 				$data_usuario[$i - 1]['USUARIO'] = $correo;
 				$data_usuario[$i - 1]['PASSWORD'] = $contra;
-				$data_usuario[$i - 1]['TIPOUSUARIO'] = 'ESTUDIANTE';
+				$data_usuario[$i - 1]['TIPOUSUAIRO'] = 'ESTUDIANTE';
 				$data_usuario[$i - 1]['ESTADOUSUARIO'] = 'A';
 				$data_usuario[$i - 1]['INTENTOS'] = 0;
 				$size=1;

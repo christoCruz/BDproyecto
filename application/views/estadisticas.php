@@ -155,7 +155,7 @@
 
                         $cantest++;
 
-                        $queryehoras= $this->db->query("SELECT * FROM HORAS_SOCIALES WHERE IDESTUDIANTE=".$estudiante->IDESTUDIANTE." AND ESTADOPROYECTO='A'");
+                        $queryehoras= $this->db->query("SELECT * FROM HORAS_SOCIALES WHERE IDESTUDIANTE=".$estudiante->IDESTUDIANTE." AND ESTADOPROYECTO='A' AND ESTADOANTEPROYECTO='P'");
                         foreach ($queryehoras->result() as $horas){
                             $contador++;
 
