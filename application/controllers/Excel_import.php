@@ -41,6 +41,8 @@ class Excel_import extends CI_Controller {
 			//$fecha=$yearr->format('y');
 
 			$data_excel = array();
+			$data_usuario = array();
+			$contra = sha1('ues'.date("Y"));
 			for ($i = 2; $i <= $sheets['numRows']; $i++) {
 				if ($sheets['cells'][$i][1] == '') break;
 
@@ -82,10 +84,17 @@ class Excel_import extends CI_Controller {
 				$data_excel[$i - 1]['CORREOESTU']   = $correo;
 				$data_excel[$i - 1]['TELESTUDIANTE']   = $sheets['cells'][$i][4];
 				$data_excel[$i - 1]['ESTADOESTU']   = 'A';
+				$data_usuario[$i - 1]['USUARIO'] = $correo;
+				$data_usuario[$i - 1]['PASSWORD'] = $contra;
+				$data_usuario[$i - 1]['TIPOUSUARIO'] = 'ESTUDIANTE';
+				$data_usuario[$i - 1]['ESTADOUSUARIO'] = 'A';
+				$data_usuario[$i - 1]['INTENTOS'] = 0;
 				$size=1;
+				
 			}
 
 			$this->db->insert_batch('ESTUDIANTES', $data_excel);
+			$this->db->insert_batch('USUARIO', $data_usuario);
 			@unlink($data['full_path']);
 			redirect('tablas/#estudiantes');
 			

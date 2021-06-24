@@ -179,7 +179,7 @@
                 <h4 class="modal-title" id="myModalLabel"><?php echo $valoresX ?></h4>
             </div>
             <div class="modal-body">
-                <h5>De los <?php echo $cantest ?> estudiantes que cursan la materia, solo <?php echo $contador ?> 
+                <h5>De los <?php echo $cantest ?> estudiantes que cursan la carrera, solo <?php echo $contador ?> 
              tienen sus proyectos de horas sociales activos, representando asi el <?php echo $porcentaje ?>%</h5>
             </div>
             </div>
